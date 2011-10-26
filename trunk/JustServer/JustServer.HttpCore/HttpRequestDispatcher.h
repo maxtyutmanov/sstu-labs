@@ -5,7 +5,7 @@
 
 class HttpRequestHandler : IRequestDispatcher {
 public:
-    virtual void DispatchRequest(shared_ptr<bai::tcp::socket> connDescriptor);
+    virtual void DispatchRequest(shared_ptr<boost::asio::ip::tcp::socket> connDescriptor);
 };
 
 #endif

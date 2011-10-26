@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.Utility", "JustS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.Network", "JustServer.Network\JustServer.Network.vcxproj", "{36D312BF-7D28-4488-B8B3-CDF6B80DCBE9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.Scaffolding", "JustServer.Scaffolding\JustServer.Scaffolding.vcxproj", "{04A25B19-A238-409F-A46A-0100B2A8B8F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,10 @@ Global
 		{36D312BF-7D28-4488-B8B3-CDF6B80DCBE9}.Debug|Win32.Build.0 = Debug|Win32
 		{36D312BF-7D28-4488-B8B3-CDF6B80DCBE9}.Release|Win32.ActiveCfg = Release|Win32
 		{36D312BF-7D28-4488-B8B3-CDF6B80DCBE9}.Release|Win32.Build.0 = Release|Win32
+		{04A25B19-A238-409F-A46A-0100B2A8B8F1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{04A25B19-A238-409F-A46A-0100B2A8B8F1}.Debug|Win32.Build.0 = Debug|Win32
+		{04A25B19-A238-409F-A46A-0100B2A8B8F1}.Release|Win32.ActiveCfg = Release|Win32
+		{04A25B19-A238-409F-A46A-0100B2A8B8F1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

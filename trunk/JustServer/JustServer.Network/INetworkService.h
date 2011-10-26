@@ -2,7 +2,7 @@
 #define INETWORKSERVICE_H
 
 //Listening for incoming TCP connections and dispatches received requests to the 
-//HttpCore subsystem in the form of sockets. Also maintains connection pool.
+//protocol specific subsystem in the form of sockets. Also could maintain connection pool.
 class INetworkService {
 public:
     virtual void Start() = 0;
