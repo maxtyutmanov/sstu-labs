@@ -15,21 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="NetworkService.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="INetworkService.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IRequestDispatcher.h">
+    <ClInclude Include="EchoDispatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NetworkService.cpp">
+    <ClCompile Include="EchoDispatcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
