@@ -7,6 +7,7 @@
 #include <memory>
 #include <string>
 #include <boost/thread.hpp>
+#include <manual_reset_event.h>
 using std::string;
 using namespace boost::asio::ip;
 using std::auto_ptr;
@@ -21,23 +22,19 @@ public:
     ~NetworkService();
 
     virtual void Start();
-
-    //TODO: to make this work we need to run io_service in a separate thread
-    //never call it. It doesn't work anyway :)
     virtual void Stop();
 private:
     void StartAsyncListening();
     void HandleRequest(boost::shared_ptr<tcp::socket> pSocket, const boost::system::error_code &ec);
     void RunIoservice();
 
-    //to avoid pure virtual function call in desctructor
-    void StopImpl();
-
     std::auto_ptr<tcp::acceptor> listener;
     std::auto_ptr<IRequestDispatcher> requestDispatcher;
     std::auto_ptr<boost::asio::io_service> io_service;
     std::auto_ptr<tcp::endpoint> serverEndpoint;
     std::auto_ptr<boost::thread> ioserviceThread;
+    std::auto_ptr<boost::mutex> startStopLock;
+    std::auto_ptr<manual_reset_event> startedEvent;
     bool isRunning;
 };
 
