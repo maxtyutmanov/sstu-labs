@@ -1,8 +1,10 @@
 #include "NetworkService.h"
-
+#include <string>
+#include <boost/asio/placeholders.hpp>
+using std::string;
 
 NetworkService::NetworkService(
-    auto_ptr<IRequestDispatcher> requestDispatcher,
+    std::auto_ptr<IRequestDispatcher> requestDispatcher,
     const string& ipAddress,
     const unsigned short portNumber) {
 
@@ -39,43 +41,58 @@ NetworkService::NetworkService(
 
     this->requestDispatcher = requestDispatcher;
 
-    stopped = true;
+    isRunning = false;
 }
 
 NetworkService::~NetworkService() {
     try {
-        this->Stop();
+        this->StopImpl();
+
+        //TODO: that's the spike. Otherwise memory access 
+        //violation exception would be thrown while destructing listener
+        //after other members' (especially io_service) destruction
+        //(and I don't know why the hell it's destructed AFTER other members!)
+        delete listener.release();
     }
     catch (const boost::system::system_error &ex) {
-        //TODO: who cares? :-)
+        //TODO: mmm... :-)
     }
 }
 
 void NetworkService::Start() {
-    if (stopped) {
+    if (!isRunning) {
         StartAsyncListening();
         
-        //TODO: should be careful about this call
-        io_service->run();
+        isRunning = true;
+        ioserviceThread.reset(new boost::thread(&NetworkService::RunIoservice, this));
     }
 }
 
 void NetworkService::Stop() {
-    if (!stopped) {
-        listener->cancel();
-
-        stopped = true;
-    }
+    StopImpl();
 }
 
 void NetworkService::StartAsyncListening() {
     shared_ptr<tcp::socket> pSocket(new tcp::socket(*io_service));
-
-    listener->async_accept(*pSocket, boost::bind(&NetworkService::HandleRequest, this, pSocket));
-    stopped = false;
+    
+    listener->async_accept(*pSocket, boost::bind(&NetworkService::HandleRequest, this, pSocket, boost::asio::placeholders::error));
 }
 
-void NetworkService::HandleRequest(shared_ptr<tcp::socket> pSocket) {
+void NetworkService::HandleRequest(shared_ptr<tcp::socket> pSocket, const boost::system::error_code &ec) {
+    if (ec) {
+
+        //checking for error code, and if value = operation_aborted then listener->cancel() has been called
+        //and we must stop listening for new connections
+        if (ec.value() != boost::asio::error::operation_aborted) {
+            StartAsyncListening();
+        }
+        else {
+            //pSocket.
+        }
+
+        return;
+    }
+
     //We don't care about app protocol-specific communication details,
     //just letting the requestDispatcher to deal with them
 
@@ -85,4 +102,23 @@ void NetworkService::HandleRequest(shared_ptr<tcp::socket> pSocket) {
 
     //and starting to listen for incoming connections again
     StartAsyncListening();
+}
+
+void NetworkService::RunIoservice() {
+    io_service->run();
+}
+
+void NetworkService::StopImpl() {
+    if (isRunning) {
+        boost::system::error_code ec;
+
+        listener->cancel();
+
+        ioserviceThread->join();
+        //making io_service reusable
+        io_service->stop();
+        io_service->reset();
+
+        isRunning = false;
+    }
 }
