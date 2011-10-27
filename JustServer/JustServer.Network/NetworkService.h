@@ -14,7 +14,7 @@ using std::auto_ptr;
 class NetworkService : public INetworkService {
 public:
     NetworkService(
-        auto_ptr<IRequestDispatcher> requestDispatcher,
+        std::auto_ptr<IRequestDispatcher> requestDispatcher,
         const string& ipAddress,
         const unsigned short portNumber);
 
@@ -27,14 +27,18 @@ public:
     virtual void Stop();
 private:
     void StartAsyncListening();
-    void HandleRequest(shared_ptr<tcp::socket> pSocket);
+    void HandleRequest(boost::shared_ptr<tcp::socket> pSocket, const boost::system::error_code &ec);
+    void RunIoservice();
 
-    auto_ptr<IRequestDispatcher> requestDispatcher;
-    auto_ptr<tcp::acceptor> listener;
-    auto_ptr<boost::asio::io_service> io_service;
-    auto_ptr<tcp::endpoint> serverEndpoint;
-    auto_ptr<boost::thread> listeningThread;
-    bool stopped;
+    //to avoid pure virtual function call in desctructor
+    void StopImpl();
+
+    std::auto_ptr<tcp::acceptor> listener;
+    std::auto_ptr<IRequestDispatcher> requestDispatcher;
+    std::auto_ptr<boost::asio::io_service> io_service;
+    std::auto_ptr<tcp::endpoint> serverEndpoint;
+    std::auto_ptr<boost::thread> ioserviceThread;
+    bool isRunning;
 };
 
 #endif
