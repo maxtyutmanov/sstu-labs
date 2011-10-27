@@ -19,5 +19,11 @@ int main(int argc, char** argv) {
 
     ns.Stop();
 
+    cin.get();
+
+    ns.Start();
+
+    cin.get();
+
     return 0;
 }

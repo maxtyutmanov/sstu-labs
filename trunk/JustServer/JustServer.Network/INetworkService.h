@@ -1,8 +1,10 @@
 #ifndef INETWORKSERVICE_H
 #define INETWORKSERVICE_H
 
-//Listening for incoming TCP connections and dispatches received requests to the 
-//protocol specific subsystem in the form of sockets. Also could maintain connection pool.
+/*The main purpose of this service is listening for incoming TCP connections on
+the specific port. Once request arrives this service passes it to specific dispatcher
+in the form of TCP socket. So, this service doesn't contain application specific details, 
+just supporting the requests accepting in asynchronous manner*/
 class INetworkService {
 public:
     virtual void Start() = 0;
