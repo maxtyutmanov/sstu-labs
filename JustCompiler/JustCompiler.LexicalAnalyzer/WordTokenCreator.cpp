@@ -26,6 +26,11 @@ bool WordTokenCreator::TryCreateToken(
     else {
         //it seems to be an identifier
 
+        if (!CheckCharset(lexeme)) {
+            *error = new LexicalError(lineNum, charNum - lexeme.length(), ErrorCode::IdWithWrongCharset);
+            return false;
+        }
+
         if (lexeme.length() > settings.GetMaxIdentifierLength()) {
             *error = new LexicalError(lineNum, charNum - lexeme.length(), ErrorCode::TooLongIdentifier);
             return false;

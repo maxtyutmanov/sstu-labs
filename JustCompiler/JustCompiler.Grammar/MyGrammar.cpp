@@ -168,7 +168,7 @@ auto_ptr<Lexer> MyGrammar::CreateLexer(const LexerSettings& settings, wistream& 
     pLexer->AddTransition(FaTransition(
         insideStringLiteral, init, 
         &CharacterValidators::IsNewlineOrEof, 
-        ReadAction::KeepInBuffer_Ignore, 
+        ReadAction::RemoveFromBuffer_ClearLexeme, 
         ErrorCode::UnterminatedStringLiteral));
 
     pLexer->AddTransition(FaTransition(
