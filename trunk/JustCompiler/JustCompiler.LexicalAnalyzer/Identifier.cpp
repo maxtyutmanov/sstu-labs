@@ -1,7 +1,7 @@
 #include "Identifier.h"
 
-Identifier::Identifier(const wstring& name)
-    : Token(TokenTag::Identifier) {
+Identifier::Identifier(const wstring& name, const int lineNum, const int charNum)
+    : Token(TokenTag::Identifier, lineNum, charNum) {
 
     this->name = name;
 }

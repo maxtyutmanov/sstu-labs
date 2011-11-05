@@ -24,12 +24,18 @@
     <ClCompile Include="LexerOutputPresenter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ErrorsPresenter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LexerOutputPresenter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TokenTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorsPresenter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

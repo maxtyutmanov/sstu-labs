@@ -6,13 +6,13 @@ using std::wstring;
 class LexicalError {
 public:
     LexicalError();
-    LexicalError(const int lineNumber, const int charNumber, const wstring& errorMessage);
+    LexicalError(const int lineNumber, const int charNumber, const int errorCode);
 
     int GetLineNumber() const;
     int GetCharNumber() const;
-    wstring GetErrorMessage() const;
+    int GetErrorCode() const;
 private:
     int lineNumber;
     int charNumber;
-    wstring errorMessage;
+    int errorCode;
 };

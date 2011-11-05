@@ -6,7 +6,7 @@ using std::wstring;
 
 class Identifier : public Token {
 public:
-    explicit Identifier(const wstring& name);
+    Identifier(const wstring& name, const int lineNum, const int charNum);
 
     wstring GetName() const;
 

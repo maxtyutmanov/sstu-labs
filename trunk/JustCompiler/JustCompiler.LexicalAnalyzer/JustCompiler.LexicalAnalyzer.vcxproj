@@ -79,8 +79,17 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IntConstantTokenCreator.h" />
+    <ClInclude Include="ReadAction.h" />
+    <ClInclude Include="SingleCharTokenCreator.h" />
+    <ClInclude Include="ErrorCode.h" />
+    <ClInclude Include="FaState.h" />
+    <ClInclude Include="FaTransition.h" />
     <ClInclude Include="Identifier.h" />
     <ClInclude Include="IntConstant.h" />
+    <ClInclude Include="StringLiteralTokenCreator.h" />
+    <ClInclude Include="UnrecognizedTokenCreator.h" />
+    <ClInclude Include="WordTokenCreator.h" />
     <ClInclude Include="LexerInputBuffer.h" />
     <ClInclude Include="LexerSettings.h" />
     <ClInclude Include="Lexer.h" />
@@ -88,11 +97,18 @@
     <ClInclude Include="LexicalError.h" />
     <ClInclude Include="StringLiteral.h" />
     <ClInclude Include="Token.h" />
+    <ClInclude Include="TokenCreator.h" />
     <ClInclude Include="TokenTag.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FaState.cpp" />
     <ClCompile Include="Identifier.cpp" />
     <ClCompile Include="IntConstant.cpp" />
+    <ClCompile Include="IntConstantTokenCreator.cpp" />
+    <ClCompile Include="SingleCharTokenCreator.cpp" />
+    <ClCompile Include="StringLiteralTokenCreator.cpp" />
+    <ClCompile Include="UnrecognizedTokenCreator.cpp" />
+    <ClCompile Include="WordTokenCreator.cpp" />
     <ClCompile Include="Lexer.cpp" />
     <ClCompile Include="LexerInputBuffer.cpp" />
     <ClCompile Include="LexerSettings.cpp" />

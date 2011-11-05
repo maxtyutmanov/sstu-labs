@@ -1,7 +1,7 @@
 #include "IntConstant.h"
 
-IntConstant::IntConstant(const int value) 
-    :Token(TokenTag::IntConstant) {
+IntConstant::IntConstant(const int value, const int lineNum, const int charNum) 
+    :Token(TokenTag::IntConstant, lineNum, charNum) {
 
     this->value = value;
 }

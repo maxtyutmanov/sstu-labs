@@ -10,6 +10,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Tests", "JustC
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.LexicalAnalyzerRunner", "JustCompiler.LexicalAnalyzerRunner\JustCompiler.LexicalAnalyzerRunner.vcxproj", "{2A695B84-1B0C-4710-821D-EDA2E03B7445}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Grammar", "JustCompiler.Grammar\JustCompiler.Grammar.vcxproj", "{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -28,6 +30,10 @@ Global
 		{2A695B84-1B0C-4710-821D-EDA2E03B7445}.Debug|Win32.Build.0 = Debug|Win32
 		{2A695B84-1B0C-4710-821D-EDA2E03B7445}.Release|Win32.ActiveCfg = Release|Win32
 		{2A695B84-1B0C-4710-821D-EDA2E03B7445}.Release|Win32.Build.0 = Release|Win32
+		{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}.Debug|Win32.Build.0 = Debug|Win32
+		{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}.Release|Win32.ActiveCfg = Release|Win32
+		{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

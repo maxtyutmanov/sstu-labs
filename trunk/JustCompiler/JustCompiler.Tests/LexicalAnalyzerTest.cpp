@@ -8,23 +8,13 @@
 #include "Lexer.h"
 #include <sstream>
 #include <string>
+#include <MyGrammar.h>
 using std::wistringstream;
 using std::wstring;
 
 struct LexerFixture {
     LexerFixture() {
-        LexemesDictionary kw;
-
-        kw[L"for"] = TokenTag::For;
-        kw[L"while"] = TokenTag::While;
-
-        LexemesDictionary sf;
-
-        sf[L"ln"] = TokenTag::Ln;
-
-        OneCharLexemesDictionary oneCharLexemes;
-
-        lexerSettings = LexerSettings(kw, sf, oneCharLexemes);
+        lexerSettings = MyGrammar::SetupLexerSettings();
     }
 
     ~LexerFixture() {
@@ -46,9 +36,9 @@ struct LexerFixture {
 
     void Tokenize(const wstring& source) {
         wistringstream sourceStream(source);
-        Lexer lexer(lexerSettings, sourceStream);
+        auto_ptr<Lexer> pLexer = MyGrammar::CreateLexer(lexerSettings, sourceStream);
 
-        lexerOutput = lexer.Tokenize();
+        lexerOutput = pLexer->Tokenize();
     }
 
     LexerSettings lexerSettings;
@@ -94,8 +84,7 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeWhiteSpaces ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 0);
-    BOOST_ASSERT(tokens.size() == 1);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
+    BOOST_CHECK(tokens.size() == 0);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeIntConstants ) {
@@ -106,15 +95,13 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeIntConstants ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 0);
-    BOOST_ASSERT(tokens.size() == 4);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::IntConstant);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::IntConstant);
+    BOOST_ASSERT(tokens.size() == 2);
+    BOOST_ASSERT(tokens[0]->GetTag() == TokenTag::IntConstant);
+    BOOST_ASSERT(tokens[1]->GetTag() == TokenTag::IntConstant);
 
-    IntConstant* intConstant = (IntConstant*)tokens[1];
+    IntConstant* intConstant = (IntConstant*)tokens[0];
     BOOST_CHECK(intConstant->GetValue() == 99);
-    intConstant = (IntConstant*)tokens[3];
+    intConstant = (IntConstant*)tokens[1];
     BOOST_CHECK(intConstant->GetValue() == 33);
 }
 
@@ -128,11 +115,9 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeIntConstants_Overflow_LastInvalid ) {
     BOOST_ASSERT(errors.size() == 1);
     BOOST_CHECK(errors[0]->GetLineNumber() == 1);
 
-    BOOST_ASSERT(tokens.size() == 4);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::IntConstant);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::Unrecognized);
+    BOOST_ASSERT(tokens.size() == 2);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::IntConstant);
+    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Unrecognized);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeIntConstants_Overflow_NotLastInvalid ) {
@@ -145,14 +130,9 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeIntConstants_Overflow_NotLastInvalid ) {
     BOOST_ASSERT(errors.size() == 1);
     BOOST_CHECK(errors[0]->GetLineNumber() == 2);
 
-    BOOST_ASSERT(tokens.size() == 7);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::IntConstant);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::Newline);
-    BOOST_CHECK(tokens[4]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[5]->GetTag() == TokenTag::Unrecognized);
-    BOOST_CHECK(tokens[6]->GetTag() == TokenTag::Space);
+    BOOST_ASSERT(tokens.size() == 2);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::IntConstant);
+    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Unrecognized);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeIntConstants_InvalidIdentifier ) {
@@ -165,12 +145,9 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeIntConstants_InvalidIdentifier ) {
     BOOST_ASSERT(errors.size() == 1);
     BOOST_CHECK(errors[0]->GetLineNumber() == 1);
 
-    BOOST_ASSERT(tokens.size() == 5);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::IntConstant);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::Unrecognized);
-    BOOST_CHECK(tokens[4]->GetTag() == TokenTag::Space);
+    BOOST_ASSERT(tokens.size() == 2);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::IntConstant);
+    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Unrecognized);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeStringLiterals ) {
@@ -181,12 +158,10 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeStringLiterals ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 0);
-    BOOST_ASSERT(tokens.size() == 3);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::StringLiteral);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Space);
+    BOOST_ASSERT(tokens.size() == 1);
+    BOOST_ASSERT(tokens[0]->GetTag() == TokenTag::StringLiteral);
 
-    StringLiteral* stringLiteral = (StringLiteral*)tokens[1];
+    StringLiteral* stringLiteral = (StringLiteral*)tokens[0];
 
     BOOST_CHECK(stringLiteral->GetText() == L"hello world");
 }
@@ -199,9 +174,8 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeStringLiterals_Unterminated_Eof ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 1);
-    BOOST_ASSERT(tokens.size() == 2);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Unrecognized);
+    BOOST_ASSERT(tokens.size() == 1);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Unrecognized);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeStringLiterals_Unterminated_Eoln ) {
@@ -212,11 +186,8 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeStringLiterals_Unterminated_Eoln ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 1);
-    BOOST_ASSERT(tokens.size() == 4);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Unrecognized);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Newline);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::Space);
+    BOOST_ASSERT(tokens.size() == 1);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Unrecognized);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeKeyword ) {
@@ -227,12 +198,8 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeKeyword ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 0);
-    BOOST_ASSERT(tokens.size() == 5);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::For);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::Newline);
-    BOOST_CHECK(tokens[4]->GetTag() == TokenTag::Space);
+    BOOST_ASSERT(tokens.size() == 1);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::For);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeKeyword_Eoln ) {
@@ -243,11 +210,8 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeKeyword_Eoln ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 0);
-    BOOST_ASSERT(tokens.size() == 4);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::For);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Newline);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::Space);
+    BOOST_ASSERT(tokens.size() == 1);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::For);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeKeyword_Eof ) {
@@ -258,9 +222,8 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeKeyword_Eof ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 0);
-    BOOST_ASSERT(tokens.size() == 2);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::For);
+    BOOST_ASSERT(tokens.size() == 1);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::For);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeIdentifier ) {
@@ -271,14 +234,10 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeIdentifier ) {
     vector<LexicalError *> errors = lexerOutput.get<1>();
 
     BOOST_CHECK(errors.size() == 0);
-    BOOST_ASSERT(tokens.size() == 5);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Identifier);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::Newline);
-    BOOST_CHECK(tokens[4]->GetTag() == TokenTag::Space);
+    BOOST_ASSERT(tokens.size() == 1);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Identifier);
 
-    Identifier* identifier = (Identifier*)tokens[1];
+    Identifier* identifier = (Identifier*)tokens[0];
 
     BOOST_CHECK(identifier->GetName() == L"i");
 }
@@ -292,18 +251,9 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeIdentifier_TooLong ) {
 
     BOOST_ASSERT(errors.size() == 1);
     BOOST_CHECK(errors[0]->GetLineNumber() == 4);
-    BOOST_CHECK(errors[0]->GetCharNumber() == 2);
-
-    BOOST_ASSERT(tokens.size() == 9);
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Newline);
-    BOOST_CHECK(tokens[2]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[3]->GetTag() == TokenTag::Newline);
-    BOOST_CHECK(tokens[4]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[5]->GetTag() == TokenTag::Unrecognized);
-    BOOST_CHECK(tokens[6]->GetTag() == TokenTag::Space);
-    BOOST_CHECK(tokens[7]->GetTag() == TokenTag::Newline);
-    BOOST_CHECK(tokens[8]->GetTag() == TokenTag::Space);
+    
+    BOOST_ASSERT(tokens.size() == 1);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Unrecognized);
 }
 
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeComment_OneLine ) {
@@ -340,8 +290,8 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeComment_TwoLines ) {
     BOOST_CHECK(errors.size() == 0);
     BOOST_ASSERT(tokens.size() == 2);
 
-    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Identifier);
-    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Identifier);
+    BOOST_ASSERT(tokens[0]->GetTag() == TokenTag::Identifier);
+    BOOST_ASSERT(tokens[1]->GetTag() == TokenTag::Identifier);
 
     Identifier* id = (Identifier*)tokens[0];
 

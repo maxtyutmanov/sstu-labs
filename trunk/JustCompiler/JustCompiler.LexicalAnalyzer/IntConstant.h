@@ -4,7 +4,7 @@
 
 class IntConstant : public Token {
 public:
-    IntConstant(const int value);
+    IntConstant(const int value, const int lineNum, const int charNum);
 
     int GetValue() const;
 
