@@ -7,7 +7,14 @@ TokenTablesContainer LexerOutputPresenter::WriteDescriptorText(vector<Token *> t
     TokenTable constants;
     TokenTable identifiers;
 
+    int lineNumber = (tokens.size() != 0 ? tokens[0]->GetLineNum() : 0);
+
     for (int i = 0; i < tokens.size(); ++i) {
+        if (tokens[i]->GetLineNum() > lineNumber) {
+            lineNumber = tokens[i]->GetLineNum();
+            output << endl;
+        }
+
         switch (tokens[i]->GetTag()) {
             case TokenTag::Program:
             case TokenTag::While:
@@ -69,11 +76,6 @@ TokenTablesContainer LexerOutputPresenter::WriteDescriptorText(vector<Token *> t
                 output << L"<K5, " << tokenId << L"> ";
                 break;
             }
-            case TokenTag::Newline:
-                if (i == 0 || tokens[i - 1]->GetTag() != TokenTag::Newline) {
-                    output << endl;
-                }
-                break;
             case TokenTag::Unrecognized:
                 output << L"<???> ";
                 break;

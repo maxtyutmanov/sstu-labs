@@ -45,10 +45,8 @@ struct TokenTag {
         //Other tokens
 
         Identifier,
-        Space,
         IntConstant,
         StringLiteral,
-        Newline,
         Unrecognized
     };
 };

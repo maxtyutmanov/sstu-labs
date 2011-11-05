@@ -1,7 +1,7 @@
 #include "StringLiteral.h"
 
-StringLiteral::StringLiteral(const wstring& text)
-    :Token(TokenTag::StringLiteral) {
+StringLiteral::StringLiteral(const wstring& text, const int lineNum, const int charNum)
+    :Token(TokenTag::StringLiteral, lineNum, charNum) {
 
     this->text = text;
 }

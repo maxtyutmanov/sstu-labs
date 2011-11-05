@@ -19,6 +19,18 @@
     <Filter Include="Source Files\Tokens">
       <UniqueIdentifier>{198f6725-c6ae-48d7-9f40-7e440971e838}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\FiniteAutomata">
+      <UniqueIdentifier>{49897e5b-0ca0-4f1c-928b-7ee5c2339270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TokenCreators">
+      <UniqueIdentifier>{f8f629b8-49df-48b0-b280-18824f2c121f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TokenCreators">
+      <UniqueIdentifier>{36156f07-13a3-4d29-8062-6f9dc17c8a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FiniteAutomata">
+      <UniqueIdentifier>{39afaf50-24bf-43e0-997c-82d5e773ec69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -54,6 +66,36 @@
     <ClInclude Include="Identifier.h">
       <Filter>Header Files\Tokens</Filter>
     </ClInclude>
+    <ClInclude Include="FaState.h">
+      <Filter>Header Files\FiniteAutomata</Filter>
+    </ClInclude>
+    <ClInclude Include="FaTransition.h">
+      <Filter>Header Files\FiniteAutomata</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenCreator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WordTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleCharTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="IntConstantTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="StringLiteralTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadAction.h">
+      <Filter>Header Files\FiniteAutomata</Filter>
+    </ClInclude>
+    <ClInclude Include="UnrecognizedTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lexer.cpp">
@@ -79,6 +121,24 @@
     </ClCompile>
     <ClCompile Include="Identifier.cpp">
       <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="WordTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleCharTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="IntConstantTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="StringLiteralTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="FaState.cpp">
+      <Filter>Source Files\FiniteAutomata</Filter>
+    </ClCompile>
+    <ClCompile Include="UnrecognizedTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

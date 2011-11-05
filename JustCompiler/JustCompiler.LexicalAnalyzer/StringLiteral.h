@@ -6,7 +6,7 @@ using std::wstring;
 
 class StringLiteral : public Token {
 public:
-    StringLiteral(const wstring& text);
+    StringLiteral(const wstring& text, const int lineNum, const int charNum);
 
     wstring GetText() const;
 

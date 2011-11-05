@@ -6,10 +6,10 @@ LexicalError::LexicalError() {
     charNumber = 0;
 }
 
-LexicalError::LexicalError(const int lineNumber, const int charNumber, const wstring& errorMessage) {
+LexicalError::LexicalError(const int lineNumber, const int charNumber, const int errorCode) {
     this->lineNumber = lineNumber;
     this->charNumber = charNumber;
-    this->errorMessage = errorMessage;
+    this->errorCode = errorCode;
 }
 
 int LexicalError::GetLineNumber() const {
@@ -20,6 +20,6 @@ int LexicalError::GetCharNumber() const {
     return charNumber;
 }
 
-wstring LexicalError::GetErrorMessage() const {
-    return errorMessage;
+int LexicalError::GetErrorCode() const {
+    return errorCode;
 }

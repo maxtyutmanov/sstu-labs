@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(SolutionDir)JustCompiler.LexicalAnalyzer;H:\boost_1_47_0;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(SolutionDir)JustCompiler.LexicalAnalyzer;H:\boost_1_47_0;$(SolutionDir)JustCompiler.Grammar;</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,16 +76,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JustCompiler.Grammar\JustCompiler.Grammar.vcxproj">
+      <Project>{91dd9bb7-c44f-4773-bf5c-04da33a5270e}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\JustCompiler.LexicalAnalyzer\JustCompiler.LexicalAnalyzer.vcxproj">
       <Project>{0894b46e-d07c-458b-bbc2-a0c928f94d1d}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ErrorsPresenter.cpp" />
     <ClCompile Include="LexerOutputPresenter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TokenTable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ErrorsPresenter.h" />
     <ClInclude Include="LexerOutputPresenter.h" />
     <ClInclude Include="TokenTable.h" />
   </ItemGroup>

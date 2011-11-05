@@ -31,9 +31,6 @@ void TokenTable::WriteToStream(const LexerSettings& lexerSettings, wostream& out
         case TokenTag::StringLiteral:
             rightCell = ((StringLiteral *)tokens[i])->GetText();
             break;
-        case TokenTag::Space:
-            rightCell = L"пробел";
-            break;
         default:
             wstring lexeme;
             wchar_t singleCharLexeme;
