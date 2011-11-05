@@ -82,6 +82,8 @@ TokenTablesContainer LexerOutputPresenter::WriteDescriptorText(vector<Token *> t
         }
     }
 
+    output << endl;
+
     TokenTablesContainer tablesContainer;
     tablesContainer.constants = constants;
     tablesContainer.identifiers = identifiers;
