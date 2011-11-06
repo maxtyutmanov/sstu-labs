@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7022068D-D2AC-4D87-B459-081F19A13AA4}</ProjectGuid>
+    <ProjectGuid>{ABB55457-F67B-454D-AC90-DD03BE69B75D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>JustServerHttpCore</RootNamespace>
+    <RootNamespace>JustServerHttpGrammar</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -38,8 +38,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)JustServer.Network</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.LexicalAnalyzer;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -75,22 +74,17 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HttpCore.h" />
-    <ClInclude Include="HttpHeader.h" />
-    <ClInclude Include="HttpMessage.h" />
-    <ClInclude Include="HttpRequest.h" />
-    <ClInclude Include="HttpRequestDispatcher.h" />
-    <ClInclude Include="HttpResponse.h" />
-    <ClInclude Include="HttpVersion.h" />
-    <ClInclude Include="HttpWorkerRequest.h" />
-    <ClInclude Include="MessageParseError.h" />
-    <ClInclude Include="ParseErrorCodes.h" />
+    <ProjectReference Include="..\JustServer.LexicalAnalyzer\JustServer.LexicalAnalyzer.vcxproj">
+      <Project>{0894b46e-d07c-458b-bbc2-a0c928f94d1d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HttpCore.cpp" />
-    <ClCompile Include="HttpRequestDispatcher.cpp" />
-    <ClCompile Include="HttpVersion.cpp" />
-    <ClCompile Include="HttpWorkerRequest.cpp" />
+    <ClInclude Include="HttpMessageGrammar.h" />
+    <ClInclude Include="HttpVerb.h" />
+    <ClInclude Include="TokenTag.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="HttpVerb.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
