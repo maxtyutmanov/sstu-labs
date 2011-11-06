@@ -1,0 +1,5 @@
+program JustProgram
+
+begin
+	string strLiteral = "Незакрытый строковый литерал
+end
