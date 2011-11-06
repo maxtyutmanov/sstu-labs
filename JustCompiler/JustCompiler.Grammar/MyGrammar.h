@@ -8,4 +8,6 @@ class MyGrammar {
 public:
     static auto_ptr<Lexer> CreateLexer(const LexerSettings& settings, wistream& input);
     static LexerSettings SetupLexerSettings();
+
+    static bool ValidateCharsetInIdentifier(wchar_t ch);
 };

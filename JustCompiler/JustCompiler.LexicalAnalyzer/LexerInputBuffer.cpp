@@ -2,19 +2,19 @@
 #include <streambuf>
 using std::istreambuf_iterator;
 
-LexerInputBuffer::LexerInputBuffer(wistream &input) {
+LexerInputBuffer::LexerInputBuffer(input_stream_type &input) {
     //TODO: optimize memory allocation for wstring
-    this->input = wstring(
-        istreambuf_iterator<wchar_t>(input), 
-        istreambuf_iterator<wchar_t>());
+    this->input = string_type(
+        istreambuf_iterator<char_type>(input), 
+        istreambuf_iterator<char_type>());
 
     cursor = 0;
     lineNumber = 1;
     characterNumber = 1;
 }
 
-wchar_t LexerInputBuffer::Get() {
-    wchar_t readChar = input[cursor++];
+char_type LexerInputBuffer::Get() {
+    char_type readChar = input[cursor++];
 
     if (readChar == L'\n') {
         GoToNewLine();
@@ -29,7 +29,7 @@ wchar_t LexerInputBuffer::Get() {
 void LexerInputBuffer::Unget() {
     //input[cursor - 1] is the latest read character
 
-    if (cursor > 0 && input[cursor - 1] == L'\n') {
+    if (cursor > 0 && input[cursor - 1] == LITERAL('\n')) {
         GoToPreviousLine();
     }
     else {

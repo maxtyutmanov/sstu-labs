@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Global.h"
+#include "CharValidationRule.h"
 #include "FaState.h"
 #include "TokenCreator.h"
 #include "ReadAction.h"
@@ -8,7 +10,6 @@
 using std::auto_ptr;
 using boost::shared_ptr;
 
-typedef bool (*CharValidationRule)(wchar_t test);
 
 class FaTransition {
 public:
@@ -49,7 +50,7 @@ public:
         return to;
     }
 
-    bool IsCharValid(wchar_t inputChar) const {
+    bool IsCharValid(char_type inputChar) const {
         return validationRule(inputChar);
     }
 

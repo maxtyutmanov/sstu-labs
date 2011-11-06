@@ -10,18 +10,18 @@ using boost::lexical_cast;
 using boost::bad_lexical_cast;
 using boost::shared_ptr;
 
-Lexer::Lexer(const LexerSettings& settings, shared_ptr<FaState> initState, wistream& input)
+Lexer::Lexer(const LexerSettings& settings, shared_ptr<FaState> initState, input_stream_type& input)
     :settings(settings), currentState(initState), buffer(input) {
 }
 
 LexerOutput Lexer::Tokenize() {
     while (!buffer.Eof()) {
-        wchar_t currentChar = buffer.Get();
+        char_type currentChar = buffer.Get();
 
         MoveFiniteAutomata(currentChar);
     }
 
-    MoveFiniteAutomata(L'\0');
+    MoveFiniteAutomata(LITERAL('\0'));
 
     return LexerOutput(tokens, errors);
 }
@@ -30,7 +30,7 @@ void Lexer::AddTransition(const FaTransition& transition) {
     faTransitions.push_back(transition);
 }
 
-void Lexer::MoveFiniteAutomata(wchar_t currentChar) {
+void Lexer::MoveFiniteAutomata(char_type currentChar) {
     //search for appropriate transition for current state and input char
     FaTransition *selectedTransition = NULL;
 
@@ -56,7 +56,7 @@ void Lexer::MoveFiniteAutomata(wchar_t currentChar) {
         //do nothing
         break;
     case ReadAction::RemoveFromBuffer_ClearLexeme:
-        currentLexeme = L"";
+        currentLexeme = LITERAL("");
         break;
     default:
         //TODO: !!!
@@ -84,7 +84,7 @@ void Lexer::MoveFiniteAutomata(wchar_t currentChar) {
                 tokens.push_back(new Token(TokenTag::Unrecognized, buffer.GetLineNumber(), buffer.GetCharacterNumber()));
             }
 
-            currentLexeme = L"";
+            currentLexeme = LITERAL("");
         }
     }
 

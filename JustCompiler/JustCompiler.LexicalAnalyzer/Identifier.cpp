@@ -1,12 +1,12 @@
 #include "Identifier.h"
 
-Identifier::Identifier(const wstring& name, const int lineNum, const int charNum)
+Identifier::Identifier(const string_type& name, const int lineNum, const int charNum)
     : Token(TokenTag::Identifier, lineNum, charNum) {
 
     this->name = name;
 }
 
-wstring Identifier::GetName() const {
+string_type Identifier::GetName() const {
     return name;
 }
 

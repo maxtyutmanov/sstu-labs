@@ -3,7 +3,7 @@
 #include <assert.h>
 
 bool StringLiteralTokenCreator::TryCreateToken(
-    const wstring& lexeme, 
+    const string_type& lexeme, 
     int lineNum, 
     int charNum, 
     Token** token, 

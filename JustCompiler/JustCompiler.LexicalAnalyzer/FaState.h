@@ -1,13 +1,12 @@
 #pragma once
 
-#include <string>
-using std::wstring;
+#include "Global.h"
 
 class FaState {
 public:
-    FaState(const wstring& name);
+    FaState(const string_type& name);
 
-    wstring GetName() const;
+    string_type GetName() const;
 private:
-    wstring name;
+    string_type name;
 };

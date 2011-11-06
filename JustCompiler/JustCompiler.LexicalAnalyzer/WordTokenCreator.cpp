@@ -2,12 +2,12 @@
 #include "ErrorCode.h"
 #include "Identifier.h"
 
-WordTokenCreator::WordTokenCreator(const LexerSettings& lexerSettings) 
-    : settings(lexerSettings) {
+WordTokenCreator::WordTokenCreator(const LexerSettings& lexerSettings, CharValidationRule charValidationRule) 
+    : settings(lexerSettings), charValidationRule(charValidationRule) {
 }
 
 bool WordTokenCreator::TryCreateToken(
-    const wstring& lexeme, 
+    const string_type& lexeme, 
     int lineNum, 
     int charNum, 
     Token** token, 
@@ -42,9 +42,9 @@ bool WordTokenCreator::TryCreateToken(
     }
 }
 
-bool WordTokenCreator::CheckCharset(const wstring& lexeme) {
+bool WordTokenCreator::CheckCharset(const string_type& lexeme) {
     for (size_t i = 0; i < lexeme.length(); ++i) {
-        if (!iswascii(lexeme[i])) {
+        if (!charValidationRule(lexeme[i])) {
             return false;
         }
     }

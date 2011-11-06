@@ -1,16 +1,15 @@
 #pragma once
 
+#include "Global.h"
 #include "Token.h"
-#include <string>
-using std::wstring;
 
 class Identifier : public Token {
 public:
-    Identifier(const wstring& name, const int lineNum, const int charNum);
+    Identifier(const string_type& name, const int lineNum, const int charNum);
 
-    wstring GetName() const;
+    string_type GetName() const;
 
     virtual bool operator== (const Token& right) const;
 private:
-    wstring name;
+    string_type name;
 };
