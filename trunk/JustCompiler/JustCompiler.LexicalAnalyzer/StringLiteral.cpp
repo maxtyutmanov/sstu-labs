@@ -1,12 +1,12 @@
 #include "StringLiteral.h"
 
-StringLiteral::StringLiteral(const wstring& text, const int lineNum, const int charNum)
+StringLiteral::StringLiteral(const string_type& text, const int lineNum, const int charNum)
     :Token(TokenTag::StringLiteral, lineNum, charNum) {
 
     this->text = text;
 }
 
-wstring StringLiteral::GetText() const {
+string_type StringLiteral::GetText() const {
     return text;
 }
 

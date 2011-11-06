@@ -53,12 +53,16 @@ LexerSettings MyGrammar::SetupLexerSettings() {
     return LexerSettings(keywords, standardFunctions, oneCharacterTokens);
 }
 
+bool MyGrammar::ValidateCharsetInIdentifier(wchar_t ch) {
+    return iswascii(ch);
+}
+
 auto_ptr<Lexer> MyGrammar::CreateLexer(const LexerSettings& settings, wistream& input) {
     shared_ptr<IntConstantTokenCreator> intConstantTokenCreator(new IntConstantTokenCreator());
     shared_ptr<UnrecognizedTokenCreator> unrecognizedTokenCreator(new UnrecognizedTokenCreator());
     shared_ptr<StringLiteralTokenCreator> stringLiteralTokenCreator(new StringLiteralTokenCreator());
     shared_ptr<SingleCharTokenCreator> singleCharTokenCreator(new SingleCharTokenCreator(settings));
-    shared_ptr<WordTokenCreator> wordTokenCreator(new WordTokenCreator(settings));
+    shared_ptr<WordTokenCreator> wordTokenCreator(new WordTokenCreator(settings, &MyGrammar::ValidateCharsetInIdentifier));
 
     //states
 

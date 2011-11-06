@@ -7,7 +7,7 @@ SingleCharTokenCreator::SingleCharTokenCreator(const LexerSettings& lexerSetting
 }
 
 bool SingleCharTokenCreator::TryCreateToken(
-    const wstring& lexeme, 
+    const string_type& lexeme, 
     int lineNum, 
     int charNum, 
     Token** token, 
@@ -16,7 +16,7 @@ bool SingleCharTokenCreator::TryCreateToken(
     //TODO: very bad
     assert(lexeme.length() == 1);
 
-    wchar_t singleChar = lexeme[0];
+    char_type singleChar = lexeme[0];
 
     TokenTag::Enum tag;
 

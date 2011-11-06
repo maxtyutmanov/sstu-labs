@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Global.h"
 #include "Token.h"
 #include "LexerSettings.h"
 #include "LexerInputBuffer.h"
@@ -18,14 +19,14 @@ typedef boost::tuple<vector<Token *>, vector<LexicalError *>> LexerOutput;
 
 class Lexer {
 public:
-    Lexer(const LexerSettings& settings, shared_ptr<FaState> initState, wistream& input);
+    Lexer(const LexerSettings& settings, shared_ptr<FaState> initState, input_stream_type& input);
     void AddTransition(const FaTransition& transition);
 
     LexerOutput Tokenize();
 private:
     LexerSettings settings;
     LexerInputBuffer buffer;
-    wstring currentLexeme;
+    string_type currentLexeme;
     vector<FaTransition> faTransitions;
     shared_ptr<FaState> currentState;
 
@@ -34,7 +35,7 @@ private:
 
     //private methods
     
-    void MoveFiniteAutomata(wchar_t inputChar);
+    void MoveFiniteAutomata(char_type inputChar);
 
     void ReportUnrecognizedLexeme(const int charNumber, const int lineNumber, const int errorCode);
 };

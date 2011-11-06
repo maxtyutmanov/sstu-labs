@@ -1,7 +1,8 @@
 #include "LexerSettings.h"
+#include <assert.h>
 
 LexerSettings::LexerSettings() {
-    //do nothing
+    maxIdentifierLength = -1;
 }
 
 LexerSettings::LexerSettings(
@@ -12,11 +13,13 @@ LexerSettings::LexerSettings(
     this->keyWords = keyWords;
     this->standardFunctions = standardFunctions;
     this->oneCharLexemes = oneCharLexemes;
+
+    maxIdentifierLength = -1;
 }
 
 //TODO: DRY
 
-bool LexerSettings::GetKeyword(const wstring& lexeme, TokenTag::Enum* keyWord) const {
+bool LexerSettings::GetKeyword(const string_type& lexeme, TokenTag::Enum* keyWord) const {
     LexemesDictionary::const_iterator found = keyWords.find(lexeme);
 
     if (found != keyWords.end()) {
@@ -28,7 +31,7 @@ bool LexerSettings::GetKeyword(const wstring& lexeme, TokenTag::Enum* keyWord) c
     }
 }
 
-bool LexerSettings::GetStandardFunction(const wstring& lexeme, TokenTag::Enum* standardFunction) const {
+bool LexerSettings::GetStandardFunction(const string_type& lexeme, TokenTag::Enum* standardFunction) const {
     LexemesDictionary::const_iterator found = standardFunctions.find(lexeme);
 
     if (found != standardFunctions.end()) {
@@ -40,7 +43,7 @@ bool LexerSettings::GetStandardFunction(const wstring& lexeme, TokenTag::Enum* s
     }
 }
 
-bool LexerSettings::GetSingleCharLexeme(const wchar_t ch, TokenTag::Enum* tokenTag) const {
+bool LexerSettings::GetSingleCharLexeme(const char_type ch, TokenTag::Enum* tokenTag) const {
     OneCharLexemesDictionary::const_iterator found = oneCharLexemes.find(ch);
 
     if (found != oneCharLexemes.end()) {
@@ -52,7 +55,7 @@ bool LexerSettings::GetSingleCharLexeme(const wchar_t ch, TokenTag::Enum* tokenT
     }
 }
 
-bool LexerSettings::GetKeyword(const TokenTag::Enum keywordTag, wstring* lexeme) const {
+bool LexerSettings::GetKeyword(const TokenTag::Enum keywordTag, string_type* lexeme) const {
     LexemesDictionary::const_iterator kwIt;
 
     for (kwIt = keyWords.begin(); kwIt != keyWords.end(); ++kwIt) {
@@ -65,7 +68,7 @@ bool LexerSettings::GetKeyword(const TokenTag::Enum keywordTag, wstring* lexeme)
     return false;
 }
 
-bool LexerSettings::GetStandardFunction(const TokenTag::Enum standardFunctionTag, wstring* lexeme) const {
+bool LexerSettings::GetStandardFunction(const TokenTag::Enum standardFunctionTag, string_type* lexeme) const {
     LexemesDictionary::const_iterator sfIt;
 
     for (sfIt = standardFunctions.begin(); sfIt != standardFunctions.end(); ++sfIt) {
@@ -78,7 +81,7 @@ bool LexerSettings::GetStandardFunction(const TokenTag::Enum standardFunctionTag
     return false;
 }
 
-bool LexerSettings::GetSingleCharLexeme(const TokenTag::Enum singleCharTag, wchar_t* lexeme) const {
+bool LexerSettings::GetSingleCharLexeme(const TokenTag::Enum singleCharTag, char_type* lexeme) const {
     OneCharLexemesDictionary::const_iterator scIt;
 
     for (scIt = oneCharLexemes.begin(); scIt != oneCharLexemes.end(); ++scIt) {
@@ -92,6 +95,16 @@ bool LexerSettings::GetSingleCharLexeme(const TokenTag::Enum singleCharTag, wcha
 }
 
 int LexerSettings::GetMaxIdentifierLength() const {
-    //TODO: this is bad
-    return 14;
+    if (maxIdentifierLength == -1) {
+        return DEFAULT_MAX_IDENTIFIER_LENGTH;
+    }
+    else {
+        return maxIdentifierLength;
+    }
+}
+
+void LexerSettings::SetMaxIdentifierLength(int value) {
+    assert(value > 0);
+
+    maxIdentifierLength = value;
 }

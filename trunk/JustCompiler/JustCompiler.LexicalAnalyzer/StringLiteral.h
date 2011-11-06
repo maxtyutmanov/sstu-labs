@@ -1,16 +1,15 @@
 #pragma once
 
+#include "Global.h"
 #include "Token.h"
-#include <string>
-using std::wstring;
 
 class StringLiteral : public Token {
 public:
-    StringLiteral(const wstring& text, const int lineNum, const int charNum);
+    StringLiteral(const string_type& text, const int lineNum, const int charNum);
 
-    wstring GetText() const;
+    string_type GetText() const;
 
     virtual bool operator== (const Token& right) const;
 private:
-    wstring text;
+    string_type text;
 };

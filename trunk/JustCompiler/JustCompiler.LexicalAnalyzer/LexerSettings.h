@@ -1,15 +1,16 @@
 #pragma once
 
+#include "Global.h"
 #include "TokenTag.h"
-#include <string>
 #include <map>
 #include <set>
 using std::map;
-using std::wstring;
 using std::set;
 
-typedef map<wstring, TokenTag::Enum> LexemesDictionary;
-typedef map<wchar_t, TokenTag::Enum> OneCharLexemesDictionary;
+typedef map<string_type, TokenTag::Enum> LexemesDictionary;
+typedef map<char_type, TokenTag::Enum> OneCharLexemesDictionary;
+
+const int DEFAULT_MAX_IDENTIFIER_LENGTH = 14;
 
 class LexerSettings {
 public:
@@ -20,17 +21,20 @@ public:
         const LexemesDictionary& standardFunctions,
         const OneCharLexemesDictionary& singleCharLexemes);
 
-    bool GetKeyword(const wstring& lexeme, TokenTag::Enum* keywordTag) const;
-    bool GetStandardFunction(const wstring& lexeme, TokenTag::Enum* standardFunctionTag) const;
-    bool GetSingleCharLexeme(const wchar_t ch, TokenTag::Enum* tokenTag) const;
+    bool GetKeyword(const string_type& lexeme, TokenTag::Enum* keywordTag) const;
+    bool GetStandardFunction(const string_type& lexeme, TokenTag::Enum* standardFunctionTag) const;
+    bool GetSingleCharLexeme(const char_type ch, TokenTag::Enum* tokenTag) const;
 
-    bool GetKeyword(const TokenTag::Enum keywordTag, wstring* lexeme) const;
-    bool GetStandardFunction(const TokenTag::Enum standardFunctionTag, wstring* lexeme) const;
-    bool GetSingleCharLexeme(const TokenTag::Enum ch, wchar_t* lexeme) const;
+    bool GetKeyword(const TokenTag::Enum keywordTag, string_type* lexeme) const;
+    bool GetStandardFunction(const TokenTag::Enum standardFunctionTag, string_type* lexeme) const;
+    bool GetSingleCharLexeme(const TokenTag::Enum ch, char_type* lexeme) const;
 
     int GetMaxIdentifierLength() const;
+    void SetMaxIdentifierLength(int value);
 private:
     LexemesDictionary keyWords;
     LexemesDictionary standardFunctions;
     OneCharLexemesDictionary oneCharLexemes;
+
+    int maxIdentifierLength;
 };

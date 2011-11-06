@@ -1,7 +1,7 @@
 #include "UnrecognizedTokenCreator.h"
 
 bool UnrecognizedTokenCreator::TryCreateToken(
-    const wstring& lexeme, 
+    const string_type& lexeme, 
     int lineNum, 
     int charNum, 
     Token** token, 

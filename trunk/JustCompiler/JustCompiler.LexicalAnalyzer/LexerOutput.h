@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Global.h"
 #include "Token.h"
 #include "LexicalError.h"
 #include <vector>

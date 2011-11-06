@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Global.h"
 #include "TokenCreator.h"
 #include "LexerSettings.h"
 
@@ -8,7 +9,7 @@ public:
     SingleCharTokenCreator(const LexerSettings& lexerSettings);
 
     virtual bool TryCreateToken(
-        const wstring& lexeme, 
+        const string_type& lexeme, 
         int lineNum, 
         int charNum, 
         Token** token, 

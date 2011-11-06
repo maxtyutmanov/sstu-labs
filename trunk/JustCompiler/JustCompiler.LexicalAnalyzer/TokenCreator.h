@@ -1,16 +1,15 @@
 #pragma once
 
-#include <string>
+#include "Global.h"
 #include <memory>
 #include "Token.h"
 #include "LexicalError.h"
-using std::wstring;
 using std::auto_ptr;
 
 class TokenCreator {
 public:
     virtual bool TryCreateToken(
-        const wstring& lexeme, 
+        const string_type& lexeme, 
         int lineNum, 
         int charNum, 
         Token** token, 

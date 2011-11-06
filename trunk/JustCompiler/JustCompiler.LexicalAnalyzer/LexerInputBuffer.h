@@ -1,23 +1,20 @@
 #pragma once
 
-#include <string>
-#include <iostream>
+#include "Global.h"
 #include <map>
-using std::wstring;
-using std::wistream;
 using std::map;
 
 class LexerInputBuffer {
 public:
-    explicit LexerInputBuffer(wistream &input);
+    explicit LexerInputBuffer(input_stream_type &input);
 
-    wchar_t Get();
+    char_type Get();
     void Unget();
     bool Eof() const;
     int GetLineNumber() const;
     int GetCharacterNumber() const;
 private:
-    wstring input;
+    string_type input;
     int cursor;
     int lineNumber;
     int characterNumber;

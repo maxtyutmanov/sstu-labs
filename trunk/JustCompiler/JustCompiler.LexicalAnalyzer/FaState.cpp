@@ -1,9 +1,9 @@
 #include "FaState.h"
 
-FaState::FaState(const wstring& name) {
+FaState::FaState(const string_type& name) {
     this->name = name;
 }
 
-wstring FaState::GetName() const {
+string_type FaState::GetName() const {
     return name;
 }
