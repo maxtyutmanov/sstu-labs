@@ -8,34 +8,42 @@
 #include <string>
 #include <boost/thread.hpp>
 #include <manual_reset_event.h>
+#include <boost/noncopyable.hpp>
 using std::string;
 using namespace boost::asio::ip;
 using std::auto_ptr;
 
-class NetworkService : public INetworkService {
-public:
-    NetworkService(
-        std::auto_ptr<IRequestDispatcher> requestDispatcher,
-        const string& ipAddress,
-        const unsigned short portNumber);
+namespace JustServer {
+namespace Net {
 
-    ~NetworkService();
+    class NetworkService : 
+        public INetworkService,
+        private boost::noncopyable {
+    public:
+        NetworkService(
+            std::auto_ptr<IRequestDispatcher> pRequestDispatcher,
+            std::auto_ptr<tcp::endpoint> pEndpoint);
 
-    virtual void Start();
-    virtual void Stop();
-private:
-    void StartAsyncListening();
-    void HandleRequest(boost::shared_ptr<tcp::socket> pSocket, const boost::system::error_code &ec);
-    void RunIoservice();
+        ~NetworkService();
 
-    std::auto_ptr<tcp::acceptor> listener;
-    std::auto_ptr<IRequestDispatcher> requestDispatcher;
-    std::auto_ptr<boost::asio::io_service> io_service;
-    std::auto_ptr<tcp::endpoint> serverEndpoint;
-    std::auto_ptr<boost::thread> ioserviceThread;
-    std::auto_ptr<boost::mutex> startStopLock;
-    std::auto_ptr<manual_reset_event> startedEvent;
-    bool isRunning;
-};
+        virtual void Start();
+        virtual void Stop();
+    private:
+        void StartAsyncListening();
+        void HandleRequest(boost::shared_ptr<tcp::socket> pSocket, const boost::system::error_code &ec);
+        void RunIoservice();
+
+        std::auto_ptr<tcp::acceptor> listener;
+        std::auto_ptr<IRequestDispatcher> requestDispatcher;
+        std::auto_ptr<boost::asio::io_service> io_service;
+        std::auto_ptr<tcp::endpoint> serverEndpoint;
+        std::auto_ptr<boost::thread> ioserviceThread;
+        std::auto_ptr<boost::mutex> startStopLock;
+        std::auto_ptr<manual_reset_event> startedEvent;
+        bool isRunning;
+    };
+
+}
+}
 
 #endif

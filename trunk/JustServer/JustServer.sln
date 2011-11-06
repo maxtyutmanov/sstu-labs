@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.Network", "JustS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.Scaffolding", "JustServer.Scaffolding\JustServer.Scaffolding.vcxproj", "{04A25B19-A238-409F-A46A-0100B2A8B8F1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.LexicalAnalyzer", "JustServer.LexicalAnalyzer\JustServer.LexicalAnalyzer.vcxproj", "{0894B46E-D07C-458B-BBC2-A0C928F94D1D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.HttpGrammar", "JustServer.HttpGrammar\JustServer.HttpGrammar.vcxproj", "{ABB55457-F67B-454D-AC90-DD03BE69B75D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -37,6 +41,14 @@ Global
 		{04A25B19-A238-409F-A46A-0100B2A8B8F1}.Debug|Win32.Build.0 = Debug|Win32
 		{04A25B19-A238-409F-A46A-0100B2A8B8F1}.Release|Win32.ActiveCfg = Release|Win32
 		{04A25B19-A238-409F-A46A-0100B2A8B8F1}.Release|Win32.Build.0 = Release|Win32
+		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Debug|Win32.Build.0 = Debug|Win32
+		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Release|Win32.ActiveCfg = Release|Win32
+		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Release|Win32.Build.0 = Release|Win32
+		{ABB55457-F67B-454D-AC90-DD03BE69B75D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ABB55457-F67B-454D-AC90-DD03BE69B75D}.Debug|Win32.Build.0 = Debug|Win32
+		{ABB55457-F67B-454D-AC90-DD03BE69B75D}.Release|Win32.ActiveCfg = Release|Win32
+		{ABB55457-F67B-454D-AC90-DD03BE69B75D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

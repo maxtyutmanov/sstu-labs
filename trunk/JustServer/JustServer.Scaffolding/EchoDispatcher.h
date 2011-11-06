@@ -3,7 +3,7 @@
 
 #include <IRequestDispatcher.h>
 
-class EchoDispatcher : public IRequestDispatcher {
+class EchoDispatcher : public JustServer::Net::IRequestDispatcher {
     virtual void DispatchRequest(shared_ptr<tcp::socket> pSocket);
 };
 

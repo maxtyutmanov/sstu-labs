@@ -3,26 +3,37 @@
 
 #include <map>
 #include <string>
-using std::map;
-using std::wstring;
-using std::string;
+#include <memory>
 
-typedef HttpHeadersCollection map<string, string>;
+namespace JustServer {
+namespace Http {
 
-//Intermediate representation of http message for carrying it between layers
-class HttpWorkerRequest {
-public:
-    HttpWorkerRequest();
+    using std::map;
+    using std::wstring;
+    using std::string;
+    using std::auto_ptr;
 
-    void SetRequestString(const string& requestString);
-    void AddHeader(const string& name, const string& value);
-    void AppendToBody(const wstring& bodyPart);
+    typedef std::map<std::string, std::wstring> HttpHeadersCollection;
 
-    const string& GetRequestString() const;
-    const HttpHeadersCollection& GetHeaders() const;
-    const wstring& GetBody() const;
-private:
-    HttpHeadersCollection headers;
-};
+    //Intermediate representation of http message for carrying it between subsystems
+    class HttpWorkerRequest {
+    public:
+        void SetRequestString(const string& requestString);
+        string GetRequestString() const;
+
+        void SetHeader(const string& name, const wstring& value);
+        bool TryGetHeader(const string& name, auto_ptr<wstring> headerValue) const;
+
+        //not decoded body of HTTP message (just a bunch of raw bytes)
+        string GetBody() const;
+        void AppendToBody(const string& bodyPart);
+    private:
+        HttpHeadersCollection headers;
+        string requestString;
+        string body;
+    };
+
+}
+}
 
 #endif

@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7022068D-D2AC-4D87-B459-081F19A13AA4}</ProjectGuid>
+    <ProjectGuid>{0894B46E-D07C-458B-BBC2-A0C928F94D1D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>JustServerHttpCore</RootNamespace>
+    <RootNamespace>JustCompilerLexicalAnalyzer</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -38,8 +38,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)JustServer.Network</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -48,11 +47,17 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <Lib />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -75,22 +80,26 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HttpCore.h" />
-    <ClInclude Include="HttpHeader.h" />
-    <ClInclude Include="HttpMessage.h" />
-    <ClInclude Include="HttpRequest.h" />
-    <ClInclude Include="HttpRequestDispatcher.h" />
-    <ClInclude Include="HttpResponse.h" />
-    <ClInclude Include="HttpVersion.h" />
-    <ClInclude Include="HttpWorkerRequest.h" />
-    <ClInclude Include="MessageParseError.h" />
-    <ClInclude Include="ParseErrorCodes.h" />
+    <ClInclude Include="CharValidationRule.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="IInputBuffer.h" />
+    <ClInclude Include="ReadAction.h" />
+    <ClInclude Include="ErrorCode.h" />
+    <ClInclude Include="FaState.h" />
+    <ClInclude Include="FaTransition.h" />
+    <ClInclude Include="LexerSettings.h" />
+    <ClInclude Include="Lexer.h" />
+    <ClInclude Include="LexerOutput.h" />
+    <ClInclude Include="LexicalError.h" />
+    <ClInclude Include="Token.h" />
+    <ClInclude Include="TokenCreator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HttpCore.cpp" />
-    <ClCompile Include="HttpRequestDispatcher.cpp" />
-    <ClCompile Include="HttpVersion.cpp" />
-    <ClCompile Include="HttpWorkerRequest.cpp" />
+    <ClCompile Include="FaState.cpp" />
+    <ClCompile Include="Lexer.cpp" />
+    <ClCompile Include="LexerSettings.cpp" />
+    <ClCompile Include="LexicalError.cpp" />
+    <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

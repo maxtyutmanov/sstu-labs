@@ -1,9 +1,20 @@
 #ifndef HTTPCORE_H
 #define HTTPCORE_H
 
-class HttpCore {
-public:
-    HttpCore();
-};
+#include "HttpResponse.h"
+#include "HttpWorkerRequest.h"
+
+namespace JustServer {
+namespace Http {
+
+    class HttpCore {
+    public:
+        HttpCore();
+
+        HttpResponse HandleRequest(const HttpWorkerRequest& workerRequest);
+    };
+
+}
+}
 
 #endif
