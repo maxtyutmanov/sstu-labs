@@ -87,7 +87,6 @@
     <ClInclude Include="ErrorCode.h" />
     <ClInclude Include="FaState.h" />
     <ClInclude Include="FaTransition.h" />
-    <ClInclude Include="LexerSettings.h" />
     <ClInclude Include="Lexer.h" />
     <ClInclude Include="LexerOutput.h" />
     <ClInclude Include="LexicalError.h" />
@@ -97,7 +96,6 @@
   <ItemGroup>
     <ClCompile Include="FaState.cpp" />
     <ClCompile Include="Lexer.cpp" />
-    <ClCompile Include="LexerSettings.cpp" />
     <ClCompile Include="LexicalError.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>

@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0\boost;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.HttpGrammar;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Utility</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,6 +76,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JustServer.HttpGrammar\JustServer.HttpGrammar.vcxproj">
+      <Project>{abb55457-f67b-454d-ac90-dd03be69b75d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\JustServer.LexicalAnalyzer\JustServer.LexicalAnalyzer.vcxproj">
+      <Project>{0894b46e-d07c-458b-bbc2-a0c928f94d1d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\JustServer.Utility\JustServer.Utility.vcxproj">
+      <Project>{644d0228-dcd0-4d92-b688-ba1d898f3d5a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UriTokenCreatorTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "TokenTag.h"
-
 class Token {
 public:
     Token(const int tag, const int lineNum, const int charNum);

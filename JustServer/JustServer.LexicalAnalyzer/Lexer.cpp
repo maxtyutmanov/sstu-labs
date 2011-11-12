@@ -83,7 +83,7 @@ void Lexer::MoveFiniteAutomata(char_type currentChar) {
             selectedTransition->ErrorCode())));
 
         tokens.push_back(shared_ptr<Token>(new Token(
-            TokenTag::Unrecognized, 
+            -1, 
             pBuffer->GetLineNumber(), 
             pBuffer->GetCharacterNumber())));
     }
@@ -99,7 +99,7 @@ void Lexer::MoveFiniteAutomata(char_type currentChar) {
             }
             else {
                 errors.push_back(shared_ptr<LexicalError>(pError));
-                tokens.push_back(shared_ptr<Token>(new Token(TokenTag::Unrecognized, pBuffer->GetLineNumber(), pBuffer->GetCharacterNumber())));
+                tokens.push_back(shared_ptr<Token>(new Token(-1, pBuffer->GetLineNumber(), pBuffer->GetCharacterNumber())));
             }
 
             currentLexeme = LITERAL("");
