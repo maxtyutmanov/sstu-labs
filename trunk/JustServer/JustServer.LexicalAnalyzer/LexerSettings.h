@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Global.h"
-#include "TokenTag.h"
 #include <map>
 #include <set>
 using std::map;

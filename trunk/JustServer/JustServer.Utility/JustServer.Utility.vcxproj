@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="manual_reset_event.h" />
+    <ClInclude Include="NameValuePair.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="manual_reset_event.cpp" />

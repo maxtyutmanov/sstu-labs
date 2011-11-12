@@ -36,9 +36,6 @@
     <ClInclude Include="LexicalError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LexerSettings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FaState.h">
       <Filter>Header Files\FiniteAutomata</Filter>
     </ClInclude>
@@ -66,9 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lexer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LexerSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Token.cpp">

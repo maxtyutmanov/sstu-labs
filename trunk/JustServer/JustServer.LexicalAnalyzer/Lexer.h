@@ -2,7 +2,6 @@
 
 #include "Global.h"
 #include "Token.h"
-#include "LexerSettings.h"
 #include "IInputBuffer.h"
 #include "LexicalError.h"
 #include "FaState.h"

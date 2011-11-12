@@ -19,23 +19,53 @@
     <Filter Include="Source Files\Tokens">
       <UniqueIdentifier>{3f3af916-604a-48c4-8711-2e760bcfc5f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\TokenCreators">
+      <UniqueIdentifier>{a857315a-449d-4199-80fa-49d7cc146769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TokenCreators">
+      <UniqueIdentifier>{b026300d-4ee6-4f08-b5c8-5c0827c16239}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HttpMessageGrammar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HttpVerb.h">
       <Filter>Header Files\Tokens</Filter>
     </ClInclude>
     <ClInclude Include="TokenTag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HttpRequestGrammar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterValidators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpVerbTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="UriToken.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="UriTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HttpVerb.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpMessageGrammar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpVerbTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="UriTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="UriToken.cpp">
       <Filter>Source Files\Tokens</Filter>
     </ClCompile>
   </ItemGroup>

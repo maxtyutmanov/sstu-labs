@@ -38,7 +38,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.LexicalAnalyzer;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Utility</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -77,14 +77,25 @@
     <ProjectReference Include="..\JustServer.LexicalAnalyzer\JustServer.LexicalAnalyzer.vcxproj">
       <Project>{0894b46e-d07c-458b-bbc2-a0c928f94d1d}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\JustServer.Utility\JustServer.Utility.vcxproj">
+      <Project>{644d0228-dcd0-4d92-b688-ba1d898f3d5a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HttpMessageGrammar.h" />
+    <ClInclude Include="CharacterValidators.h" />
+    <ClInclude Include="HttpRequestGrammar.h" />
     <ClInclude Include="HttpVerb.h" />
+    <ClInclude Include="HttpVerbTokenCreator.h" />
     <ClInclude Include="TokenTag.h" />
+    <ClInclude Include="UriToken.h" />
+    <ClInclude Include="UriTokenCreator.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HttpMessageGrammar.cpp" />
     <ClCompile Include="HttpVerb.cpp" />
+    <ClCompile Include="HttpVerbTokenCreator.cpp" />
+    <ClCompile Include="UriToken.cpp" />
+    <ClCompile Include="UriTokenCreator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
