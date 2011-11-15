@@ -48,14 +48,23 @@
     <ClInclude Include="HttpVersion.h">
       <Filter>Header Files\Message</Filter>
     </ClInclude>
-    <ClInclude Include="MessageParseError.h">
-      <Filter>Header Files\ErrorHandling</Filter>
-    </ClInclude>
-    <ClInclude Include="ParseErrorCodes.h">
-      <Filter>Header Files\ErrorHandling</Filter>
-    </ClInclude>
     <ClInclude Include="HttpHeader.h">
       <Filter>Header Files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="LexerInputBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Uri.h">
+      <Filter>Header Files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderNotFoundException.h">
+      <Filter>Header Files\ErrorHandling</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpRequestParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageParseError.h">
+      <Filter>Header Files\ErrorHandling</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -65,10 +74,28 @@
     <ClCompile Include="HttpWorkerRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HttpVersion.cpp">
+      <Filter>Source Files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="LexerInputBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Uri.cpp">
+      <Filter>Source Files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpMessage.cpp">
+      <Filter>Source Files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpRequest.cpp">
+      <Filter>Source Files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpRequestParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="HttpCore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HttpVersion.cpp">
+    <ClCompile Include="HttpResponse.cpp">
       <Filter>Source Files\Message</Filter>
     </ClCompile>
   </ItemGroup>

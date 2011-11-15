@@ -1,6 +1,5 @@
 #include "HttpVersion.h"
 #include "MessageParseError.h"
-#include "ParseErrorCodes.h"
 #include <boost/lexical_cast.hpp>
 
 namespace JustServer {

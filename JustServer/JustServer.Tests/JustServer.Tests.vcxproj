@@ -78,6 +78,11 @@
   <ItemGroup>
     <ProjectReference Include="..\JustServer.HttpGrammar\JustServer.HttpGrammar.vcxproj">
       <Project>{abb55457-f67b-454d-ac90-dd03be69b75d}</Project>
+      <Private>true</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\JustServer.LexicalAnalyzer\JustServer.LexicalAnalyzer.vcxproj">
       <Project>{0894b46e-d07c-458b-bbc2-a0c928f94d1d}</Project>
@@ -87,7 +92,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HeaderTokenCreatorTest.cpp" />
+    <ClCompile Include="HttpRequestGrammarTest.cpp" />
+    <ClCompile Include="HttpVersionTokenCreatorTest.cpp" />
+    <ClCompile Include="LexerInputBuffer.cpp" />
     <ClCompile Include="UriTokenCreatorTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LexerInputBuffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

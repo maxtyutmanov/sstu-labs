@@ -2,7 +2,9 @@
 #define HTTPCORE_H
 
 #include "HttpResponse.h"
-#include "HttpWorkerRequest.h"
+#include "HttpRequestParser.h"
+#include <IInputBuffer.h>
+#include <Lexer.h>
 
 namespace JustServer {
 namespace Http {
@@ -11,7 +13,10 @@ namespace Http {
     public:
         HttpCore();
 
-        HttpResponse HandleRequest(const HttpWorkerRequest& workerRequest);
+        auto_ptr<HttpResponse> HandleRequest(auto_ptr<IInputBuffer> pInputBuffer);
+    private:
+        auto_ptr<Lexer> pHttpLexer;
+        HttpRequestParser requestParser;
     };
 
 }

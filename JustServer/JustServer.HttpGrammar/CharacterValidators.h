@@ -11,8 +11,30 @@ namespace HttpGrammar {
             return ch == ' ' || ch == '\t';
         }
 
+        static bool IsCR(char ch) {
+            return ch == '\r';
+        }
+
+        static bool IsLF(char ch) {
+            return ch == '\n';
+        }
+
         static bool IsAlpha(char ch) {
             return isalpha(ch);
+        }
+
+        static bool IsCTL(char ch) {
+            //127 - delete
+            return ch < 32 || ch == 127;
+        }
+
+        static bool IsEof(char ch) {
+            return ch == '\0';
+        }
+
+        static bool IsValidHeaderChar(char ch) {
+            //any OCTET except CTLs but including LWS
+            return !IsCTL(ch) || IsLWS(ch);
         }
 
         static bool Any(char ch) {

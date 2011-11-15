@@ -2,6 +2,7 @@
 #define HTTP_REQUEST_DISPATCHER_H
 
 #include <IRequestDispatcher.h>
+#include "HttpCore.h"
 #include <memory>
 #include <string>
 
@@ -14,9 +15,11 @@ namespace Http {
 
     class HttpRequestDispatcher : public JustServer::Net::IRequestDispatcher {
     public:
+        HttpRequestDispatcher();
+
         virtual void DispatchRequest(shared_ptr<tcp::socket> pSocket);
     private:
-        size_t EndOfRequestLineIndex(const string& readInput);
+        auto_ptr<HttpCore> pHttpCore;
     };
 
 }

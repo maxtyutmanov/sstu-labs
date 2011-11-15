@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)JustServer.Network</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)JustServer.Network;$(SolutionDir)\JustServer.HttpGrammar;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Utility;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -75,22 +75,42 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HeaderNotFoundException.h" />
     <ClInclude Include="HttpCore.h" />
     <ClInclude Include="HttpHeader.h" />
     <ClInclude Include="HttpMessage.h" />
     <ClInclude Include="HttpRequest.h" />
     <ClInclude Include="HttpRequestDispatcher.h" />
+    <ClInclude Include="HttpRequestParser.h" />
     <ClInclude Include="HttpResponse.h" />
     <ClInclude Include="HttpVersion.h" />
     <ClInclude Include="HttpWorkerRequest.h" />
+    <ClInclude Include="LexerInputBuffer.h" />
     <ClInclude Include="MessageParseError.h" />
-    <ClInclude Include="ParseErrorCodes.h" />
+    <ClInclude Include="Uri.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HttpCore.cpp" />
+    <ClCompile Include="HttpMessage.cpp" />
+    <ClCompile Include="HttpRequest.cpp" />
     <ClCompile Include="HttpRequestDispatcher.cpp" />
+    <ClCompile Include="HttpRequestParser.cpp" />
+    <ClCompile Include="HttpResponse.cpp" />
     <ClCompile Include="HttpVersion.cpp" />
     <ClCompile Include="HttpWorkerRequest.cpp" />
+    <ClCompile Include="LexerInputBuffer.cpp" />
+    <ClCompile Include="Uri.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JustServer.HttpGrammar\JustServer.HttpGrammar.vcxproj">
+      <Project>{abb55457-f67b-454d-ac90-dd03be69b75d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\JustServer.LexicalAnalyzer\JustServer.LexicalAnalyzer.vcxproj">
+      <Project>{0894b46e-d07c-458b-bbc2-a0c928f94d1d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\JustServer.Utility\JustServer.Utility.vcxproj">
+      <Project>{644d0228-dcd0-4d92-b688-ba1d898f3d5a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

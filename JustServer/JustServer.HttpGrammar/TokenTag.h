@@ -9,9 +9,8 @@ namespace HttpGrammar {
             HttpVerb = 1,
             Uri = 2,
             HttpVersion = 3,
-            HeaderName = 4,
-            HeaderValue = 5,
-            Body
+            Header = 4,
+            Body = 5
         };
     };
 

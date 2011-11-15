@@ -27,6 +27,7 @@ private:
     auto_ptr<IInputBuffer> pBuffer;
     string_type currentLexeme;
     vector<FaTransition> faTransitions;
+    shared_ptr<FaState> initState;
     shared_ptr<FaState> currentState;
 
     vector<shared_ptr<Token>> tokens;
