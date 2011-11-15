@@ -23,7 +23,7 @@ namespace HttpGrammar {
         unsigned short port;
         string absolutePath;
         string query;
-        bool portIsSpecified;
+        bool portIsSpecified = false;
 
         string::const_iterator pathIt;
 

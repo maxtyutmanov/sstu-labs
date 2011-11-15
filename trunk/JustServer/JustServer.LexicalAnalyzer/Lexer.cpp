@@ -11,7 +11,7 @@ using boost::bad_lexical_cast;
 using boost::shared_ptr;
 
 Lexer::Lexer(shared_ptr<FaState> initState)
-    : currentState(initState) {
+    : currentState(initState), initState(initState) {
 
     assert(initState.get() != NULL);
 }
@@ -31,7 +31,10 @@ LexerOutput Lexer::Tokenize() {
 }
 
 void Lexer::SetInput(auto_ptr<IInputBuffer> pBuffer) {
-    assert(pBuffer.get() != NULL);
+    tokens.clear();
+    errors.clear();
+    currentState = initState;
+    currentLexeme = LITERAL("");
 
     this->pBuffer = pBuffer;
 }
@@ -51,7 +54,7 @@ void Lexer::MoveFiniteAutomata(char_type currentChar) {
         }
     }
 
-    //TODO: very bad
+    //TODO: very bad. Even to throw an exception would have been better thing to do
     assert(selectedTransition != NULL);
 
     switch (selectedTransition->GetReadAction()) {

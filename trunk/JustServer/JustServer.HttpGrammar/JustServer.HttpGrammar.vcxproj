@@ -39,6 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Utility</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -83,17 +84,29 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CharacterValidators.h" />
+    <ClInclude Include="HttpTextTokenCreator.h" />
+    <ClInclude Include="HeaderToken.h" />
+    <ClInclude Include="HeaderTokenCreator.h" />
     <ClInclude Include="HttpRequestGrammar.h" />
+    <ClInclude Include="HttpTextToken.h" />
     <ClInclude Include="HttpVerb.h" />
     <ClInclude Include="HttpVerbTokenCreator.h" />
+    <ClInclude Include="HttpVersionToken.h" />
+    <ClInclude Include="HttpVersionTokenCreator.h" />
     <ClInclude Include="TokenTag.h" />
     <ClInclude Include="UriToken.h" />
     <ClInclude Include="UriTokenCreator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HttpMessageGrammar.cpp" />
+    <ClCompile Include="HeaderToken.cpp" />
+    <ClCompile Include="HeaderTokenCreator.cpp" />
+    <ClCompile Include="HttpRequestGrammar.cpp" />
+    <ClCompile Include="HttpTextToken.cpp" />
+    <ClCompile Include="HttpTextTokenCreator.cpp" />
     <ClCompile Include="HttpVerb.cpp" />
     <ClCompile Include="HttpVerbTokenCreator.cpp" />
+    <ClCompile Include="HttpVersionToken.cpp" />
+    <ClCompile Include="HttpVersionTokenCreator.cpp" />
     <ClCompile Include="UriToken.cpp" />
     <ClCompile Include="UriTokenCreator.cpp" />
   </ItemGroup>

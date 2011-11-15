@@ -2,7 +2,7 @@
 #define HTTP_MESSAGE_H
 
 #include "HttpVersion.h"
-#include "HttpHeader.h"
+#include <NameValuePair.h>
 
 #include <string>
 #include <vector>
@@ -12,19 +12,17 @@ using std::vector;
 namespace JustServer {
 namespace Http {
 
-    typedef vector<HttpHeader> HeadersCollection;
+    typedef vector<JustServer::Utility::NameValuePair> HeadersCollection;
 
+    //Represents the immutable container for HTTP request message
     class HttpMessage {
     public:
-        void SetHttpVersion(const HttpVersion& httpVersion);
         HttpVersion GetHttpVersion() const;
-
         bool HasHeader(const string& name) const;
         string GetHeaderValue(const string& name) const;
-        void SetHeader(const string& name, const string& value);
-
-        void AppendToBody(const string& bodyPart);
         string GetBody() const;
+    protected:
+        HttpMessage(const HttpVersion& httpVersion, const HeadersCollection& headers, const string& body);
     private:
         HttpVersion httpVersion;
         HeadersCollection headers;

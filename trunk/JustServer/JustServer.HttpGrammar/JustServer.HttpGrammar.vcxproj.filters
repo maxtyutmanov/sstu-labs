@@ -51,13 +51,28 @@
     <ClInclude Include="UriTokenCreator.h">
       <Filter>Header Files\TokenCreators</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderToken.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpTextToken.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpTextTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpVersionToken.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpVersionTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HttpVerb.cpp">
       <Filter>Source Files\Tokens</Filter>
-    </ClCompile>
-    <ClCompile Include="HttpMessageGrammar.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HttpVerbTokenCreator.cpp">
       <Filter>Source Files\TokenCreators</Filter>
@@ -67,6 +82,27 @@
     </ClCompile>
     <ClCompile Include="UriToken.cpp">
       <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpRequestGrammar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HeaderToken.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="HeaderTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpTextToken.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpTextTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpVersionToken.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpVersionTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

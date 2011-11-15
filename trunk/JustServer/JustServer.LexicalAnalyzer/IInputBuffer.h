@@ -9,4 +9,6 @@ public:
     virtual bool Eof() const = 0;
     virtual int GetLineNumber() const = 0;
     virtual int GetCharacterNumber() const = 0;
+
+    virtual ~IInputBuffer() {};
 };

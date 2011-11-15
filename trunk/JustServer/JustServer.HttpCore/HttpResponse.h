@@ -1,16 +1,17 @@
 #ifndef HTTP_RESPONSE_H
 #define HTTP_RESPONSE_H
 
-#include <string>
-using std::string;
+#include "HttpMessage.h"
+#include <vector>
+using std::vector;
 
 namespace JustServer {
 namespace Http {
 
     //Represents a serializable container for response info
-    class HttpResponse {
+    class HttpResponse : public HttpMessage {
     public:
-        string Serialize() const;
+        vector<char> Serialize() const;
     };
 
 }
