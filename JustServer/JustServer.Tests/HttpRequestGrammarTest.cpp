@@ -42,7 +42,7 @@ struct HttpRequestGrammarFixture {
 
 BOOST_FIXTURE_TEST_SUITE( HttpRequestGrammarTestSuite, HttpRequestGrammarFixture )
 
-BOOST_AUTO_TEST_CASE( SmogTest ) {
+BOOST_AUTO_TEST_CASE( SmokeTest ) {
     string requestText;
 
     requestText.append(

@@ -61,7 +61,7 @@ namespace Net {
             delete listener.release();
         }
         catch (const boost::system::system_error &ex) {
-            //TODO: mmm... :-)
+            //TODO: :-)
         }
     }
 

@@ -12,6 +12,10 @@ using std::vector;
 namespace JustServer {
 namespace Http {
 
+    HttpRequestDispatcher::HttpRequestDispatcher() {
+        pHttpCore.reset(new HttpCore());
+    }
+
     void HttpRequestDispatcher::DispatchRequest(shared_ptr<tcp::socket> pSocket) {
         try {
             string receiveBuf;
@@ -49,7 +53,7 @@ namespace Http {
             //Getting a response from HTTP subsystem
 
             auto_ptr<HttpResponse> response = pHttpCore->HandleRequest(pInputBuffer);
-            vector<char> serializedResponse = response->Serialize();
+            string serializedResponse = response->Serialize();
 
             //Sending serialized response to the client
 

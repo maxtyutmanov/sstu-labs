@@ -32,7 +32,7 @@ struct HeaderTokenCreatorFixture {
 
 BOOST_FIXTURE_TEST_SUITE( HeaderTokenCreatorTestSuite, HeaderTokenCreatorFixture )
 
-BOOST_AUTO_TEST_CASE( SmogTest ) {
+BOOST_AUTO_TEST_CASE( SmokeTest ) {
     bool result = tokenCreator->TryCreateToken("Content-Length : 203", 0, 0, &pToken, &pLexicalError);
 
     BOOST_CHECK(result);

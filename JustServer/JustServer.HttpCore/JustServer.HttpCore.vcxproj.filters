@@ -66,6 +66,12 @@
     <ClInclude Include="MessageParseError.h">
       <Filter>Header Files\ErrorHandling</Filter>
     </ClInclude>
+    <ClInclude Include="ReasonPhraseMapping.h">
+      <Filter>Header Files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="UnknownStatusCodeException.h">
+      <Filter>Header Files\ErrorHandling</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HttpRequestDispatcher.cpp">
@@ -96,6 +102,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HttpResponse.cpp">
+      <Filter>Source Files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="ReasonPhraseMapping.cpp">
       <Filter>Source Files\Message</Filter>
     </ClCompile>
   </ItemGroup>

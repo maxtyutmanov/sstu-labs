@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.HttpGrammar;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Utility</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.HttpGrammar;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Utility;$(SolutionDir)\JustServer.HttpCore</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,6 +76,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JustServer.HttpCore\JustServer.HttpCore.vcxproj">
+      <Project>{7022068d-d2ac-4d87-b459-081f19a13aa4}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\JustServer.HttpGrammar\JustServer.HttpGrammar.vcxproj">
       <Project>{abb55457-f67b-454d-ac90-dd03be69b75d}</Project>
       <Private>true</Private>
@@ -94,6 +97,7 @@
   <ItemGroup>
     <ClCompile Include="HeaderTokenCreatorTest.cpp" />
     <ClCompile Include="HttpRequestGrammarTest.cpp" />
+    <ClCompile Include="HttpRequestParserTest.cpp" />
     <ClCompile Include="HttpVersionTokenCreatorTest.cpp" />
     <ClCompile Include="LexerInputBuffer.cpp" />
     <ClCompile Include="UriTokenCreatorTest.cpp" />
