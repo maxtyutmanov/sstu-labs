@@ -87,6 +87,8 @@
     <ClInclude Include="HttpWorkerRequest.h" />
     <ClInclude Include="LexerInputBuffer.h" />
     <ClInclude Include="MessageParseError.h" />
+    <ClInclude Include="ReasonPhraseMapping.h" />
+    <ClInclude Include="UnknownStatusCodeException.h" />
     <ClInclude Include="Uri.h" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +101,7 @@
     <ClCompile Include="HttpVersion.cpp" />
     <ClCompile Include="HttpWorkerRequest.cpp" />
     <ClCompile Include="LexerInputBuffer.cpp" />
+    <ClCompile Include="ReasonPhraseMapping.cpp" />
     <ClCompile Include="Uri.cpp" />
   </ItemGroup>
   <ItemGroup>

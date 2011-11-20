@@ -6,6 +6,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 using std::string;
 using std::vector;
 
@@ -23,10 +24,12 @@ namespace Http {
         string GetBody() const;
     protected:
         HttpMessage(const HttpVersion& httpVersion, const HeadersCollection& headers, const string& body);
+        void SetHeader(const std::string& name, const std::string& value);
+
+        std::map<std::string, std::string> headers;
+        string body;
     private:
         HttpVersion httpVersion;
-        HeadersCollection headers;
-        string body;
     };
 
 }

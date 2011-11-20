@@ -1,16 +1,16 @@
 #ifndef MESSAGE_PARSE_ERROR
 #define MESSAGE_PARSE_ERROR
 
-#include <exception>
+#include <stdexcept>
 #include <string>
 
 namespace JustServer {
 namespace Http {
 
-    class MessageParseError : public std::exception {
+    class MessageParseError : public std::runtime_error {
     public:
         MessageParseError(const std::string& message)
-            : std::exception(message.c_str()) { }
+            : std::runtime_error(message) { }
     };
 
 }
