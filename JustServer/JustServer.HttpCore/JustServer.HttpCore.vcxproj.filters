@@ -22,6 +22,12 @@
     <Filter Include="Header Files\ErrorHandling">
       <UniqueIdentifier>{0b01e7e7-6a1f-4ccc-b701-e410b146bc3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\StandardHandlers">
+      <UniqueIdentifier>{e8374832-5834-4b2f-bcdc-3fcc7fc50c02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StandardHandlers">
+      <UniqueIdentifier>{a52d966a-192f-43fa-9836-8fcec11b5390}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -31,9 +37,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HttpCore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HttpWorkerRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HttpMessage.h">
@@ -72,12 +75,18 @@
     <ClInclude Include="UnknownStatusCodeException.h">
       <Filter>Header Files\ErrorHandling</Filter>
     </ClInclude>
+    <ClInclude Include="IHttpHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticContentHandler.h">
+      <Filter>Header Files\StandardHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentTypeMapping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HttpRequestDispatcher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HttpWorkerRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HttpVersion.cpp">
@@ -106,6 +115,12 @@
     </ClCompile>
     <ClCompile Include="ReasonPhraseMapping.cpp">
       <Filter>Source Files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticContentHandler.cpp">
+      <Filter>Source Files\StandardHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentTypeMapping.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

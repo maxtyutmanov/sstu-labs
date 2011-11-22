@@ -119,7 +119,6 @@ namespace Net {
         //We don't care about app protocol-specific communication details,
         //just letting the requestDispatcher to deal with them
 
-        //TODO: has this got to be async?
         requestDispatcher->DispatchRequest(pSocket);
     }
 

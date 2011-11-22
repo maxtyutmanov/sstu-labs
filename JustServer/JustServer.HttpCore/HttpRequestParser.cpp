@@ -22,14 +22,18 @@ namespace Http {
         }
 
         if (requestTokens[0]->GetTag() == TokenTag::HttpVerb) {
-            //TODO: runtime errors may occur here! this is unsafe cast
+            //TODO: runtime errors may occur here! this is unsafe cast. Use dynamic_cast instead
             HttpTextToken* pVerbToken = (HttpTextToken *)(requestTokens[0].get());
             string verb = pVerbToken->GetText();
 
             if (requestTokens[1]->GetTag() == TokenTag::Uri) {
                 UriToken* pUriToken = (UriToken *)(requestTokens[1].get());
                 //TODO: custom port
-                Uri uri(pUriToken->GetScheme(), pUriToken->GetHost(), pUriToken->GetQuery());
+                Uri uri(pUriToken->GetScheme(), pUriToken->GetHost(), pUriToken->GetAbsolutePath(), pUriToken->GetQuery());
+
+                if (pUriToken->GetPort() != UriToken::UnspecifiedPort) {
+                    uri = Uri(pUriToken->GetScheme(), pUriToken->GetHost(), pUriToken->GetAbsolutePath(), pUriToken->GetPort(), pUriToken->GetQuery());
+                }
 
                 if (requestTokens[2]->GetTag() == TokenTag::HttpVersion) {
                     HttpVersionToken* pVersionToken = (HttpVersionToken *)(requestTokens[2].get());
