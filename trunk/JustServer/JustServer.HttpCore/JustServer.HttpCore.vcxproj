@@ -75,6 +75,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ContentTypeMapping.h" />
     <ClInclude Include="HeaderNotFoundException.h" />
     <ClInclude Include="HttpCore.h" />
     <ClInclude Include="HttpHeader.h" />
@@ -84,14 +85,16 @@
     <ClInclude Include="HttpRequestParser.h" />
     <ClInclude Include="HttpResponse.h" />
     <ClInclude Include="HttpVersion.h" />
-    <ClInclude Include="HttpWorkerRequest.h" />
+    <ClInclude Include="IHttpHandler.h" />
     <ClInclude Include="LexerInputBuffer.h" />
     <ClInclude Include="MessageParseError.h" />
     <ClInclude Include="ReasonPhraseMapping.h" />
+    <ClInclude Include="StaticContentHandler.h" />
     <ClInclude Include="UnknownStatusCodeException.h" />
     <ClInclude Include="Uri.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ContentTypeMapping.cpp" />
     <ClCompile Include="HttpCore.cpp" />
     <ClCompile Include="HttpMessage.cpp" />
     <ClCompile Include="HttpRequest.cpp" />
@@ -99,9 +102,9 @@
     <ClCompile Include="HttpRequestParser.cpp" />
     <ClCompile Include="HttpResponse.cpp" />
     <ClCompile Include="HttpVersion.cpp" />
-    <ClCompile Include="HttpWorkerRequest.cpp" />
     <ClCompile Include="LexerInputBuffer.cpp" />
     <ClCompile Include="ReasonPhraseMapping.cpp" />
+    <ClCompile Include="StaticContentHandler.cpp" />
     <ClCompile Include="Uri.cpp" />
   </ItemGroup>
   <ItemGroup>

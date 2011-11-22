@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <IInputBuffer.h>
+#include "StaticContentHandler.h"
 using std::string;
 using std::vector;
 
@@ -14,6 +15,10 @@ namespace Http {
 
     HttpRequestDispatcher::HttpRequestDispatcher() {
         pHttpCore.reset(new HttpCore());
+        boost::shared_ptr<StandardHandlers::StaticContentHandler> staticContentHandler(new StandardHandlers::StaticContentHandler());
+
+        //TODO: maybe we shouldn't add this handler right here
+        pHttpCore->AddHttpHandler(staticContentHandler);
     }
 
     void HttpRequestDispatcher::DispatchRequest(shared_ptr<tcp::socket> pSocket) {

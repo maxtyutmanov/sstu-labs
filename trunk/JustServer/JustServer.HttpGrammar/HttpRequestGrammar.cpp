@@ -4,6 +4,7 @@
 #include "UriTokenCreator.h"
 #include "HeaderTokenCreator.h"
 #include "HttpTextTokenCreator.h"
+#include "HttpVersionTokenCreator.h"
 #include "TokenTag.h"
 
 namespace JustServer {
@@ -14,7 +15,7 @@ namespace HttpGrammar {
 
         shared_ptr<HttpTextTokenCreator> httpVerbTokenCreator(new HttpTextTokenCreator(TokenTag::HttpVerb));
         shared_ptr<UriTokenCreator> uriTokenCreator(new UriTokenCreator());
-        shared_ptr<HttpTextTokenCreator> httpVersionTokenCreator(new HttpTextTokenCreator(TokenTag::HttpVersion));
+        shared_ptr<HttpVersionTokenCreator> httpVersionTokenCreator(new HttpVersionTokenCreator());
         shared_ptr<HeaderTokenCreator> headerTokenCreator(new HeaderTokenCreator());
         shared_ptr<HttpTextTokenCreator> requestBodyTokenCreator(new HttpTextTokenCreator(TokenTag::Body));
         

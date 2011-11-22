@@ -29,10 +29,13 @@ namespace Http {
 
     void HttpResponse::AppendToResponseBody(const string& data) {
         body.append(data);
+
+        SetContentLength(data.length());
     }
 
     void HttpResponse::ClearResponseBody() {
         body.clear();
+        SetContentLength(0);
     }
 
     void HttpResponse::SetContentLength(size_t length) {

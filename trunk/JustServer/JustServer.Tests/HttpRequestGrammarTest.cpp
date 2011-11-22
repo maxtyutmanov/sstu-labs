@@ -6,6 +6,7 @@
 #include <TokenTag.h>
 #include <HttpTextToken.h>
 #include <HeaderToken.h>
+#include <HttpVersionToken.h>
 #include <memory>
 #include <string>
 #include <sstream>
@@ -79,8 +80,9 @@ BOOST_AUTO_TEST_CASE( SmokeTest ) {
     BOOST_CHECK(query[1].name == "type");
     BOOST_CHECK(query[1].value == "test");
 
-    Tokens::HttpTextToken* pVersion = (Tokens::HttpTextToken*)tokens[2].get();
-    BOOST_CHECK(pVersion->GetText() == "HTTP/1.1");
+    Tokens::HttpVersionToken* pVersion = (Tokens::HttpVersionToken*)tokens[2].get();
+    BOOST_CHECK(pVersion->GetMajor() == 1);
+    BOOST_CHECK(pVersion->GetMinor() == 1);
 
     Tokens::HeaderToken* pHeader = (Tokens::HeaderToken*)tokens[3].get();
     BOOST_CHECK(pHeader->GetName() == "Host");
@@ -126,8 +128,9 @@ BOOST_AUTO_TEST_CASE( WithBody ) {
     BOOST_CHECK(query[1].name == "type");
     BOOST_CHECK(query[1].value == "test");
 
-    Tokens::HttpTextToken* pVersion = (Tokens::HttpTextToken*)tokens[2].get();
-    BOOST_CHECK(pVersion->GetText() == "HTTP/1.1");
+    Tokens::HttpVersionToken* pVersion = (Tokens::HttpVersionToken*)tokens[2].get();
+    BOOST_CHECK(pVersion->GetMajor() == 1);
+    BOOST_CHECK(pVersion->GetMinor() == 1);
 
     Tokens::HeaderToken* pHeader = (Tokens::HeaderToken*)tokens[3].get();
     BOOST_CHECK(pHeader->GetName() == "Host");
