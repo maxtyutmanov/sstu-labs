@@ -10,18 +10,17 @@
 using std::string;
 using std::vector;
 
+using namespace boost::asio::ip;
+using namespace std;
+
 namespace JustServer {
 namespace Http {
 
-    HttpRequestDispatcher::HttpRequestDispatcher() {
-        pHttpCore.reset(new HttpCore());
-        boost::shared_ptr<StandardHandlers::StaticContentHandler> staticContentHandler(new StandardHandlers::StaticContentHandler());
-
-        //TODO: maybe we shouldn't add this handler right here
-        pHttpCore->AddHttpHandler(staticContentHandler);
+    HttpRequestDispatcher::HttpRequestDispatcher(auto_ptr<IHttpCore> pHttpCore) {
+        this->pHttpCore = pHttpCore;
     }
 
-    void HttpRequestDispatcher::DispatchRequest(shared_ptr<tcp::socket> pSocket) {
+    void HttpRequestDispatcher::DispatchRequest(boost::shared_ptr<tcp::socket> pSocket) {
         try {
             string receiveBuf;
             receiveBuf.reserve(1024);   //to config

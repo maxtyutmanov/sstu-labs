@@ -13,6 +13,7 @@ namespace Http {
 
         //200 is OK (status by default)
         statusCode = 200;
+        SetContentLength(0);
     }
 
     void HttpResponse::SetHeader(const string& name, const string& value) {

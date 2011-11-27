@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.Network;$(SolutionDir)\JustServer.Utility;$(SolutionDir)\JustServer.HttpCore;$(SolutionDir)\JustServer.LexicalAnalyzer</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.Network;$(SolutionDir)\JustServer.Utility;$(SolutionDir)\JustServer.HttpCore;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Configuration;$(SolutionDir)\JustServer.Security;$(SolutionDir)\Third party\tinyxml;</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,8 +76,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JustServer.Configuration\JustServer.Configuration.vcxproj">
+      <Project>{ae43217c-c2fb-447a-bdb1-44b7deb58883}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\JustServer.HttpCore\JustServer.HttpCore.vcxproj">
       <Project>{7022068d-d2ac-4d87-b459-081f19a13aa4}</Project>
+      <Private>true</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\JustServer.Network\JustServer.Network.vcxproj">
       <Project>{36d312bf-7d28-4488-b8b3-cdf6b80dcbe9}</Project>
@@ -85,7 +93,13 @@
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
       <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
-      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\JustServer.Security\JustServer.Security.vcxproj">
+      <Project>{8f147f18-4cf9-4a22-bfaf-56176450b27d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Third party\tinyxml\tinyxml_lib.vcxproj">
+      <Project>{c406daec-0886-4771-8dea-9d7329b46cc1}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +108,9 @@
   <ItemGroup>
     <ClCompile Include="EchoDispatcher.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
