@@ -85,7 +85,10 @@
     <ClInclude Include="HttpRequestParser.h" />
     <ClInclude Include="HttpResponse.h" />
     <ClInclude Include="HttpVersion.h" />
+    <ClInclude Include="IHttpCore.h" />
     <ClInclude Include="IHttpHandler.h" />
+    <ClInclude Include="ISecurityModule.h" />
+    <ClInclude Include="IUser.h" />
     <ClInclude Include="LexerInputBuffer.h" />
     <ClInclude Include="MessageParseError.h" />
     <ClInclude Include="ReasonPhraseMapping.h" />

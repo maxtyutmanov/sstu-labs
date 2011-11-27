@@ -24,9 +24,18 @@
     <ClInclude Include="NameValuePair.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Base64Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IUserRepository.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="manual_reset_event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Base64Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

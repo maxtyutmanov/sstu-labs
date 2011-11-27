@@ -1,4 +1,5 @@
 #include "HttpRequest.h"
+#include <boost/algorithm/string.hpp>
 using namespace std;
 
 namespace JustServer {
@@ -18,6 +19,36 @@ namespace Http {
 
     Uri HttpRequest::GetRequestUri() const {
         return requestUri;
+    }
+
+    wstring HttpRequest::GetPhysicalPath() const {
+        return physicalPath;
+    }
+
+    void HttpRequest::SetApplicationPath(const wstring& appPath) {
+        //TODO: optimize
+
+        string requestPath = this->GetRequestUri().GetAbsolutePath();
+
+        if (requestPath.length() > 1 && requestPath[0] == '/') {
+            requestPath.erase(requestPath.begin());
+        }
+
+        std::replace_if(requestPath.begin(), requestPath.end(), boost::is_any_of("/"), '\\');
+
+        //copy to wide char string
+
+        wstring requestPathW(requestPath.begin(), requestPath.end());
+
+        physicalPath = appPath + requestPathW;
+    }
+
+    boost::shared_ptr<Security::IUser> HttpRequest::GetCurrentUser() const {
+        return currentUser;
+    }
+
+    void HttpRequest::SetCurrentUser(boost::shared_ptr<Security::IUser> user) {
+        currentUser = user;
     }
 }
 }

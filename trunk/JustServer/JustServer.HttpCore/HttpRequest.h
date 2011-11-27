@@ -3,7 +3,9 @@
 
 #include "HttpMessage.h"
 #include "Uri.h"
+#include "IUser.h"
 #include <vector>
+#include <boost/shared_ptr.hpp>
 
 namespace JustServer {
 namespace Http {
@@ -20,9 +22,15 @@ namespace Http {
 
         std::string GetVerb() const;
         Uri GetRequestUri() const;
+        std::wstring GetPhysicalPath() const;
+        void SetApplicationPath(const std::wstring& appPath);
+        boost::shared_ptr<Security::IUser> GetCurrentUser() const;
+        void SetCurrentUser(boost::shared_ptr<Security::IUser> user);
     private:
         std::string verb;
         Uri requestUri;
+        std::wstring physicalPath;
+        boost::shared_ptr<Security::IUser> currentUser;
     };
 
 }

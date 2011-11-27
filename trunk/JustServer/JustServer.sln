@@ -15,12 +15,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.LexicalAnalyzer"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.HttpGrammar", "JustServer.HttpGrammar\JustServer.HttpGrammar.vcxproj", "{ABB55457-F67B-454D-AC90-DD03BE69B75D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.FileSystemAccess", "JustServer.FileSystemAccess\JustServer.FileSystemAccess.vcxproj", "{C352534E-BBD8-4544-A48F-88C4D9119304}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CD9D7FE4-FBA3-4814-9824-1DBDA3250A01}"
 	ProjectSection(SolutionItems) = preProject
 		Performance1.psess = Performance1.psess
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.Security", "JustServer.Security\JustServer.Security.vcxproj", "{8F147F18-4CF9-4A22-BFAF-56176450B27D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustServer.Configuration", "JustServer.Configuration\JustServer.Configuration.vcxproj", "{AE43217C-C2FB-447A-BDB1-44B7DEB58883}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "Third party\tinyxml\tinyxml_lib.vcxproj", "{C406DAEC-0886-4771-8DEA-9D7329B46CC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +60,18 @@ Global
 		{ABB55457-F67B-454D-AC90-DD03BE69B75D}.Debug|Win32.Build.0 = Debug|Win32
 		{ABB55457-F67B-454D-AC90-DD03BE69B75D}.Release|Win32.ActiveCfg = Release|Win32
 		{ABB55457-F67B-454D-AC90-DD03BE69B75D}.Release|Win32.Build.0 = Release|Win32
-		{C352534E-BBD8-4544-A48F-88C4D9119304}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C352534E-BBD8-4544-A48F-88C4D9119304}.Debug|Win32.Build.0 = Debug|Win32
-		{C352534E-BBD8-4544-A48F-88C4D9119304}.Release|Win32.ActiveCfg = Release|Win32
-		{C352534E-BBD8-4544-A48F-88C4D9119304}.Release|Win32.Build.0 = Release|Win32
+		{8F147F18-4CF9-4A22-BFAF-56176450B27D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8F147F18-4CF9-4A22-BFAF-56176450B27D}.Debug|Win32.Build.0 = Debug|Win32
+		{8F147F18-4CF9-4A22-BFAF-56176450B27D}.Release|Win32.ActiveCfg = Release|Win32
+		{8F147F18-4CF9-4A22-BFAF-56176450B27D}.Release|Win32.Build.0 = Release|Win32
+		{AE43217C-C2FB-447A-BDB1-44B7DEB58883}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AE43217C-C2FB-447A-BDB1-44B7DEB58883}.Debug|Win32.Build.0 = Debug|Win32
+		{AE43217C-C2FB-447A-BDB1-44B7DEB58883}.Release|Win32.ActiveCfg = Release|Win32
+		{AE43217C-C2FB-447A-BDB1-44B7DEB58883}.Release|Win32.Build.0 = Release|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.Build.0 = Debug|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.ActiveCfg = Release|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

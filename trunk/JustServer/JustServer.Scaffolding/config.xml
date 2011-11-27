@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <securedAreas>
+    <securedArea name="administration" path="/Admin/">
+      <role name="admin" />
+    </securedArea>
+    <securedArea name="database" path="/Data/"></securedArea>
+  </securedAreas>
+</configuration>

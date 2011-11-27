@@ -22,21 +22,7 @@ namespace StandardHandlers {
     auto_ptr<HttpResponse> StaticContentHandler::HandleRequest(const HttpRequest& request) const {
         auto_ptr<HttpResponse> response(new HttpResponse(request.GetHttpVersion()));
 
-        string pathStr = request.GetRequestUri().GetAbsolutePath();
-
-        //removing leading slash from path
-        if (pathStr.size() > 0 && pathStr[0] == '/') {
-            pathStr.erase(0, 1);
-        }
-
-        //translating path to wide character string to use in boost path's constructor
-
-        wstring wpathStr;
-        wpathStr.reserve(pathStr.length());
-
-        for (size_t i = 0; i < pathStr.length(); ++i) {
-            wpathStr.push_back(pathStr[i]);
-        }
+        wstring wpathStr = request.GetPhysicalPath();
 
         boost::filesystem3::path resourcePath(wpathStr);
 

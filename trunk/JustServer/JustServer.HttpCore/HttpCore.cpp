@@ -13,6 +13,9 @@ using namespace JustServer::HttpGrammar::Tokens;
 namespace JustServer {
 namespace Http {
 
+    HttpCore::HttpCore(const std::wstring& physicalPath, boost::shared_ptr<JustServer::Http::Security::ISecurityModule> securityModule)
+        : physicalPath(physicalPath), securityModule(securityModule) {}
+
     void HttpCore::AddHttpHandler(shared_ptr<IHttpHandler> handler) {
         httpHandlers.push_back(handler);
     }
@@ -20,6 +23,7 @@ namespace Http {
     auto_ptr<HttpResponse> HttpCore::HandleRequest(auto_ptr<IInputBuffer> pInputBuffer) const {
         //create and setup the lexer for analyzing text input
 
+        //TODO: should be optimized
         auto_ptr<Lexer> pHttpLexer(HttpRequestGrammar::CreateLexer());
         pHttpLexer->SetInput(pInputBuffer);
 
@@ -40,6 +44,18 @@ namespace Http {
             //there shouldn't be any exceptions here. But we've got to add exception handling anyway
             //TODO: exception handling
             HttpRequest httpRequest = requestParser.ParseRequest(tokens);
+            
+            httpRequest.SetApplicationPath(this->physicalPath);
+
+            securityModule->AuthenticateRequest(httpRequest);
+
+            //TODO: this is bad. Security module shouldn't return any response
+
+            auto_ptr<HttpResponse> authorizationResponse = securityModule->AuthorizeRequest(httpRequest);
+
+            if (authorizationResponse.get() != NULL) {
+                return authorizationResponse;
+            }
 
             //here we've got to select first appropriate IHttpHandler and
             //pass HttpRequest object to it to generate response
@@ -81,7 +97,7 @@ namespace Http {
             }
         }
 
-        //HTTP/1.1 is used by default
+        //HTTP/1.1 is used by default. I know this is bad to hardcode it here...
         HttpVersion httpVersion(1, 1);
 
         if (pHttpVersionToken != NULL) {

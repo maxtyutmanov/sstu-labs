@@ -15,6 +15,7 @@ namespace Http {
         mimeTypes[".htm"] = "text";
         mimeTypes[".html"] = "text";
         mimeTypes[".css"] = "text";
+        mimeTypes[".xml"] = "text";
 
         mimeSubtypes[".jpg"] = "jpeg";
         mimeSubtypes[".jpeg"] = "jpeg";
@@ -25,6 +26,7 @@ namespace Http {
         mimeSubtypes[".htm"] = "html";
         mimeSubtypes[".html"] = "html";
         mimeSubtypes[".css"] = "css";
+        mimeSubtypes[".xml"] = "xml";
     }
 
     string ContentTypeMapping::GetContentType(const HttpRequest& request, boost::filesystem3::path& resourcePath) const {

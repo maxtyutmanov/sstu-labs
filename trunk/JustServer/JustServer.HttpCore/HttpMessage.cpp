@@ -34,7 +34,16 @@ namespace Http {
     }
 
     bool HttpMessage::HasHeader(const string& name) const {
-        map<string, string>::const_iterator foundIt = headers.find(name);
+        string loweredName;
+        loweredName.reserve(name.length());
+
+        std::transform(
+            name.begin(),
+            name.end(),
+            std::back_inserter(loweredName),
+            ptr_fun<int, int>(tolower));
+
+        map<string, string>::const_iterator foundIt = headers.find(loweredName);
 
         return foundIt != headers.end();
     }

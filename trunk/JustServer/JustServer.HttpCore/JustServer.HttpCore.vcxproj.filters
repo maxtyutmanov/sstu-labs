@@ -28,6 +28,9 @@
     <Filter Include="Source Files\StandardHandlers">
       <UniqueIdentifier>{a52d966a-192f-43fa-9836-8fcec11b5390}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Security">
+      <UniqueIdentifier>{323458fd-f347-445b-b315-c36a9fa0fb9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -83,6 +86,15 @@
     </ClInclude>
     <ClInclude Include="ContentTypeMapping.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IHttpCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISecurityModule.h">
+      <Filter>Header Files\Security</Filter>
+    </ClInclude>
+    <ClInclude Include="IUser.h">
+      <Filter>Header Files\Security</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
