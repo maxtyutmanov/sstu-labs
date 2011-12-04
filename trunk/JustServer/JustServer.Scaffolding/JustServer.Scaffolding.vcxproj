@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.Network;$(SolutionDir)\JustServer.Utility;$(SolutionDir)\JustServer.HttpCore;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Configuration;$(SolutionDir)\JustServer.Security;$(SolutionDir)\Third party\tinyxml;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.Network;$(SolutionDir)\JustServer.Utility;$(SolutionDir)\JustServer.HttpCore;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Configuration;$(SolutionDir)\JustServer.Security;$(SolutionDir)\Third party\tinyxml;$(SolutionDir)\JustServer.Logging;$(SolutionDir)\JustServer.ServiceLocation;</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -87,6 +87,9 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
+    <ProjectReference Include="..\JustServer.Logging\JustServer.Logging.vcxproj">
+      <Project>{3cd04c3a-f142-47fd-ac15-0c3f7ce24477}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\JustServer.Network\JustServer.Network.vcxproj">
       <Project>{36d312bf-7d28-4488-b8b3-cdf6b80dcbe9}</Project>
       <Private>true</Private>
@@ -97,6 +100,9 @@
     </ProjectReference>
     <ProjectReference Include="..\JustServer.Security\JustServer.Security.vcxproj">
       <Project>{8f147f18-4cf9-4a22-bfaf-56176450b27d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\JustServer.ServiceLocation\JustServer.ServiceLocation.vcxproj">
+      <Project>{b26e3c24-6309-44a6-8c99-c85acab77a80}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Third party\tinyxml\tinyxml_lib.vcxproj">
       <Project>{c406daec-0886-4771-8dea-9d7329b46cc1}</Project>

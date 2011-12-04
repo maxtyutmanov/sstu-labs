@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7022068D-D2AC-4D87-B459-081F19A13AA4}</ProjectGuid>
+    <ProjectGuid>{3CD04C3A-F142-47FD-AC15-0C3F7CE24477}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>JustServerHttpCore</RootNamespace>
+    <RootNamespace>JustServerLogging</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -37,10 +37,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)JustServer.Network;$(SolutionDir)\JustServer.HttpGrammar;$(SolutionDir)\JustServer.LexicalAnalyzer;$(SolutionDir)\JustServer.Utility;$(SolutionDir)\JustServer.Logging;$(SolutionDir)\JustServer.ServiceLocation</IncludePath>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
@@ -75,57 +72,12 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ContentTypeMapping.h" />
-    <ClInclude Include="HeaderNotFoundException.h" />
-    <ClInclude Include="HttpCore.h" />
-    <ClInclude Include="HttpHeader.h" />
-    <ClInclude Include="HttpMessage.h" />
-    <ClInclude Include="HttpRequest.h" />
-    <ClInclude Include="HttpRequestDispatcher.h" />
-    <ClInclude Include="HttpRequestParser.h" />
-    <ClInclude Include="HttpResponse.h" />
-    <ClInclude Include="HttpVersion.h" />
-    <ClInclude Include="IHttpCore.h" />
-    <ClInclude Include="IHttpHandler.h" />
-    <ClInclude Include="ISecurityModule.h" />
-    <ClInclude Include="IUser.h" />
-    <ClInclude Include="LexerInputBuffer.h" />
-    <ClInclude Include="MessageParseError.h" />
-    <ClInclude Include="ReasonPhraseMapping.h" />
-    <ClInclude Include="StaticContentHandler.h" />
-    <ClInclude Include="UnknownStatusCodeException.h" />
-    <ClInclude Include="Uri.h" />
+    <ClInclude Include="EventType.h" />
+    <ClInclude Include="ILogger.h" />
+    <ClInclude Include="SqlServerLogger.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ContentTypeMapping.cpp" />
-    <ClCompile Include="HttpCore.cpp" />
-    <ClCompile Include="HttpMessage.cpp" />
-    <ClCompile Include="HttpRequest.cpp" />
-    <ClCompile Include="HttpRequestDispatcher.cpp" />
-    <ClCompile Include="HttpRequestParser.cpp" />
-    <ClCompile Include="HttpResponse.cpp" />
-    <ClCompile Include="HttpVersion.cpp" />
-    <ClCompile Include="LexerInputBuffer.cpp" />
-    <ClCompile Include="ReasonPhraseMapping.cpp" />
-    <ClCompile Include="StaticContentHandler.cpp" />
-    <ClCompile Include="Uri.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JustServer.HttpGrammar\JustServer.HttpGrammar.vcxproj">
-      <Project>{abb55457-f67b-454d-ac90-dd03be69b75d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\JustServer.LexicalAnalyzer\JustServer.LexicalAnalyzer.vcxproj">
-      <Project>{0894b46e-d07c-458b-bbc2-a0c928f94d1d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\JustServer.Logging\JustServer.Logging.vcxproj">
-      <Project>{3cd04c3a-f142-47fd-ac15-0c3f7ce24477}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\JustServer.ServiceLocation\JustServer.ServiceLocation.vcxproj">
-      <Project>{b26e3c24-6309-44a6-8c99-c85acab77a80}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\JustServer.Utility\JustServer.Utility.vcxproj">
-      <Project>{644d0228-dcd0-4d92-b688-ba1d898f3d5a}</Project>
-    </ProjectReference>
+    <ClCompile Include="SqlServerLogger.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

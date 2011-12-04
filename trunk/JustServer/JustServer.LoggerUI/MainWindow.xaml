@@ -1,0 +1,42 @@
+﻿<Window x:Class="JustServer.LoggerUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" Initialized="Window_Initialized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <DatePicker Name="DateFrom" Grid.Column="0" Language="ru-RU" ToolTip="Начальная дата" SelectedDateChanged="DateFrom_SelectedDateChanged"></DatePicker>
+            <DatePicker Name="DateTo" Grid.Column="1" Language="ru-RU" ToolTip="Конечная дата" SelectedDateChanged="DateTo_SelectedDateChanged"></DatePicker>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <ComboBox Name="EventTypesCombobox" Grid.Row="0" SelectionChanged="EventTypesCombobox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Grid.Row="1" Click="Button_Click">Обновить</Button>
+            </Grid>
+            
+        </Grid>
+        <DataGrid Name="EventsGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Тип" Binding="{Binding EventType.Name}" Width="1*" IsReadOnly="True" />
+                <DataGridTextColumn Header="Время" Binding="{Binding EventTime, StringFormat=dd.MM.yyyy H:mm:ss}" Width="1*" IsReadOnly="True" />
+                <DataGridTextColumn Header="Сообщение" Binding="{Binding Message}" Width="3*" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

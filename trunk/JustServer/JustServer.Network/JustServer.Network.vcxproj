@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration)</LibraryPath>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.Utility;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustServer.Utility;$(SolutionDir)\JustServer.Logging;$(SolutionDir)\JustServer.ServiceLocation;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -83,6 +83,12 @@
     <ClCompile Include="NetworkService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JustServer.Logging\JustServer.Logging.vcxproj">
+      <Project>{3cd04c3a-f142-47fd-ac15-0c3f7ce24477}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\JustServer.ServiceLocation\JustServer.ServiceLocation.vcxproj">
+      <Project>{b26e3c24-6309-44a6-8c99-c85acab77a80}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\JustServer.Utility\JustServer.Utility.vcxproj">
       <Project>{644d0228-dcd0-4d92-b688-ba1d898f3d5a}</Project>
     </ProjectReference>

@@ -9,6 +9,8 @@
 #include <BasicAuthenticationModule.h>
 #include <AppConfigurationManager.h>
 #include <UserRepository.h>
+#include <SqlServerLogger.h>
+#include <Locator.h>
 
 using namespace std;
 using namespace JustServer::Net;
@@ -16,9 +18,13 @@ using namespace boost::asio::ip;
 using namespace JustServer::Http;
 using namespace JustServer::Http::Security;
 using namespace JustServer::Configuration;
-
+using namespace JustServer::Logging;
+using namespace JustServer::ServiceLocation;
 
 int main(int argc, char** argv) {
+    SqlServerLogger* sqlServerLogger = new SqlServerLogger(L"DRIVER={SQL Server};SERVER=MAKSIM-HP\\SQLFULL;DATABASE=JustServerLog;");
+    Locator::Register(sqlServerLogger);
+
     boost::shared_ptr<IAppConfigurationManager> configurationManager(new AppConfigurationManager(L"C:\\Users\\Максим\\Documents\\Visual Studio 2010\\WebSites\\Lab2\\config.xml"));
     boost::shared_ptr<IUserRepository> userRepository(new UserRepository(L"C:\\Users\\Максим\\Documents\\Visual Studio 2010\\WebSites\\Lab2\\Data\\users.db"));
 
@@ -38,13 +44,7 @@ int main(int argc, char** argv) {
 
     cin.get();
 
-    ns.Stop();
-
-    cin.get();
-
-    ns.Start();
-
-    cin.get();
+    delete sqlServerLogger;
     
     return 0;
 }
