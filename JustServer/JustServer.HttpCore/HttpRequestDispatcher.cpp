@@ -7,11 +7,15 @@
 #include <sstream>
 #include <IInputBuffer.h>
 #include "StaticContentHandler.h"
+#include <ILogger.h>
+#include <Locator.h>
 using std::string;
 using std::vector;
 
 using namespace boost::asio::ip;
 using namespace std;
+using JustServer::ServiceLocation::Locator;
+using JustServer::Logging::EventType;
 
 namespace JustServer {
 namespace Http {
@@ -78,12 +82,23 @@ namespace Http {
                 bytesTransferred += sentThisTime;
             }
 
+            tcp::endpoint remoteEndp = pSocket->remote_endpoint();
+            boost::asio::ip::address remoteAddr = remoteEndp.address();
+            string addressStr = remoteAddr.to_string();
+            wstring addressWstr(addressStr.begin(), addressStr.end());
+
             pSocket->close();
+
+            Locator::GetLogger()->LogMessage(EventType::RequestHandled, L"Запрос клиента " + addressWstr + L" обработан, данные отправлены");
         }
         catch (const std::exception &ex) {
             boost::system::error_code ec;
-
             pSocket->close(ec);
+
+            std::string errorMsg = ex.what();
+            std::wstring werror(errorMsg.begin(), errorMsg.end());
+
+            Locator::GetLogger()->LogMessage(EventType::Error, L"Исключение во время обработки запроса: " + werror);
         }
 
     }

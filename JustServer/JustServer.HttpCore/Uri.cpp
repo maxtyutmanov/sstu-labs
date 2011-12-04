@@ -1,7 +1,7 @@
 #include "Uri.h"
+#include <boost/lexical_cast.hpp>
 
-using std::string;
-using std::vector;
+using namespace std;
 using JustServer::Utility::NameValuePair;
 
 namespace JustServer {
@@ -40,6 +40,13 @@ namespace Http {
 
     const vector<NameValuePair>& Uri::Query() const {
         return query;
+    }
+
+    wstring Uri::ToWString() const {
+        string str = GetScheme() + "://" + GetHost() + ":" + boost::lexical_cast<string, unsigned short>(GetPort()) + GetAbsolutePath();
+        wstring result(str.begin(), str.end());
+
+        return result;
     }
 }
 }

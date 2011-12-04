@@ -5,9 +5,12 @@
 #include <Lexer.h>
 #include <TokenTag.h>
 #include <HttpVersionToken.h>
+#include <Locator.h>
 
 using JustServer::HttpGrammar::HttpRequestGrammar;
 using JustServer::HttpGrammar::TokenTag;
+using JustServer::ServiceLocation::Locator;
+using JustServer::Logging::EventType;
 using namespace JustServer::HttpGrammar::Tokens;
 
 namespace JustServer {
@@ -34,16 +37,15 @@ namespace Http {
         vector<shared_ptr<Token>> tokens = lexerOutput.get<0>();
         vector<shared_ptr<LexicalError>> errors = lexerOutput.get<1>();
 
-        bool requestIsInvalid = errors.size() > 0;
+        bool requestIsValid = (errors.size() == 0);
 
-        if (requestIsInvalid) {
-            //in this case we've got to respond with 400: Bad Request
-            return OnInvalidRequest(tokens);
-        }
-        else {
+        if (requestIsValid) {
             //there shouldn't be any exceptions here. But we've got to add exception handling anyway
             //TODO: exception handling
             HttpRequest httpRequest = requestParser.ParseRequest(tokens);
+            string absolutePath = httpRequest.GetRequestUri().GetAbsolutePath();
+
+            Locator::GetLogger()->LogMessage(EventType::RequestAcceptedByHttpCore, L"Обработка запроса ресурса " + wstring(absolutePath.begin(), absolutePath.end()));
             
             httpRequest.SetApplicationPath(this->physicalPath);
 
@@ -69,6 +71,10 @@ namespace Http {
                 //responding with 404 Not Found
                 return OnHandlerNotFound(httpRequest);
             }
+        }
+        else {
+            //in this case we've got to respond with 400: Bad Request
+            return OnInvalidRequest(tokens);
         }
     }
 

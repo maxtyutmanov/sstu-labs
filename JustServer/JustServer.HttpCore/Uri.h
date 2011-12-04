@@ -27,6 +27,8 @@ namespace Http {
         std::string GetAbsolutePath() const;
         unsigned short GetPort() const;
         const std::vector<JustServer::Utility::NameValuePair>& Query() const;
+
+        std::wstring ToWString() const;
     private:
         std::string scheme;
         std::string host;

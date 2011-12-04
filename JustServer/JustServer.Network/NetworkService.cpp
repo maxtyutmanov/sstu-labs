@@ -1,7 +1,12 @@
 #include "NetworkService.h"
 #include <string>
 #include <boost/asio/placeholders.hpp>
-using std::string;
+#include <Locator.h>
+#include <EventType.h>
+using namespace std;
+
+using JustServer::Logging::EventType;
+using JustServer::ServiceLocation::Locator;
 
 namespace JustServer {
 namespace Net {
@@ -94,13 +99,20 @@ namespace Net {
     void NetworkService::StartAsyncListening() {
         //this method must run in the ioserviceThread
 
-        shared_ptr<tcp::socket> pSocket(new tcp::socket(*io_service));
+        boost::shared_ptr<tcp::socket> pSocket(new tcp::socket(*io_service));
     
         listener->async_accept(*pSocket, boost::bind(&NetworkService::HandleRequest, this, pSocket, boost::asio::placeholders::error));
     }
 
-    void NetworkService::HandleRequest(shared_ptr<tcp::socket> pSocket, const boost::system::error_code &ec) {
-        //this method must run in ioserviceThread
+    void NetworkService::HandleRequest(boost::shared_ptr<tcp::socket> pSocket, const boost::system::error_code &ec) {
+        tcp::endpoint remoteEndp = pSocket->remote_endpoint();
+        boost::asio::ip::address remoteAddr = remoteEndp.address();
+        string addressStr = remoteAddr.to_string();
+        wstring addressWstr(addressStr.begin(), addressStr.end());
+
+        Locator::GetLogger()->LogMessage(EventType::ConnectionEstablished, L"Установлено соединение с клиентом " + addressWstr);
+
+        //this method must run in the ioserviceThread
 
         if (ec) {
 
