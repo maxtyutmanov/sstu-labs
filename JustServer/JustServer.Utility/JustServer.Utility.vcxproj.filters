@@ -30,12 +30,18 @@
     <ClInclude Include="IUserRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EncodingUtility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="manual_reset_event.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Base64Utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EncodingUtility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
