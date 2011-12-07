@@ -11,6 +11,8 @@ namespace Configuration {
     class IAppConfigurationManager {
     public:
         virtual std::vector<boost::shared_ptr<SecuredArea>> GetSecuredAreas() const = 0;
+        virtual std::wstring GetAppSetting(const std::string& name) const = 0;
+        virtual std::wstring GetConnectionString(const std::string& name) const = 0;
     };
 
 }

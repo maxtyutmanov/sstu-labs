@@ -78,12 +78,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base64Utility.h" />
+    <ClInclude Include="EncodingUtility.h" />
     <ClInclude Include="IUserRepository.h" />
     <ClInclude Include="manual_reset_event.h" />
     <ClInclude Include="NameValuePair.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Base64Utility.cpp" />
+    <ClCompile Include="EncodingUtility.cpp" />
     <ClCompile Include="manual_reset_event.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

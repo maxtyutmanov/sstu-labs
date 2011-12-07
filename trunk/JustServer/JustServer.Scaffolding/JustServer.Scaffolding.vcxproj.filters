@@ -31,7 +31,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="config.xml">
+    <None Include="serverConfig.xml">
+      <Filter>Misc</Filter>
+    </None>
+    <None Include="appConfig.xml">
       <Filter>Misc</Filter>
     </None>
   </ItemGroup>

@@ -27,12 +27,27 @@
     <ClInclude Include="IAppConfigurationManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ServerConfigurationManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InvalidConfigurationException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WebApplicationSection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppConfigurationManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SecuredArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerConfigurationManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WebApplicationSection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -105,12 +105,7 @@ namespace Net {
     }
 
     void NetworkService::HandleRequest(boost::shared_ptr<tcp::socket> pSocket, const boost::system::error_code &ec) {
-        tcp::endpoint remoteEndp = pSocket->remote_endpoint();
-        boost::asio::ip::address remoteAddr = remoteEndp.address();
-        string addressStr = remoteAddr.to_string();
-        wstring addressWstr(addressStr.begin(), addressStr.end());
-
-        Locator::GetLogger()->LogMessage(EventType::ConnectionEstablished, L"Установлено соединение с клиентом " + addressWstr);
+        
 
         //this method must run in the ioserviceThread
 
@@ -125,8 +120,16 @@ namespace Net {
             return;
         }
 
+
         //starting to listen for incoming connections again
         StartAsyncListening();
+
+        tcp::endpoint remoteEndp = pSocket->remote_endpoint();
+        boost::asio::ip::address remoteAddr = remoteEndp.address();
+        string addressStr = remoteAddr.to_string();
+        wstring addressWstr(addressStr.begin(), addressStr.end());
+
+        Locator::GetLogger()->LogMessage(EventType::ConnectionEstablished, L"Установлено соединение с клиентом " + addressWstr);
 
         //We don't care about app protocol-specific communication details,
         //just letting the requestDispatcher to deal with them

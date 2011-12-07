@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <securedAreas>
+    <securedArea name="administration" path="/Admin/">
+      <role name="admin" />
+    </securedArea>
+    <securedArea name="database" path="/Data/" />
+  </securedAreas>
+
+  <connectionStrings>
+    <connectionString name="SqlServerLogger" value="DRIVER={SQL Server};SERVER=MAKSIM-HP\\SQLFULL;DATABASE=JustServerLog;" />
+  </connectionStrings>
+  
+  <appSettings>
+    <setting name="usersDbPath" value="C:\Users\Максим\Documents\Visual Studio 2010\WebSites\Lab2\Data\users.db" />
+  </appSettings>
+</configuration>

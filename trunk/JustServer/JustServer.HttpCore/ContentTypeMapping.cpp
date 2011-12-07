@@ -11,6 +11,7 @@ namespace Http {
         mimeTypes[".png"] = "image";
         mimeTypes[".gif"] = "image";
         mimeTypes[".pdf"] = "application";
+        mimeTypes[".swf"] = "application";
         mimeTypes[".js"] = "text";
         mimeTypes[".htm"] = "text";
         mimeTypes[".html"] = "text";
@@ -22,6 +23,7 @@ namespace Http {
         mimeSubtypes[".png"] = "png";
         mimeSubtypes[".gif"] = "gif";
         mimeSubtypes[".pdf"] = "pdf";
+        mimeSubtypes[".swf"] = "x-shockwave-flash";
         mimeSubtypes[".js"] = "javascript";
         mimeSubtypes[".htm"] = "html";
         mimeSubtypes[".html"] = "html";

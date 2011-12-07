@@ -38,7 +38,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\Third party\tinyxml;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\Third party\tinyxml;$(SolutionDir)\JustServer.Utility;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -74,11 +74,21 @@
   <ItemGroup>
     <ClInclude Include="AppConfigurationManager.h" />
     <ClInclude Include="IAppConfigurationManager.h" />
+    <ClInclude Include="InvalidConfigurationException.h" />
     <ClInclude Include="SecuredArea.h" />
+    <ClInclude Include="ServerConfigurationManager.h" />
+    <ClInclude Include="WebApplicationSection.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppConfigurationManager.cpp" />
     <ClCompile Include="SecuredArea.cpp" />
+    <ClCompile Include="ServerConfigurationManager.cpp" />
+    <ClCompile Include="WebApplicationSection.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JustServer.Utility\JustServer.Utility.vcxproj">
+      <Project>{644d0228-dcd0-4d92-b688-ba1d898f3d5a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
