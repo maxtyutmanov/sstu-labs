@@ -1,10 +1,12 @@
 #include <boost/test/auto_unit_test.hpp>
 
-#include "LexerInputBuffer.h"
+#include <LexerInputBuffer.h>
 #include <sstream>
 #include <string>
 using std::wistringstream;
 using std::wstring;
+
+using namespace JustCompiler::LexicalAnalyzer;
 
 BOOST_AUTO_TEST_CASE( LexerInputBuffer_GetLineNumber ) {
     wstring source = L"abc\ndef\nabc";

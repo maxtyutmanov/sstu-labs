@@ -76,10 +76,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CharacterValidators.h" />
+    <ClInclude Include="ErrorCode.h" />
+    <ClInclude Include="Identifier.h" />
+    <ClInclude Include="IntConstant.h" />
+    <ClInclude Include="IntConstantTokenCreator.h" />
+    <ClInclude Include="LexemeToTagMapping.h" />
     <ClInclude Include="MyGrammar.h" />
+    <ClInclude Include="SingleCharTokenCreator.h" />
+    <ClInclude Include="StringLiteral.h" />
+    <ClInclude Include="StringLiteralTokenCreator.h" />
+    <ClInclude Include="TokenTag.h" />
+    <ClInclude Include="UnrecognizedTokenCreator.h" />
+    <ClInclude Include="WordTokenCreator.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Identifier.cpp" />
+    <ClCompile Include="IntConstant.cpp" />
+    <ClCompile Include="IntConstantTokenCreator.cpp" />
+    <ClCompile Include="LexemeToTagMapping.cpp" />
     <ClCompile Include="MyGrammar.cpp" />
+    <ClCompile Include="SingleCharTokenCreator.cpp" />
+    <ClCompile Include="StringLiteral.cpp" />
+    <ClCompile Include="StringLiteralTokenCreator.cpp" />
+    <ClCompile Include="UnrecognizedTokenCreator.cpp" />
+    <ClCompile Include="WordTokenCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JustCompiler.LexicalAnalyzer\JustCompiler.LexicalAnalyzer.vcxproj">

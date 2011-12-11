@@ -2,89 +2,95 @@
 
 #include <tchar.h>
 
-class CharacterValidators {
-public:
-    static bool IsAlpha(wchar_t ch) {
-        return iswalpha(ch);
-    }
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-    static bool IsAsciiAlpha(wchar_t ch) {
-        return iswascii(ch);
-    }
+    class CharacterValidators {
+    public:
+        static bool IsAlpha(wchar_t ch) {
+            return iswalpha(ch);
+        }
 
-    static bool IsDigit(wchar_t ch) {
-        return iswdigit(ch);
-    }
+        static bool IsAsciiAlpha(wchar_t ch) {
+            return iswascii(ch);
+        }
 
-    static bool IsSpace(wchar_t ch) {
-        return ch == L'';
-    }
+        static bool IsDigit(wchar_t ch) {
+            return iswdigit(ch);
+        }
 
-    static bool IsEof(wchar_t ch) {
-        return ch == L'\0';
-    }
+        static bool IsSpace(wchar_t ch) {
+            return ch == L'';
+        }
 
-    static bool IsNewline(wchar_t ch) {
-        return ch == L'\n' || ch == L'\r';
-    }
+        static bool IsEof(wchar_t ch) {
+            return ch == L'\0';
+        }
 
-    static bool IsNewlineOrEof(wchar_t ch) {
-        return IsNewline(ch) || IsEof(ch);
-    }
+        static bool IsNewline(wchar_t ch) {
+            return ch == L'\n' || ch == L'\r';
+        }
 
-    static bool IsSpaceTabOrNewline(wchar_t ch) {
-        return ch == L' ' || ch == L'\t' || IsNewline(ch);
-    }
+        static bool IsNewlineOrEof(wchar_t ch) {
+            return IsNewline(ch) || IsEof(ch);
+        }
 
-    static bool IsNotAsciiNorDigit(wchar_t ch) {
-        return !IsAsciiAlpha(ch) && !IsDigit(ch);
-    }
+        static bool IsSpaceTabOrNewline(wchar_t ch) {
+            return ch == L' ' || ch == L'\t' || IsNewline(ch);
+        }
 
-    static bool IsAsciiAlphaOrDigit(wchar_t ch) {
-        return IsAsciiAlpha(ch) || IsDigit(ch);
-    }
+        static bool IsNotAsciiNorDigit(wchar_t ch) {
+            return !IsAsciiAlpha(ch) && !IsDigit(ch);
+        }
 
-    static bool IsAlphaNonAscii(wchar_t ch) {
-        return !IsAsciiAlpha(ch) && iswalpha(ch);
-    }
+        static bool IsAsciiAlphaOrDigit(wchar_t ch) {
+            return IsAsciiAlpha(ch) || IsDigit(ch);
+        }
 
-    static bool IsAlphaOrDigit(wchar_t ch) {
-        return iswalpha(ch) || IsDigit(ch);
-    }
+        static bool IsAlphaNonAscii(wchar_t ch) {
+            return !IsAsciiAlpha(ch) && iswalpha(ch);
+        }
 
-    static bool IsNotAlphaNorDigit(wchar_t ch) {
-        return !iswalpha(ch) && !IsDigit(ch);
-    }
+        static bool IsAlphaOrDigit(wchar_t ch) {
+            return iswalpha(ch) || IsDigit(ch);
+        }
 
-    static bool IsDoubleQuotes(wchar_t ch) {
-        return ch == L'"';
-    }
+        static bool IsNotAlphaNorDigit(wchar_t ch) {
+            return !iswalpha(ch) && !IsDigit(ch);
+        }
 
-    static bool IsNotNewline(wchar_t ch) {
-        return !IsNewline(ch);
-    }
+        static bool IsDoubleQuotes(wchar_t ch) {
+            return ch == L'"';
+        }
 
-    static bool IsSlash(wchar_t ch) {
-        return ch == L'/';
-    }
+        static bool IsNotNewline(wchar_t ch) {
+            return !IsNewline(ch);
+        }
 
-    static bool IsNotSlash(wchar_t ch) {
-        return !IsSlash(ch);
-    }
+        static bool IsSlash(wchar_t ch) {
+            return ch == L'/';
+        }
 
-    static bool IsAsterisk(wchar_t ch) {
-        return ch == L'*';
-    }
+        static bool IsNotSlash(wchar_t ch) {
+            return !IsSlash(ch);
+        }
 
-    static bool IsNotAsterisk(wchar_t ch) {
-        return !IsAsterisk(ch);
-    }
+        static bool IsAsterisk(wchar_t ch) {
+            return ch == L'*';
+        }
 
-    static bool IsNotAsteriskNorSlash(wchar_t ch) {
-        return IsNotAsterisk(ch) && IsNotSlash(ch);
-    }
+        static bool IsNotAsterisk(wchar_t ch) {
+            return !IsAsterisk(ch);
+        }
 
-    static bool Any(wchar_t ch) {
-        return true;
-    }
-};
+        static bool IsNotAsteriskNorSlash(wchar_t ch) {
+            return IsNotAsterisk(ch) && IsNotSlash(ch);
+        }
+
+        static bool Any(wchar_t ch) {
+            return true;
+        }
+    };
+
+}
+}

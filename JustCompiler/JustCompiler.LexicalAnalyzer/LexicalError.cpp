@@ -1,25 +1,31 @@
 #include "LexicalError.h"
 
-LexicalError::LexicalError() {
-    //TODO: WTF?
-    lineNumber = 0;
-    charNumber = 0;
-}
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-LexicalError::LexicalError(const int lineNumber, const int charNumber, const int errorCode) {
-    this->lineNumber = lineNumber;
-    this->charNumber = charNumber;
-    this->errorCode = errorCode;
-}
+    LexicalError::LexicalError() {
+        //TODO: WTF?
+        lineNumber = 0;
+        charNumber = 0;
+    }
 
-int LexicalError::GetLineNumber() const {
-    return lineNumber;
-}
+    LexicalError::LexicalError(const int lineNumber, const int charNumber, const int errorCode) {
+        this->lineNumber = lineNumber;
+        this->charNumber = charNumber;
+        this->errorCode = errorCode;
+    }
 
-int LexicalError::GetCharNumber() const {
-    return charNumber;
-}
+    int LexicalError::GetLineNumber() const {
+        return lineNumber;
+    }
 
-int LexicalError::GetErrorCode() const {
-    return errorCode;
+    int LexicalError::GetCharNumber() const {
+        return charNumber;
+    }
+
+    int LexicalError::GetErrorCode() const {
+        return errorCode;
+    }
+
+}
 }

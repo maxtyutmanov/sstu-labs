@@ -11,85 +11,90 @@ using std::auto_ptr;
 using boost::shared_ptr;
 
 
-class FaTransition {
-public:
-    FaTransition(
-        shared_ptr<FaState> from, 
-        shared_ptr<FaState> to,
-        CharValidationRule validationRule,
-        ReadAction::Enum readAction) {
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-        Init(from, to, validationRule, readAction, shared_ptr<TokenCreator>(), 0);
-    }
+    class FaTransition {
+    public:
+        FaTransition(
+            shared_ptr<FaState> from, 
+            shared_ptr<FaState> to,
+            CharValidationRule validationRule,
+            ReadAction::Enum readAction) {
 
-    FaTransition(
-        shared_ptr<FaState> from, 
-        shared_ptr<FaState> to,
-        CharValidationRule validationRule,
-        ReadAction::Enum readAction,
-        shared_ptr<TokenCreator> tokenCreator) {
+            Init(from, to, validationRule, readAction, shared_ptr<TokenCreator>(), 0);
+        }
 
-        Init(from, to, validationRule, readAction, tokenCreator, 0);
-    }
+        FaTransition(
+            shared_ptr<FaState> from, 
+            shared_ptr<FaState> to,
+            CharValidationRule validationRule,
+            ReadAction::Enum readAction,
+            shared_ptr<TokenCreator> tokenCreator) {
 
-    FaTransition(
-        shared_ptr<FaState> from, 
-        shared_ptr<FaState> to,
-        CharValidationRule validationRule,
-        ReadAction::Enum readAction,
-        int errorCode) {
+            Init(from, to, validationRule, readAction, tokenCreator, 0);
+        }
 
-        Init(from, to, validationRule, readAction, shared_ptr<TokenCreator>(), errorCode);
-    }
+        FaTransition(
+            shared_ptr<FaState> from, 
+            shared_ptr<FaState> to,
+            CharValidationRule validationRule,
+            ReadAction::Enum readAction,
+            int errorCode) {
 
-    shared_ptr<FaState> From() const {
-        return from;
-    }
+            Init(from, to, validationRule, readAction, shared_ptr<TokenCreator>(), errorCode);
+        }
 
-    shared_ptr<FaState> To() const {
-        return to;
-    }
+        shared_ptr<FaState> From() const {
+            return from;
+        }
 
-    bool IsCharValid(char_type inputChar) const {
-        return validationRule(inputChar);
-    }
+        shared_ptr<FaState> To() const {
+            return to;
+        }
 
-    ReadAction::Enum GetReadAction() const {
-        return readAction;
-    }
+        bool IsCharValid(char_type inputChar) const {
+            return validationRule(inputChar);
+        }
 
-    shared_ptr<TokenCreator> GetTokenCreator() const {
-        return tokenCreator;
-    }
+        ReadAction::Enum GetReadAction() const {
+            return readAction;
+        }
 
-    int ErrorCode() const {
-        return errorCode;
-    }
+        shared_ptr<TokenCreator> GetTokenCreator() const {
+            return tokenCreator;
+        }
 
-protected:
-    void Init(
-        shared_ptr<FaState> from, 
-        shared_ptr<FaState> to, 
-        CharValidationRule validationRule,
-        ReadAction::Enum readAction,
-        shared_ptr<TokenCreator> 
-        tokenCreator, 
-        int errorCode) {
+        int ErrorCode() const {
+            return errorCode;
+        }
 
-        this->from = from;
-        this->to = to;
-        this->validationRule = validationRule;
-        this->readAction = readAction;
-        this->tokenCreator = tokenCreator;
-        this->errorCode = errorCode;
-    }
+    protected:
+        void Init(
+            shared_ptr<FaState> from, 
+            shared_ptr<FaState> to, 
+            CharValidationRule validationRule,
+            ReadAction::Enum readAction,
+            shared_ptr<TokenCreator> 
+            tokenCreator, 
+            int errorCode) {
 
-private:
-    shared_ptr<FaState> from;
-    shared_ptr<FaState> to;
-    shared_ptr<TokenCreator> tokenCreator;
-    int errorCode;
+            this->from = from;
+            this->to = to;
+            this->validationRule = validationRule;
+            this->readAction = readAction;
+            this->tokenCreator = tokenCreator;
+            this->errorCode = errorCode;
+        }
+
+    private:
+        shared_ptr<FaState> from;
+        shared_ptr<FaState> to;
+        shared_ptr<TokenCreator> tokenCreator;
+        int errorCode;
     
-    CharValidationRule validationRule;
-    ReadAction::Enum readAction;
-};
+        CharValidationRule validationRule;
+        ReadAction::Enum readAction;
+    };
+}
+}

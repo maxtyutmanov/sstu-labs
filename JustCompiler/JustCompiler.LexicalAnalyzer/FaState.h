@@ -2,11 +2,17 @@
 
 #include "Global.h"
 
-class FaState {
-public:
-    FaState(const string_type& name);
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-    string_type GetName() const;
-private:
-    string_type name;
-};
+    class FaState {
+    public:
+        FaState(const string_type& name);
+
+        string_type GetName() const;
+    private:
+        string_type name;
+    };
+
+}
+}

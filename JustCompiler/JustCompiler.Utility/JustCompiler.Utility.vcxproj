@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0894B46E-D07C-458B-BBC2-A0C928F94D1D}</ProjectGuid>
+    <ProjectGuid>{85AADCA2-74D3-432C-846D-26EDA17CCB45}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>JustCompilerLexicalAnalyzer</RootNamespace>
+    <RootNamespace>JustCompilerUtility</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -37,27 +37,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;</IncludePath>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;USE_WIDE_CHARS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
-    <Lib />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -78,26 +70,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CharValidationRule.h" />
-    <ClInclude Include="Global.h" />
-    <ClInclude Include="IInputBuffer.h" />
-    <ClInclude Include="LexerInputBuffer.h" />
-    <ClInclude Include="ReadAction.h" />
-    <ClInclude Include="FaState.h" />
-    <ClInclude Include="FaTransition.h" />
-    <ClInclude Include="Lexer.h" />
-    <ClInclude Include="LexicalError.h" />
-    <ClInclude Include="Token.h" />
-    <ClInclude Include="TokenCreator.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="FaState.cpp" />
-    <ClCompile Include="Lexer.cpp" />
-    <ClCompile Include="LexerInputBuffer.cpp" />
-    <ClCompile Include="LexicalError.cpp" />
-    <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
