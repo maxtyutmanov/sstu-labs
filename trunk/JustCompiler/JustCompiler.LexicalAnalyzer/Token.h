@@ -1,19 +1,27 @@
 #pragma once
 
-#include "TokenTag.h"
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-class Token {
-public:
-    Token(const TokenTag::Enum tag, const int lineNum, const int charNum);
-    virtual ~Token();
+    class Token {
+    public:
+        Token(const int tag, const int lineNum, const int charNum);
+        Token(const int tag);
 
-    TokenTag::Enum GetTag() const;
-    int GetLineNum() const;
-    int GetCharNum() const;
+        virtual ~Token();
 
-    virtual bool operator== (const Token& right) const;
-protected:
-    TokenTag::Enum tag;
-    int lineNum;
-    int charNum;
-};
+        int GetTag() const;
+        int GetLineNum() const;
+        void SetLineNum(const int lineNum);
+        int GetCharNum() const;
+        void SetCharNum(const int charNum);
+
+        virtual bool operator== (const Token& right) const;
+    protected:
+        int tag;
+        int lineNum;
+        int charNum;
+    };
+
+}
+}

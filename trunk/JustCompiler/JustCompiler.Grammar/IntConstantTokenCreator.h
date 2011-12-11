@@ -1,23 +1,22 @@
 #pragma once
 
 #include "Global.h"
-#include <memory>
-#include "Token.h"
-#include "LexicalError.h"
-using std::auto_ptr;
+#include "TokenCreator.h"
 
 namespace JustCompiler {
 namespace LexicalAnalyzer {
+namespace TokenCreators {
 
-    class TokenCreator {
+    class IntConstantTokenCreator : public TokenCreator {
     public:
         virtual bool TryCreateToken(
             const string_type& lexeme, 
             int lineNum, 
             int charNum, 
             Token** token, 
-            LexicalError** error) = 0;
+            LexicalError** error);
     };
 
+}
 }
 }

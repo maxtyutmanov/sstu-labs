@@ -2,4 +2,10 @@
 
 #include "Global.h"
 
-typedef bool (*CharValidationRule)(char_type test);
+namespace JustCompiler {
+namespace LexicalAnalyzer {
+
+    typedef bool (*CharValidationRule)(char_type test);
+
+}
+}

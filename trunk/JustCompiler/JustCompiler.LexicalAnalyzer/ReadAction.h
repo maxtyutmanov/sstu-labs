@@ -1,12 +1,17 @@
 #pragma once
 
-struct ReadAction {
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-    //format: InputBufferAction_CurrentLexemeBufferAction
-    enum Enum {
-        RemoveFromBuffer_Ignore,
-        RemoveFromBuffer_AddToLexeme,
-        KeepInBuffer_Ignore,
-        RemoveFromBuffer_ClearLexeme    //HACK: this is hack, I have to admit :-(
+    struct ReadAction {
+
+        //format: InputBufferAction_CurrentLexemeBufferAction
+        enum Enum {
+            RemoveFromBuffer_Ignore,
+            RemoveFromBuffer_AddToLexeme,
+            KeepInBuffer_Ignore,
+            RemoveFromBuffer_ClearLexeme    //HACK: this is hack, I have to admit :-(
+        };
     };
-};
+}
+}

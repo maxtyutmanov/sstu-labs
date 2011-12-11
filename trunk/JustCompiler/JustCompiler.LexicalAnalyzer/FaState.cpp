@@ -1,9 +1,15 @@
 #include "FaState.h"
 
-FaState::FaState(const string_type& name) {
-    this->name = name;
-}
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-string_type FaState::GetName() const {
-    return name;
+    FaState::FaState(const string_type& name) {
+        this->name = name;
+    }
+
+    string_type FaState::GetName() const {
+        return name;
+    }
+
+}
 }

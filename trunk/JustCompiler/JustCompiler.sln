@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.LexicalAnalyzer", "JustCompiler.LexicalAnalyzer\JustCompiler.LexicalAnalyzer.vcxproj", "{0894B46E-D07C-458B-BBC2-A0C928F94D1D}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Tests", "JustCompiler.Tests\JustCompiler.Tests.vcxproj", "{A98E6D08-A0F3-477A-B23C-B2717BD529A8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0894B46E-D07C-458B-BBC2-A0C928F94D1D} = {0894B46E-D07C-458B-BBC2-A0C928F94D1D}
@@ -12,16 +10,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.LexicalAnalyze
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Grammar", "JustCompiler.Grammar\JustCompiler.Grammar.vcxproj", "{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.LexicalAnalyzer", "JustCompiler.LexicalAnalyzer\JustCompiler.LexicalAnalyzer.vcxproj", "{0894B46E-D07C-458B-BBC2-A0C928F94D1D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Utility", "JustCompiler.Utility\JustCompiler.Utility.vcxproj", "{85AADCA2-74D3-432C-846D-26EDA17CCB45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Debug|Win32.Build.0 = Debug|Win32
-		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Release|Win32.ActiveCfg = Release|Win32
-		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Release|Win32.Build.0 = Release|Win32
 		{A98E6D08-A0F3-477A-B23C-B2717BD529A8}.Debug|Win32.ActiveCfg = Debug|Win32
 		{A98E6D08-A0F3-477A-B23C-B2717BD529A8}.Debug|Win32.Build.0 = Debug|Win32
 		{A98E6D08-A0F3-477A-B23C-B2717BD529A8}.Release|Win32.ActiveCfg = Release|Win32
@@ -34,6 +32,14 @@ Global
 		{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}.Debug|Win32.Build.0 = Debug|Win32
 		{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}.Release|Win32.ActiveCfg = Release|Win32
 		{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}.Release|Win32.Build.0 = Release|Win32
+		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Debug|Win32.Build.0 = Debug|Win32
+		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Release|Win32.ActiveCfg = Release|Win32
+		{0894B46E-D07C-458B-BBC2-A0C928F94D1D}.Release|Win32.Build.0 = Release|Win32
+		{85AADCA2-74D3-432C-846D-26EDA17CCB45}.Debug|Win32.ActiveCfg = Debug|Win32
+		{85AADCA2-74D3-432C-846D-26EDA17CCB45}.Debug|Win32.Build.0 = Debug|Win32
+		{85AADCA2-74D3-432C-846D-26EDA17CCB45}.Release|Win32.ActiveCfg = Release|Win32
+		{85AADCA2-74D3-432C-846D-26EDA17CCB45}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

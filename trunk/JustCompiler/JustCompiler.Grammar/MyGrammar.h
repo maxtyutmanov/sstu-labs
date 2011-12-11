@@ -2,12 +2,22 @@
 
 #include <memory>
 #include <Lexer.h>
+#include "LexemeToTagMapping.h"
 using std::auto_ptr;
 
-class MyGrammar {
-public:
-    static auto_ptr<Lexer> CreateLexer(const LexerSettings& settings, wistream& input);
-    static LexerSettings SetupLexerSettings();
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-    static bool ValidateCharsetInIdentifier(wchar_t ch);
-};
+    class MyGrammar {
+    public:
+        static boost::shared_ptr<LexemeToTagMapping> GetKeywordsMapping();
+        static boost::shared_ptr<LexemeToTagMapping> GetStandardFuncMapping();
+        static boost::shared_ptr<LexemeToTagMapping> GetSingleCharTokensMapping();
+
+        static auto_ptr<Lexer> CreateLexer();
+
+        static bool ValidateCharsetInIdentifier(wchar_t ch);
+    };
+
+}
+}

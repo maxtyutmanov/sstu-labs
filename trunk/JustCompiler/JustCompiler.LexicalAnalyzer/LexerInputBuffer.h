@@ -1,26 +1,33 @@
 #pragma once
 
 #include "Global.h"
+#include "IInputBuffer.h"
 #include <map>
 using std::map;
 
-class LexerInputBuffer {
-public:
-    explicit LexerInputBuffer(input_stream_type &input);
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-    char_type Get();
-    void Unget();
-    bool Eof() const;
-    int GetLineNumber() const;
-    int GetCharacterNumber() const;
-private:
-    string_type input;
-    int cursor;
-    int lineNumber;
-    int characterNumber;
-    //correspondence between line numbers and characters counts in this lines
-    map<int, int> characterCounts;
+    class LexerInputBuffer : public IInputBuffer {
+    public:
+        explicit LexerInputBuffer(input_stream_type &input);
 
-    void GoToNewLine();
-    void GoToPreviousLine();
-};
+        virtual char_type Get();
+        virtual void Unget();
+        virtual bool Eof() const;
+        virtual int GetLineNumber() const;
+        virtual int GetCharacterNumber() const;
+    private:
+        string_type input;
+        int cursor;
+        int lineNumber;
+        int characterNumber;
+        //correspondence between line numbers and character counts in this lines
+        map<int, int> characterCounts;
+
+        void GoToNewLine();
+        void GoToPreviousLine();
+    };
+
+}
+}

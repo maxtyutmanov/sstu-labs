@@ -2,8 +2,7 @@
 
 #include "Global.h"
 #include "Token.h"
-#include "LexerSettings.h"
-#include "LexerInputBuffer.h"
+#include "IInputBuffer.h"
 #include "LexicalError.h"
 #include "FaState.h"
 #include "FaTransition.h"
@@ -15,27 +14,33 @@ using std::vector;
 using std::wistream;
 using boost::shared_ptr;
 
-typedef boost::tuple<vector<Token *>, vector<LexicalError *>> LexerOutput;
+//TODO: this is bad
+typedef boost::tuple<vector<shared_ptr<JustCompiler::LexicalAnalyzer::Token>>, vector<shared_ptr<JustCompiler::LexicalAnalyzer::LexicalError>>> LexerOutput;
 
-class Lexer {
-public:
-    Lexer(const LexerSettings& settings, shared_ptr<FaState> initState, input_stream_type& input);
-    void AddTransition(const FaTransition& transition);
+namespace JustCompiler {
+namespace LexicalAnalyzer {
 
-    LexerOutput Tokenize();
-private:
-    LexerSettings settings;
-    LexerInputBuffer buffer;
-    string_type currentLexeme;
-    vector<FaTransition> faTransitions;
-    shared_ptr<FaState> currentState;
+    class Lexer {
+    public:
+        Lexer(shared_ptr<FaState> initState);
+        void AddTransition(const FaTransition& transition);
+        void SetInput(auto_ptr<IInputBuffer> pBuffer);
 
-    vector<Token *> tokens;
-    vector<LexicalError *> errors;
+        LexerOutput Tokenize();
+    private:
+        auto_ptr<IInputBuffer> pBuffer;
+        string_type currentLexeme;
+        vector<FaTransition> faTransitions;
+        shared_ptr<FaState> initState;
+        shared_ptr<FaState> currentState;
 
-    //private methods
+        vector<shared_ptr<Token>> tokens;
+        vector<shared_ptr<LexicalError>> errors;
+
+        //private methods
     
-    void MoveFiniteAutomata(char_type inputChar);
+        void MoveFiniteAutomata(char_type inputChar);
+    };
 
-    void ReportUnrecognizedLexeme(const int charNumber, const int lineNumber, const int errorCode);
-};
+}
+}
