@@ -57,6 +57,15 @@
     <ClInclude Include="LexerInputBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ITokenStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialTokenTag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lexer.cpp">
@@ -72,6 +81,9 @@
       <Filter>Source Files\FiniteAutomaton</Filter>
     </ClCompile>
     <ClCompile Include="LexerInputBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TokenStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

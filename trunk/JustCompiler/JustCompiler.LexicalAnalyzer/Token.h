@@ -1,7 +1,12 @@
 #pragma once
 
+#include <boost/shared_ptr.hpp>
+
 namespace JustCompiler {
 namespace LexicalAnalyzer {
+
+    class Token;
+    typedef boost::shared_ptr<Token> PToken;
 
     class Token {
     public:

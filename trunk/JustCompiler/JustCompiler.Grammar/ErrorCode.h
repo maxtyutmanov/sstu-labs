@@ -12,7 +12,9 @@ namespace LexicalAnalyzer {
             IdWithWrongCharset = 5,
             UnterminatedStringLiteral = 6,
             UnterminatedComment = 7,
-            IntConstantStartingWithZero = 8
+            IntConstantStartingWithZero = 8,
+            TooLargeRealConstant = 9,
+            RealConstantWrongFormat = 10
         };
     };
 

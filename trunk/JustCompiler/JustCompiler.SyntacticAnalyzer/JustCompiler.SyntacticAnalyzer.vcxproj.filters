@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Grammar">
+      <UniqueIdentifier>{d136c279-81c3-4362-acc9-0f42e6fe8b11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ParserTable">
+      <UniqueIdentifier>{03408018-e517-45e7-a381-c5f2bca3ad39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ParseTree">
+      <UniqueIdentifier>{c1958f9b-f063-420c-b537-afd2642c227f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Errors">
+      <UniqueIdentifier>{5c326eba-8076-40f0-bf17-73960e41d821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Grammar">
+      <UniqueIdentifier>{2400ee87-d16e-4ca4-adb6-de5aedb5c466}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Errors">
+      <UniqueIdentifier>{309dc7f0-273e-4e1d-8731-1cba9de61d51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ParseTree">
+      <UniqueIdentifier>{1e14983d-134a-4dce-90f0-f11cc3823047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ParserTable">
+      <UniqueIdentifier>{f2a0cd60-5a0d-42c6-8cd2-c32a261ba62d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FirstAndFollow">
+      <UniqueIdentifier>{35ee14fb-248e-4a61-ae6d-47d48bf0e007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FirstAndFollow">
+      <UniqueIdentifier>{eafdb66e-47a0-4fdf-8c10-edecf655a1e6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SyntaxDirectedParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Grammar.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolString.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="NonTerminal.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="Production.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolType.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="Terminal.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="ParserTable.h">
+      <Filter>Header Files\ParserTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Symbol.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="ParserTableKey.h">
+      <Filter>Header Files\ParserTable</Filter>
+    </ClInclude>
+    <ClInclude Include="ParserTableEntry.h">
+      <Filter>Header Files\ParserTable</Filter>
+    </ClInclude>
+    <ClInclude Include="ParseTree.h">
+      <Filter>Header Files\ParseTree</Filter>
+    </ClInclude>
+    <ClInclude Include="ParseTreeNode.h">
+      <Filter>Header Files\ParseTree</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SyntaxError.h">
+      <Filter>Header Files\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenExpected.h">
+      <Filter>Header Files\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorClass.h">
+      <Filter>Header Files\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="GrammarSpecificError.h">
+      <Filter>Header Files\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="UnexpectedToken.h">
+      <Filter>Header Files\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolFunction.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstFunction.h">
+      <Filter>Header Files\FirstAndFollow</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowFunction.h">
+      <Filter>Header Files\FirstAndFollow</Filter>
+    </ClInclude>
+    <ClInclude Include="TerminalSet.h">
+      <Filter>Header Files\Grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstNFollowFactory.h">
+      <Filter>Header Files\FirstAndFollow</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SyntaxDirectedParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Grammar.cpp">
+      <Filter>Source Files\Grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="NonTerminal.cpp">
+      <Filter>Source Files\Grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="Production.cpp">
+      <Filter>Source Files\Grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="Terminal.cpp">
+      <Filter>Source Files\Grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="GrammarSpecificError.cpp">
+      <Filter>Source Files\Errors</Filter>
+    </ClCompile>
+    <ClCompile Include="SyntaxError.cpp">
+      <Filter>Source Files\Errors</Filter>
+    </ClCompile>
+    <ClCompile Include="ParseTree.cpp">
+      <Filter>Source Files\ParseTree</Filter>
+    </ClCompile>
+    <ClCompile Include="ParseTreeNode.cpp">
+      <Filter>Source Files\ParseTree</Filter>
+    </ClCompile>
+    <ClCompile Include="ParserTable.cpp">
+      <Filter>Source Files\ParserTable</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolString.cpp">
+      <Filter>Source Files\Grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstFunction.cpp">
+      <Filter>Source Files\FirstAndFollow</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowFunction.cpp">
+      <Filter>Source Files\FirstAndFollow</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstNFollowFactory.cpp">
+      <Filter>Source Files\FirstAndFollow</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

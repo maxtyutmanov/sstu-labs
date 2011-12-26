@@ -19,6 +19,10 @@ namespace LexicalAnalyzer {
             return iswdigit(ch);
         }
 
+        static bool IsPeriod(wchar_t ch) {
+            return ch == L'.';
+        }
+
         static bool IsSpace(wchar_t ch) {
             return ch == L'';
         }

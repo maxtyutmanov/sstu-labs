@@ -4,11 +4,13 @@
 #include "IntConstant.h"
 #include "StringLiteral.h"
 #include "Identifier.h"
+#include <RealConstant.h>
 #include <Lexer.h>
 #include <sstream>
 #include <string>
 #include <MyGrammar.h>
 #include <LexerInputBuffer.h>
+#include <ErrorCode.h>
 using std::wistringstream;
 using std::wstring;
 
@@ -106,6 +108,39 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeIntConstants_InvalidIdentifier ) {
     BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Unrecognized);
 }
 
+BOOST_AUTO_TEST_CASE( Lexer_TokenizeRealConstants ) {
+    wstring source = L"    \t   99  \t\t     9.99";
+    Tokenize(source);
+
+    vector<shared_ptr<Token>> tokens = lexerOutput.get<0>();
+    vector<shared_ptr<LexicalError>> errors = lexerOutput.get<1>();
+
+    BOOST_ASSERT(errors.size() == 0);
+
+    BOOST_ASSERT(tokens.size() == 2);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::IntConstant);
+    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::RealConstant);
+
+    shared_ptr<RealConstant> realConst = boost::dynamic_pointer_cast<RealConstant, Token>(tokens[1]);
+    BOOST_ASSERT(realConst.get() != NULL);
+    BOOST_CHECK(realConst->GetValue() == 9.99);
+}
+
+BOOST_AUTO_TEST_CASE( Lexer_TokenizeRealConstants_TwoPeriods ) {
+    wstring source = L"    \t   99  \t\t     9.9.9";
+    Tokenize(source);
+
+    vector<shared_ptr<Token>> tokens = lexerOutput.get<0>();
+    vector<shared_ptr<LexicalError>> errors = lexerOutput.get<1>();
+
+    BOOST_ASSERT(errors.size() == 1);
+    BOOST_CHECK(errors[0]->GetErrorCode() == ErrorCode::RealConstantWrongFormat);
+
+    BOOST_ASSERT(tokens.size() == 2);
+    BOOST_CHECK(tokens[0]->GetTag() == TokenTag::IntConstant);
+    BOOST_CHECK(tokens[1]->GetTag() == TokenTag::Unrecognized);
+}
+
 BOOST_AUTO_TEST_CASE( Lexer_TokenizeStringLiterals ) {
     wstring source = L"    \"hello world\"    ";
     Tokenize(source);
@@ -129,7 +164,10 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeStringLiterals_Unterminated_Eof ) {
     vector<shared_ptr<Token>> tokens = lexerOutput.get<0>();
     vector<shared_ptr<LexicalError>> errors = lexerOutput.get<1>();
 
-    BOOST_CHECK(errors.size() == 1);
+    BOOST_ASSERT(errors.size() == 1);
+    BOOST_CHECK(errors[0]->GetErrorCode() == ErrorCode::UnterminatedStringLiteral);
+    BOOST_CHECK(errors[0]->GetLineNumber() == 1);
+
     BOOST_ASSERT(tokens.size() == 1);
     BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Unrecognized);
 }
@@ -141,7 +179,9 @@ BOOST_AUTO_TEST_CASE( Lexer_TokenizeStringLiterals_Unterminated_Eoln ) {
     vector<shared_ptr<Token>> tokens = lexerOutput.get<0>();
     vector<shared_ptr<LexicalError>> errors = lexerOutput.get<1>();
 
-    BOOST_CHECK(errors.size() == 1);
+    BOOST_ASSERT(errors.size() == 1);
+    BOOST_CHECK(errors[0]->GetErrorCode() == ErrorCode::UnterminatedStringLiteral);
+    BOOST_CHECK(errors[0]->GetLineNumber() == 1);
     BOOST_ASSERT(tokens.size() == 1);
     BOOST_CHECK(tokens[0]->GetTag() == TokenTag::Unrecognized);
 }

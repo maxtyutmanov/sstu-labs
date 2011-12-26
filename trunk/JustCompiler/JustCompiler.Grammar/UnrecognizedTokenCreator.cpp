@@ -12,7 +12,7 @@ namespace TokenCreators {
         Token** token, 
         LexicalError** error) {
 
-        *token = new Token(TokenTag::Unrecognized, lineNum, charNum);
+        *token = new Token(TokenTag::Unrecognized, lineNum, charNum - lexeme.length());
         return true;
     }
 

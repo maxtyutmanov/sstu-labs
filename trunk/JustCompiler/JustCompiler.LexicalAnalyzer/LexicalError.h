@@ -1,10 +1,14 @@
 #pragma once
 
 #include <string>
+#include <boost/shared_ptr.hpp>
 using std::wstring;
 
 namespace JustCompiler {
 namespace LexicalAnalyzer {
+
+    class LexicalError;
+    typedef boost::shared_ptr<LexicalError> PLexicalError;
 
     class LexicalError {
     public:

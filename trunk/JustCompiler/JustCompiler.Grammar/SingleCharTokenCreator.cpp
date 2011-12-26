@@ -18,7 +18,6 @@ namespace TokenCreators {
         Token** token, 
         LexicalError** error) {
 
-        //TODO: very bad
         assert(lexeme.length() == 1);
 
         char_type singleChar = lexeme[0];
@@ -30,7 +29,7 @@ namespace TokenCreators {
             return true;
         }
         else {
-            *error = new LexicalError(lineNum, charNum, ErrorCode::UnknownLexeme);
+            *error = new LexicalError(lineNum, charNum - 1, ErrorCode::UnknownLexeme);
             return false;
         }
     }
