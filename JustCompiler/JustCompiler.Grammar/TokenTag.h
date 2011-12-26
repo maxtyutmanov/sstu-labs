@@ -8,21 +8,20 @@ namespace LexicalAnalyzer {
             //keywords
 
             Program,
-            While,
+            Var,
             For,
-            Array,
             Begin,
             End,
             Type_Int,
-            Type_Float,
-            Type_String,
-
-            //standard functions
-
-            Sqrt,
-            Log,
-            Ln,
-            Nearby,
+            Type_Real,
+            Read,
+            Write,
+            Do,
+            To,
+            If,
+            Then,
+            Else,
+            Goto,
 
             //One character tokens
             Plus,
@@ -49,7 +48,9 @@ namespace LexicalAnalyzer {
 
             Identifier,
             IntConstant,
+            RealConstant,
             StringLiteral,
+            StandardFunction,
             Unrecognized = -1
         };
     };

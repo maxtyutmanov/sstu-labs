@@ -1,9 +1,11 @@
 #include "WordTokenCreator.h"
 #include "ErrorCode.h"
 #include "Identifier.h"
+#include "StandardFunction.h"
 #include "TokenTag.h"
 
 using JustCompiler::LexicalAnalyzer::Tokens::Identifier;
+using JustCompiler::LexicalAnalyzer::Tokens::StandardFunction;
 
 namespace JustCompiler {
 namespace LexicalAnalyzer {
@@ -28,11 +30,11 @@ namespace TokenCreators {
         TokenTag::Enum tag;
     
         if (pKeywordsMapping->TryGetTokenTag(lexeme, tag)) {
-            *token = new Token(tag, lineNum, charNum);
+            *token = new Token(tag, lineNum, charNum - lexeme.length());
             return true;
         }
         else if (pStandardFuncMapping->TryGetTokenTag(lexeme, tag)) {
-            *token = new Token(tag, lineNum, charNum);
+            *token = new StandardFunction(lexeme, lineNum, charNum - lexeme.length());
             return true;
         }
         else {
@@ -48,7 +50,7 @@ namespace TokenCreators {
                 return false;
             }
             else {
-                *token = new Identifier(lexeme, lineNum, charNum);
+                *token = new Identifier(lexeme, lineNum, charNum - lexeme.length());
                 return true;
             }
         }

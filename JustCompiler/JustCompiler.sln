@@ -14,6 +14,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.LexicalAnalyze
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Utility", "JustCompiler.Utility\JustCompiler.Utility.vcxproj", "{85AADCA2-74D3-432C-846D-26EDA17CCB45}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.SyntacticAnalyzer", "JustCompiler.SyntacticAnalyzer\JustCompiler.SyntacticAnalyzer.vcxproj", "{945614F6-4BE8-4FC0-A9AF-05B51272FFB7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.ParserGrammar", "JustCompiler.ParserGrammar\JustCompiler.ParserGrammar.vcxproj", "{674852E1-2A0F-45A9-A796-C394D1A8AB9B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.SemanticAnalyzer", "JustCompiler.SemanticAnalyzer\JustCompiler.SemanticAnalyzer.vcxproj", "{B50F46D9-050D-45A8-AD9D-63CC3A886471}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -40,6 +46,18 @@ Global
 		{85AADCA2-74D3-432C-846D-26EDA17CCB45}.Debug|Win32.Build.0 = Debug|Win32
 		{85AADCA2-74D3-432C-846D-26EDA17CCB45}.Release|Win32.ActiveCfg = Release|Win32
 		{85AADCA2-74D3-432C-846D-26EDA17CCB45}.Release|Win32.Build.0 = Release|Win32
+		{945614F6-4BE8-4FC0-A9AF-05B51272FFB7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{945614F6-4BE8-4FC0-A9AF-05B51272FFB7}.Debug|Win32.Build.0 = Debug|Win32
+		{945614F6-4BE8-4FC0-A9AF-05B51272FFB7}.Release|Win32.ActiveCfg = Release|Win32
+		{945614F6-4BE8-4FC0-A9AF-05B51272FFB7}.Release|Win32.Build.0 = Release|Win32
+		{674852E1-2A0F-45A9-A796-C394D1A8AB9B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{674852E1-2A0F-45A9-A796-C394D1A8AB9B}.Debug|Win32.Build.0 = Debug|Win32
+		{674852E1-2A0F-45A9-A796-C394D1A8AB9B}.Release|Win32.ActiveCfg = Release|Win32
+		{674852E1-2A0F-45A9-A796-C394D1A8AB9B}.Release|Win32.Build.0 = Release|Win32
+		{B50F46D9-050D-45A8-AD9D-63CC3A886471}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B50F46D9-050D-45A8-AD9D-63CC3A886471}.Debug|Win32.Build.0 = Debug|Win32
+		{B50F46D9-050D-45A8-AD9D-63CC3A886471}.Release|Win32.ActiveCfg = Release|Win32
+		{B50F46D9-050D-45A8-AD9D-63CC3A886471}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

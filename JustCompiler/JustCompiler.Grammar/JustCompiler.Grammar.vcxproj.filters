@@ -69,6 +69,21 @@
     <ClInclude Include="LexemeToTagMapping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RealConstant.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="RealConstantTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="Tokens.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenCreators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardFunction.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyGrammar.cpp">
@@ -100,6 +115,15 @@
     </ClCompile>
     <ClCompile Include="LexemeToTagMapping.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RealConstant.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="RealConstantTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="StandardFunction.cpp">
+      <Filter>Source Files\Tokens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

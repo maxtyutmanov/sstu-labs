@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)JustCompiler.LexicalAnalyzer;$(SolutionDir)JustCompiler.Grammar;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)JustCompiler.LexicalAnalyzer;$(SolutionDir)JustCompiler.Grammar;$(SolutionDir)\JustCompiler.SyntacticAnalyzer;$(SolutionDir)\JustCompiler.ParserGrammar;</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;H:\boost_1_47_0\Lib\$(Configuration);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,8 +76,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FirstAndFollowTest.cpp" />
     <ClCompile Include="LexerInputBufferTest.cpp" />
     <ClCompile Include="LexicalAnalyzerTest.cpp" />
+    <ClCompile Include="MyGrammarIntegrationTest.cpp" />
+    <ClCompile Include="ParserTest.cpp" />
+    <ClCompile Include="TestGrammarFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JustCompiler.Grammar\JustCompiler.Grammar.vcxproj">
@@ -86,6 +90,15 @@
     <ProjectReference Include="..\JustCompiler.LexicalAnalyzer\JustCompiler.LexicalAnalyzer.vcxproj">
       <Project>{0894b46e-d07c-458b-bbc2-a0c928f94d1d}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\JustCompiler.ParserGrammar\JustCompiler.ParserGrammar.vcxproj">
+      <Project>{674852e1-2a0f-45a9-a796-c394d1a8ab9b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\JustCompiler.SyntacticAnalyzer\JustCompiler.SyntacticAnalyzer.vcxproj">
+      <Project>{945614f6-4be8-4fc0-a9af-05b51272ffb7}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestGrammarFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

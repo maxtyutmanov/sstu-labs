@@ -83,14 +83,17 @@
     <ClInclude Include="CharValidationRule.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="IInputBuffer.h" />
+    <ClInclude Include="ITokenStream.h" />
     <ClInclude Include="LexerInputBuffer.h" />
     <ClInclude Include="ReadAction.h" />
     <ClInclude Include="FaState.h" />
     <ClInclude Include="FaTransition.h" />
     <ClInclude Include="Lexer.h" />
     <ClInclude Include="LexicalError.h" />
+    <ClInclude Include="SpecialTokenTag.h" />
     <ClInclude Include="Token.h" />
     <ClInclude Include="TokenCreator.h" />
+    <ClInclude Include="TokenStream.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FaState.cpp" />
@@ -98,6 +101,7 @@
     <ClCompile Include="LexerInputBuffer.cpp" />
     <ClCompile Include="LexicalError.cpp" />
     <ClCompile Include="Token.cpp" />
+    <ClCompile Include="TokenStream.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

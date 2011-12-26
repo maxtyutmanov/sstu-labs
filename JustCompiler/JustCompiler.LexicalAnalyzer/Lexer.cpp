@@ -2,6 +2,7 @@
 #include <boost/tuple/tuple.hpp>
 #include <assert.h>
 #include <boost/lexical_cast.hpp>
+#include "SpecialTokenTag.h"
 using boost::lexical_cast;
 using boost::bad_lexical_cast;
 using boost::shared_ptr;
@@ -53,13 +54,16 @@ namespace LexicalAnalyzer {
             }
         }
 
-        //TODO: very bad. Even to throw an exception would have been better thing to do
         assert(selectedTransition != NULL);
 
         switch (selectedTransition->GetReadAction()) {
         case ReadAction::KeepInBuffer_Ignore:
-            //TODO: danger! Should think about infinite cycle!
+            //TODO: Should think about infinite cycle
             pBuffer->Unget();
+            break;
+        case ReadAction::KeepInBuffer_ClearLexeme:
+            pBuffer->Unget();
+            currentLexeme = LITERAL("");
             break;
         case ReadAction::RemoveFromBuffer_AddToLexeme:
             currentLexeme.push_back(currentChar);
@@ -71,7 +75,6 @@ namespace LexicalAnalyzer {
             currentLexeme = LITERAL("");
             break;
         default:
-            //TODO: !!!
             assert(false);
         }
 
@@ -81,11 +84,11 @@ namespace LexicalAnalyzer {
             //TODO: maybe it's reasonable to create a LexicalErrorCreator class for the purpose of generating lexer errors
             errors.push_back(shared_ptr<LexicalError>(new LexicalError(
                 pBuffer->GetLineNumber(), 
-                pBuffer->GetCharacterNumber(), 
+                pBuffer->GetCharacterNumber() - currentLexeme.length(), 
                 selectedTransition->ErrorCode())));
 
             tokens.push_back(shared_ptr<Token>(new Token(
-                -1, 
+                SpecialTokenTag::Unrecognized, 
                 pBuffer->GetLineNumber(), 
                 pBuffer->GetCharacterNumber())));
         }

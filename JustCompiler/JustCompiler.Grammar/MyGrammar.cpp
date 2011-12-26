@@ -6,6 +6,7 @@
 #include "StringLiteralTokenCreator.h"
 #include "SingleCharTokenCreator.h"
 #include "WordTokenCreator.h"
+#include "RealConstantTokenCreator.h"
 #include "TokenTag.h"
 
 using boost::shared_ptr;
@@ -18,13 +19,19 @@ namespace LexicalAnalyzer {
         boost::shared_ptr<LexemeToTagMapping> kwMapping(new LexemeToTagMapping());
 
         kwMapping->AddPair(L"program", TokenTag::Program);
-        kwMapping->AddPair(L"while", TokenTag::While);
+        kwMapping->AddPair(L"var", TokenTag::Var);
         kwMapping->AddPair(L"for", TokenTag::For);
-        kwMapping->AddPair(L"array", TokenTag::Array);
         kwMapping->AddPair(L"begin", TokenTag::Begin);
         kwMapping->AddPair(L"end", TokenTag::End);
-        kwMapping->AddPair(L"int", TokenTag::Type_Int);
-        kwMapping->AddPair(L"string", TokenTag::Type_String);
+        kwMapping->AddPair(L"integer", TokenTag::Type_Int);
+        kwMapping->AddPair(L"real", TokenTag::Type_Real);
+        kwMapping->AddPair(L"read", TokenTag::Read);
+        kwMapping->AddPair(L"write", TokenTag::Write);
+        kwMapping->AddPair(L"do", TokenTag::Do);
+        kwMapping->AddPair(L"to", TokenTag::To);
+        kwMapping->AddPair(L"if", TokenTag::If);
+        kwMapping->AddPair(L"then", TokenTag::Then);
+        kwMapping->AddPair(L"else", TokenTag::Else);
 
         return kwMapping;
     }
@@ -32,10 +39,11 @@ namespace LexicalAnalyzer {
     boost::shared_ptr<LexemeToTagMapping> MyGrammar::GetStandardFuncMapping() {
         boost::shared_ptr<LexemeToTagMapping> sfMapping(new LexemeToTagMapping());
 
-        sfMapping->AddPair(L"sqrt", TokenTag::Sqrt);
-        sfMapping->AddPair(L"log", TokenTag::Log);
-        sfMapping->AddPair(L"ln", TokenTag::Ln);
-        sfMapping->AddPair(L"nearby", TokenTag::Nearby);
+        //TODO: this is the spike!
+        sfMapping->AddPair(L"sqrt", TokenTag::StandardFunction);
+        sfMapping->AddPair(L"log", TokenTag::StandardFunction);
+        sfMapping->AddPair(L"ln", TokenTag::StandardFunction);
+        sfMapping->AddPair(L"nearby", TokenTag::StandardFunction);
 
         return sfMapping;
     }
@@ -71,6 +79,7 @@ namespace LexicalAnalyzer {
 
     auto_ptr<Lexer> MyGrammar::CreateLexer() {
         shared_ptr<IntConstantTokenCreator> intConstantTokenCreator(new IntConstantTokenCreator());
+        shared_ptr<RealConstantTokenCreator> realConstantTokenCreator(new RealConstantTokenCreator());
         shared_ptr<UnrecognizedTokenCreator> unrecognizedTokenCreator(new UnrecognizedTokenCreator());
         shared_ptr<StringLiteralTokenCreator> stringLiteralTokenCreator(new StringLiteralTokenCreator());
         shared_ptr<SingleCharTokenCreator> singleCharTokenCreator(new SingleCharTokenCreator(GetSingleCharTokensMapping()));
@@ -83,8 +92,10 @@ namespace LexicalAnalyzer {
         //states
 
         shared_ptr<FaState> init(new FaState(L"Initial"));
-        shared_ptr<FaState> insideNumber(new FaState(L"Inside integer constant"));
+        shared_ptr<FaState> insideNumber(new FaState(L"Inside integer/real constant"));
+        shared_ptr<FaState> afterPeriodInReal(new FaState(L"Read a period in real constant"));
         shared_ptr<FaState> idStartingWithDigit(new FaState(L"Wrong identifier (starts with digit)"));
+        shared_ptr<FaState> multiplePeriodsInRealConstant(new FaState(L"Multiple periods in real constant"));
         shared_ptr<FaState> insideWord(new FaState(L"Inside word (keyword, standard function or identifier)"));
         shared_ptr<FaState> insideStringLiteral(new FaState(L"Inside a string literal"));
         shared_ptr<FaState> justReadSlash(new FaState(L"Just read the slash character"));
@@ -162,10 +173,42 @@ namespace LexicalAnalyzer {
             ErrorCode::IdStartingWithDigit));
 
         pLexer->AddTransition(FaTransition(
+            insideNumber, afterPeriodInReal,
+            &CharacterValidators::IsPeriod,
+            ReadAction::RemoveFromBuffer_AddToLexeme));
+
+        pLexer->AddTransition(FaTransition(
             insideNumber, init, 
             &CharacterValidators::Any, 
             ReadAction::KeepInBuffer_Ignore, 
             intConstantTokenCreator));
+
+        #pragma endregion
+
+        #pragma region transitions from "after period in real"
+
+        pLexer->AddTransition(FaTransition(
+            afterPeriodInReal, afterPeriodInReal,
+            &CharacterValidators::IsDigit,
+            ReadAction::RemoveFromBuffer_AddToLexeme));
+
+        pLexer->AddTransition(FaTransition(
+            afterPeriodInReal, idStartingWithDigit,
+            &CharacterValidators::IsAlpha,
+            ReadAction::RemoveFromBuffer_ClearLexeme,
+            ErrorCode::IdStartingWithDigit));
+
+        pLexer->AddTransition(FaTransition(
+            afterPeriodInReal, multiplePeriodsInRealConstant,
+            &CharacterValidators::IsPeriod,
+            ReadAction::RemoveFromBuffer_ClearLexeme,
+            ErrorCode::RealConstantWrongFormat));
+
+        pLexer->AddTransition(FaTransition(
+            afterPeriodInReal, init,
+            &CharacterValidators::Any,
+            ReadAction::KeepInBuffer_Ignore,
+            realConstantTokenCreator));
 
         #pragma endregion
 
@@ -183,12 +226,31 @@ namespace LexicalAnalyzer {
 
         #pragma endregion
 
+        #pragma region transitions from "multiple periods..."
+
+        pLexer->AddTransition(FaTransition(
+            multiplePeriodsInRealConstant, multiplePeriodsInRealConstant, 
+            &CharacterValidators::IsAlphaOrDigit, 
+            ReadAction::RemoveFromBuffer_Ignore));
+
+        pLexer->AddTransition(FaTransition(
+            multiplePeriodsInRealConstant, multiplePeriodsInRealConstant, 
+            &CharacterValidators::IsPeriod, 
+            ReadAction::RemoveFromBuffer_Ignore));
+
+        pLexer->AddTransition(FaTransition(
+            multiplePeriodsInRealConstant, init, 
+            &CharacterValidators::Any, 
+            ReadAction::KeepInBuffer_Ignore));
+
+        #pragma endregion
+
         #pragma region transitions from "inside string literal"
 
         pLexer->AddTransition(FaTransition(
             insideStringLiteral, init, 
             &CharacterValidators::IsNewlineOrEof, 
-            ReadAction::RemoveFromBuffer_ClearLexeme, 
+            ReadAction::KeepInBuffer_ClearLexeme, 
             ErrorCode::UnterminatedStringLiteral));
 
         pLexer->AddTransition(FaTransition(

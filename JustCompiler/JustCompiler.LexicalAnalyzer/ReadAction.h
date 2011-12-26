@@ -10,6 +10,7 @@ namespace LexicalAnalyzer {
             RemoveFromBuffer_Ignore,
             RemoveFromBuffer_AddToLexeme,
             KeepInBuffer_Ignore,
+            KeepInBuffer_ClearLexeme,
             RemoveFromBuffer_ClearLexeme    //HACK: this is hack, I have to admit :-(
         };
     };

@@ -82,9 +82,14 @@
     <ClInclude Include="IntConstantTokenCreator.h" />
     <ClInclude Include="LexemeToTagMapping.h" />
     <ClInclude Include="MyGrammar.h" />
+    <ClInclude Include="RealConstant.h" />
+    <ClInclude Include="RealConstantTokenCreator.h" />
     <ClInclude Include="SingleCharTokenCreator.h" />
+    <ClInclude Include="StandardFunction.h" />
     <ClInclude Include="StringLiteral.h" />
     <ClInclude Include="StringLiteralTokenCreator.h" />
+    <ClInclude Include="TokenCreators.h" />
+    <ClInclude Include="Tokens.h" />
     <ClInclude Include="TokenTag.h" />
     <ClInclude Include="UnrecognizedTokenCreator.h" />
     <ClInclude Include="WordTokenCreator.h" />
@@ -95,7 +100,10 @@
     <ClCompile Include="IntConstantTokenCreator.cpp" />
     <ClCompile Include="LexemeToTagMapping.cpp" />
     <ClCompile Include="MyGrammar.cpp" />
+    <ClCompile Include="RealConstant.cpp" />
+    <ClCompile Include="RealConstantTokenCreator.cpp" />
     <ClCompile Include="SingleCharTokenCreator.cpp" />
+    <ClCompile Include="StandardFunction.cpp" />
     <ClCompile Include="StringLiteral.cpp" />
     <ClCompile Include="StringLiteralTokenCreator.cpp" />
     <ClCompile Include="UnrecognizedTokenCreator.cpp" />

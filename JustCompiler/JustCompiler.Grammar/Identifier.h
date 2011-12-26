@@ -2,10 +2,14 @@
 
 #include "Global.h"
 #include <Token.h>
+#include <boost/shared_ptr.hpp>
 
 namespace JustCompiler {
 namespace LexicalAnalyzer {
 namespace Tokens {
+
+    class Identifier;
+    typedef boost::shared_ptr<Identifier> PIdentifier;
 
     class Identifier : public Token {
     public:

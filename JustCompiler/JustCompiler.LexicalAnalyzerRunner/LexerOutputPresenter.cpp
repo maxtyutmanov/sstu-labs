@@ -23,7 +23,7 @@ TokenTablesContainer LexerOutputPresenter::WriteDescriptorText(vector<Token *> t
             case TokenTag::Begin:
             case TokenTag::End:
             case TokenTag::Type_Int:
-            case TokenTag::Type_Float: 
+            case TokenTag::Type_Real: 
             case TokenTag::Type_String: {
                 int tokenId = keywords.Search(tokens[i]);
 
