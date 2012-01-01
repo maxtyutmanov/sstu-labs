@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <webServer>
-    <webApplication physicalPath="C:\Users\Максим\Documents\Visual Studio 2010\WebSites\Lab2\" port="7777" />
-    <webApplication physicalPath="H:\Всякое программирование\Active Directory\" port="5555" />
-  </webServer>
-</configuration>
