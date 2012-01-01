@@ -10,15 +10,18 @@ namespace SemanticAnalyzer {
         tableInternal[id->GetName()] = id;
     }
 
-    bool SymbolTable::HasEntry(const std::string& name) const {
+    bool SymbolTable::HasEntry(const std::wstring& name) const {
         return tableInternal.find(name) != tableInternal.cend();
     }
 
-    PIdentifier SymbolTable::GetEntry(const std::string& name) const {
-        map<string, PIdentifier>::const_iterator foundIt = tableInternal.find(name);
+    PIdentifier SymbolTable::GetEntry(const std::wstring& name) const {
+        map<wstring, PIdentifier>::const_iterator foundIt = tableInternal.find(name);
 
         if (foundIt != tableInternal.cend()) {
             return foundIt->second;
+        }
+        else {
+            return PIdentifier();
         }
     }
 }

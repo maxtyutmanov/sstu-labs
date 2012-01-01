@@ -81,6 +81,9 @@ namespace SyntacticAnalyzer {
             else {
                 //non terminal
                 PNonTerminal topAsNonTerm = boost::dynamic_pointer_cast<NonTerminal, Symbol>(top);
+                NonTerminal* ptr = topAsNonTerm.get();
+                
+                
                 assert(topAsNonTerm.get() != NULL);
 
                 ParserTableEntry controlTableEntry = parserTable.GetEntry(topAsNonTerm->GetTag(), inputToken->GetTag());
@@ -105,7 +108,7 @@ namespace SyntacticAnalyzer {
                     }
 
                     for (int i = childTreeNodes.size() - 1; i >= 0; --i) {
-                        //don't add empty symbol to the stack
+                        //don't add empty symbol to the stack!
                         if (childTreeNodes[i]->GetSymbol()->GetType() == SymbolType::Terminal) {
                             PTerminal terminal = boost::dynamic_pointer_cast<Terminal, Symbol>(childTreeNodes[i]->GetSymbol());
                             assert(terminal.get() != NULL);
@@ -132,7 +135,8 @@ namespace SyntacticAnalyzer {
                         output->errors.push_back(boost::shared_ptr<UnexpectedToken>(new UnexpectedToken(
                             tokenStream->LineNum(),
                             tokenStream->CharNum(),
-                            inputToken)));
+                            inputToken,
+                            parserTable.GetExpectedTerminals(topAsNonTerm->GetTag()))));
                     }
 
                     return output;

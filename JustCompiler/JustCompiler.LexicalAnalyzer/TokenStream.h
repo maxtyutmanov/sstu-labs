@@ -2,9 +2,13 @@
 
 #include "ITokenStream.h"
 #include <vector>
+#include <boost/shared_ptr.hpp>
 
 namespace JustCompiler {
 namespace LexicalAnalyzer {
+
+    class TokenStream;
+    typedef boost::shared_ptr<TokenStream> PTokenStream;
 
     class TokenStream : public ITokenStream {
     public:

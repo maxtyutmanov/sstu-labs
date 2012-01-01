@@ -1,7 +1,8 @@
 #pragma once
 
-#include <LexerSettings.h>
 #include <LexicalError.h>
+#include <SyntaxError.h>
+#include <SemanticError.h>
 #include <vector>
 #include <string>
 
@@ -10,9 +11,10 @@ using std::wstring;
 
 class ErrorsPresenter {
 public:
-    explicit ErrorsPresenter(const LexerSettings& settings);
-    
-    wstring GetErrorMessage(const LexicalError& error);
+    wstring GetErrorMessage(const JustCompiler::LexicalAnalyzer::PLexicalError error);
+    wstring GetErrorMessage(const JustCompiler::SyntacticAnalyzer::PSyntaxError error);
+    wstring GetErrorMessage(const JustCompiler::SemanticAnalyzer::PSemanticError error);
 private:
-    LexerSettings settings;
+    wstring GetMessageAboutExpectedToken(const JustCompiler::SyntacticAnalyzer::PSyntaxError error);
+    wstring GetTokenName(const int tokenTag);
 };

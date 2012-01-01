@@ -21,6 +21,8 @@ namespace ContextFreeGrammar {
         ParserTable(const Grammar& grammar, FirstFunction& first, FollowFunction& follow);
 
         ParserTableEntry GetEntry(int nonTerminalTag, int terminalTag) const;
+
+        std::vector<int> GetExpectedTerminals(int nonTerminalTag) const;
     private:
         void AddEntry(
             int nonTerminalTag,

@@ -1,4 +1,5 @@
 #include "TokenStream.h"
+#include "SpecialTokenTag.h"
 
 using namespace std;
 
@@ -7,6 +8,13 @@ namespace LexicalAnalyzer {
 
     TokenStream::TokenStream(const vector<PToken>& tokens) 
         :tokens(tokens) { 
+
+        if (tokens.size() == 0) {
+            this->tokens.push_back(PToken(new Token(SpecialTokenTag::Eof)));
+        }
+        else if (tokens[tokens.size() - 1]->GetTag() != SpecialTokenTag::Eof) {
+            this->tokens.push_back(PToken(new Token(SpecialTokenTag::Eof,tokens[tokens.size() - 1]->GetLineNum() + 1, 1)));
+        }
 
         currentIndex = 0;
     }

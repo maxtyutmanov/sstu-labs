@@ -18,9 +18,11 @@ namespace ContextFreeGrammar {
 
             //for every terminal from first(right_part_of_production)
             for (firstIt = rightFirst.cbegin(); firstIt != rightFirst.cend(); ++firstIt) {
-                assert(tableInternal.find(ParserTableKey(left->GetTag(), firstIt->get()->GetTokenTag())) == tableInternal.cend());
+                //assert(tableInternal.find(ParserTableKey(left->GetTag(), firstIt->get()->GetTokenTag())) == tableInternal.cend());
 
-                AddEntry(left->GetTag(), firstIt->get()->GetTokenTag(), *prodIt);
+                if (firstIt->get()->GetTokenTag() != SpecialTokenTag::Empty) {
+                    AddEntry(left->GetTag(), firstIt->get()->GetTokenTag(), *prodIt);
+                }
             }
 
             //follow(left_part_of_prod)
@@ -46,6 +48,20 @@ namespace ContextFreeGrammar {
                 }
             }
         }
+    }
+
+    vector<int> ParserTable::GetExpectedTerminals(int nonTerminalTag) const {
+        vector<int> termtags;
+
+        map<ParserTableKey, ParserTableEntry>::const_iterator it;
+
+        for (it = tableInternal.cbegin(); it != tableInternal.cend(); ++it) {
+            if (it->first.GetNonTerminalTag() == nonTerminalTag) {
+                termtags.push_back(it->first.GetTerminalTag());
+            }
+        }
+
+        return termtags;
     }
 
     void ParserTable::AddEntry(

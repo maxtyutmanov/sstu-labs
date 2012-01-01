@@ -31,6 +31,7 @@ namespace ContextFreeGrammar {
         bool operator < (const SymbolString& right) const;
         bool ContainsSymbol(const PSymbol symbol) const;
         int FindSymbol(const PSymbol symbol) const;
+        int FindSymbol(const PSymbol symbol, int startIndex) const;
     private:
         int Compare(const SymbolString& right) const;
     };

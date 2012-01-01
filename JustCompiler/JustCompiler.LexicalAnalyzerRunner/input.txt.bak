@@ -5,7 +5,7 @@ var
 begin
 	read(i);
 
-	if r = 0 then
+	if r = 0
 		write(i)
 	else
 	begin

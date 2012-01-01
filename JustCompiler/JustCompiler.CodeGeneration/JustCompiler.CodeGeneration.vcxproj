@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B50F46D9-050D-45A8-AD9D-63CC3A886471}</ProjectGuid>
+    <ProjectGuid>{B7D0E951-9298-4321-89B3-E92F287C23A0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>JustCompilerSemanticAnalyzer</RootNamespace>
+    <RootNamespace>JustCompilerCodeGeneration</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -38,7 +38,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustCompiler.Grammar;$(SolutionDir)\JustCompiler.LexicalAnalyzer;$(SolutionDir)\JustCompiler.ParserGrammar;$(SolutionDir)\JustCompiler.SyntacticAnalyzer;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;H:\boost_1_47_0;$(SolutionDir)\JustCompiler.Grammar;$(SolutionDir)\JustCompiler.LexicalAnalyzer;$(SolutionDir)\JustCompiler.ParserGrammar;$(SolutionDir)\JustCompiler.SemanticAnalyzer;$(SolutionDir)\JustCompiler.SyntacticAnalyzer;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -46,7 +46,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;USE_WIDE_CHARS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -74,18 +74,6 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Redefinition.h" />
-    <ClInclude Include="SemanticChecker.h" />
-    <ClInclude Include="SemanticError.h" />
-    <ClInclude Include="SemanticErrorCode.h" />
-    <ClInclude Include="SymbolTable.h" />
-    <ClInclude Include="UndeclaredIdentifier.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="SemanticChecker.cpp" />
-    <ClCompile Include="SymbolTable.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\JustCompiler.Grammar\JustCompiler.Grammar.vcxproj">
       <Project>{91dd9bb7-c44f-4773-bf5c-04da33a5270e}</Project>
     </ProjectReference>
@@ -95,9 +83,21 @@
     <ProjectReference Include="..\JustCompiler.ParserGrammar\JustCompiler.ParserGrammar.vcxproj">
       <Project>{674852e1-2a0f-45a9-a796-c394d1a8ab9b}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\JustCompiler.SemanticAnalyzer\JustCompiler.SemanticAnalyzer.vcxproj">
+      <Project>{b50f46d9-050d-45a8-ad9d-63cc3a886471}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\JustCompiler.SyntacticAnalyzer\JustCompiler.SyntacticAnalyzer.vcxproj">
       <Project>{945614f6-4be8-4fc0-a9af-05b51272ffb7}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CodeGenerator.h" />
+    <ClInclude Include="OpCode.h" />
+    <ClInclude Include="ParseTreeDirectIterator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CodeGenerator.cpp" />
+    <ClCompile Include="ParseTreeDirectIterator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

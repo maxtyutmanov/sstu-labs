@@ -143,12 +143,12 @@ namespace ContextFreeGrammar {
             SymbolString right = prodIt->Right();
 
             //find the index of B
-            int nonTermIndex = right.FindSymbol(nonTerminal);
+            int nonTermIndex = -1;
 
-            //build b
-            SymbolString followStr;
+            while ((nonTermIndex = right.FindSymbol(nonTerminal, nonTermIndex + 1)) != -1) {
+                //build b
+                SymbolString followStr;
 
-            if (nonTermIndex != -1) {
                 for (size_t i = nonTermIndex + 1; i < right.size(); ++i) {
                     followStr.push_back(right[i]);
                 }

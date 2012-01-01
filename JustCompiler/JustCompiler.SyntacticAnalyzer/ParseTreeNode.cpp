@@ -2,6 +2,7 @@
 
 using namespace JustCompiler::SyntacticAnalyzer::ContextFreeGrammar;
 using namespace JustCompiler::LexicalAnalyzer;
+using namespace std;
 
 namespace JustCompiler {
 namespace SyntacticAnalyzer {
@@ -26,6 +27,37 @@ namespace SyntacticAnalyzer {
 
     void ParseTreeNode::AddChildNode(boost::shared_ptr<ParseTreeNode> childNode) {
         children.push_back(childNode);
+    }
+
+    vector<PParseTreeNode> ParseTreeNode::GetChildren(bool (*pred)(const PParseTreeNode), bool fullyRecursive) {
+        vector<PParseTreeNode> result;
+
+        if (fullyRecursive) {
+            GetChildrenHelper(pred, result);
+        }
+        else {
+            ChildrenConstIterator childIt;
+
+            for (childIt = children.cbegin(); childIt != children.cend(); ++childIt) {
+                if (pred(*childIt)) {
+                    result.push_back(*childIt);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    void ParseTreeNode::GetChildrenHelper(bool (*pred)(const PParseTreeNode), vector<PParseTreeNode>& result) {
+        ChildrenConstIterator childIt;
+
+        for (childIt = children.cbegin(); childIt != children.cend(); ++childIt) {
+            if (pred(*childIt)) {
+                result.push_back(*childIt);
+            }
+
+            childIt->get()->GetChildrenHelper(pred, result);
+        }
     }
 }
 }

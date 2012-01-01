@@ -8,16 +8,24 @@ namespace JustCompiler {
 namespace SyntacticAnalyzer {
 namespace Errors {
 
+    class UnexpectedToken;
+    typedef boost::shared_ptr<UnexpectedToken> PUnexpectedToken;
+
     class UnexpectedToken : public SyntaxError {
     public:
-        UnexpectedToken(int lineNum, int charNum, boost::shared_ptr<JustCompiler::LexicalAnalyzer::Token> token)
-            : SyntaxError(lineNum, charNum, ErrorClass::UnexpectedToken), token(token) {}
+        UnexpectedToken(int lineNum, int charNum, JustCompiler::LexicalAnalyzer::PToken token, const std::vector<int>& expectedTokenTags)
+            : SyntaxError(lineNum, charNum, ErrorClass::UnexpectedToken), token(token), expectedTokenTags(expectedTokenTags) {}
 
-        boost::shared_ptr<JustCompiler::LexicalAnalyzer::Token> GetToken() const {
+        JustCompiler::LexicalAnalyzer::PToken GetToken() const {
             return token;
         }
+
+        std::vector<int> ExpectedTokenTags() const {
+            return expectedTokenTags;
+        }
     private:
-        boost::shared_ptr<JustCompiler::LexicalAnalyzer::Token> token;
+        JustCompiler::LexicalAnalyzer::PToken token;
+        std::vector<int> expectedTokenTags;
     };
 
 }

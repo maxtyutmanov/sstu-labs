@@ -8,6 +8,9 @@ namespace JustCompiler {
 namespace SyntacticAnalyzer {
 namespace Errors {
 
+    class TokenExpected;
+    typedef boost::shared_ptr<TokenExpected> PTokenExpected;
+
     class TokenExpected : public SyntaxError {
     public:
         TokenExpected(int lineNum, int charNum, int expectedTokenTag)
