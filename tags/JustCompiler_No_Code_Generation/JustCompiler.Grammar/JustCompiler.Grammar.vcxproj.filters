@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\TokenCreators">
+      <UniqueIdentifier>{ae0e718e-5b96-498d-a7a3-17e98c081d3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tokens">
+      <UniqueIdentifier>{2a71b87b-8490-4c88-81a0-b8991c295689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tokens">
+      <UniqueIdentifier>{01b210b2-9390-4752-8173-b0ea213b2013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TokenCreators">
+      <UniqueIdentifier>{2512276c-80e1-4277-8a92-b7dea566ab02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CharacterValidators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGrammar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenTag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntConstantTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleCharTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="StringLiteralTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="UnrecognizedTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="Identifier.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="IntConstant.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="StringLiteral.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="WordTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="LexemeToTagMapping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RealConstant.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+    <ClInclude Include="RealConstantTokenCreator.h">
+      <Filter>Header Files\TokenCreators</Filter>
+    </ClInclude>
+    <ClInclude Include="Tokens.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenCreators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardFunction.h">
+      <Filter>Header Files\Tokens</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MyGrammar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Identifier.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="IntConstant.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="StringLiteral.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="IntConstantTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleCharTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="StringLiteralTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="UnrecognizedTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="WordTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="LexemeToTagMapping.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RealConstant.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+    <ClCompile Include="RealConstantTokenCreator.cpp">
+      <Filter>Source Files\TokenCreators</Filter>
+    </ClCompile>
+    <ClCompile Include="StandardFunction.cpp">
+      <Filter>Source Files\Tokens</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+program JustProgram
+var
+	i, k:integer;
+	r, b:real
+begin
+	read(i);
+
+	if r = 0 then
+		write(i)
+	else
+	begin
+		read(i);
+		write(i + i * i)
+	end;
+
+	write(i)
+end
