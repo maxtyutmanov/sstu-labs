@@ -1,6 +1,7 @@
 #pragma once
 
 #include <boost/shared_ptr.hpp>
+#include "SemanticErrorCode.h"
 
 namespace JustCompiler {
 namespace SemanticAnalyzer {
@@ -10,11 +11,11 @@ namespace SemanticAnalyzer {
 
     class SemanticError {
     public:
-        SemanticError(int errorCode, int lineNum, int charNum) 
+        SemanticError(SemanticErrorCode::Enum errorCode, int lineNum, int charNum) 
             : errorCode(errorCode), lineNum(lineNum), charNum(charNum) {
         }
 
-        int ErrorCode() const {
+        virtual int ErrorCode() const {
             return errorCode;
         }
 
@@ -26,7 +27,7 @@ namespace SemanticAnalyzer {
             return charNum;
         }
     private:
-        int errorCode;
+        SemanticErrorCode::Enum errorCode;
         int lineNum;
         int charNum;
     };

@@ -164,4 +164,48 @@ BOOST_AUTO_TEST_CASE( MyGrammar_Valid6 ) {
     BOOST_CHECK(parserOutput->errors.size() == 0);
 }
 
+BOOST_AUTO_TEST_CASE( MyGrammar_Valid7 ) {
+    Tokenize(
+        L"program first\n \
+        var\n \
+            a, b, c, i:integer;\n \
+            d, e, f:real\n \
+        begin\n \
+            read(a, b, c, d, e, f);\n \
+            f := sqrt(a + b * c / d); \n \
+            for i := a to b do \n \
+                begin\n \
+                    write(i)\n \
+                end\n \
+        end");
+
+    BOOST_ASSERT(lexicalErrors.size() == 0);
+    auto_ptr<ParserOutput> parserOutput = parser->Parse(tokenStream);
+
+    BOOST_CHECK(parserOutput->errors.size() == 0);
+}
+
+
+BOOST_AUTO_TEST_CASE( MyGrammar_Valid8 ) {
+    Tokenize(
+        L"program first\n \
+        var\n \
+            a, b, c, i:integer;\n \
+            d, e, f:real\n \
+        begin\n \
+            read(a, b, c, d, e, f);\n \
+            f := sqrt(a + b * c / d); \n \
+            for i := a to b do \n \
+                begin\n \
+                    if i = 3 then write(c); \n \
+                    write(i)\n \
+                end\n \
+        end");
+
+    BOOST_ASSERT(lexicalErrors.size() == 0);
+    auto_ptr<ParserOutput> parserOutput = parser->Parse(tokenStream);
+
+    BOOST_CHECK(parserOutput->errors.size() == 0);
+}
+
 BOOST_AUTO_TEST_SUITE_END()

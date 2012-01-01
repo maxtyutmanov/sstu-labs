@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ParseTreeNode.h"
+#include <vector>
 
 namespace JustCompiler {
 namespace SyntacticAnalyzer {

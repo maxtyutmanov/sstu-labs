@@ -19,14 +19,16 @@ namespace SemanticAnalyzer {
     public:
         SemanticCheckerOutput Check(const SyntacticAnalyzer::ParseTree parseTree);
 
-        
     private:
-        PSymbolTable CreateSymbolTable(const SyntacticAnalyzer::ParseTree parseTree);
+        PSymbolTable CreateSymbolTable(const SyntacticAnalyzer::ParseTree parseTree, SemanticCheckerOutput& output);
 
         void FindUndeclaredIdentifiers(
-            const SyntacticAnalyzer::PParseTreeNode node, 
-            const PSymbolTable symbolTable, 
-            std::vector<PSemanticError>& errors);
+            const SyntacticAnalyzer::ParseTree parseTree,
+            SemanticCheckerOutput& output);
+
+        static bool IsDeclaration(const SyntacticAnalyzer::PParseTreeNode node);
+        static bool IsIdentifier(const SyntacticAnalyzer::PParseTreeNode node);
+        static bool IsStmtList(const SyntacticAnalyzer::PParseTreeNode node);
     };
 
 }

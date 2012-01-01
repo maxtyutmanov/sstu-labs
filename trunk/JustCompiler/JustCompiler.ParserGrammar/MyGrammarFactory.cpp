@@ -43,15 +43,14 @@ namespace ParserGrammar {
         AddProduction("<stmt>", "<if-then-else>", grammar);
         AddProduction("<assign>", "id : = <E>", grammar);
         AddProduction("<read>", "read ( <id-list> )", grammar);
-        AddProduction("<write>", "write ( <E> )", grammar);
+        AddProduction("<write>", "write ( <E-list> )", grammar);
         AddProduction("<for>", "for <index-exp> do <body>", grammar);
         AddProduction("<index-exp>", "id : = <E> to <E>", grammar);
         AddProduction("<body>", "<stmt>", grammar);
         AddProduction("<body>", "begin <stmt-list> end", grammar);
-        AddProduction("<if-then-else>", "<if-then> <else>", grammar);
-        AddProduction("<if-then>", "if <bool-E> then <body>", grammar);
-        AddProduction("<else>", "else <body>", grammar);
+        AddProduction("<if-then-else>", "if <bool-E> then <body> <else>", grammar);
         AddProduction("<else>", "empty", grammar);
+        AddProduction("<else>", "else <body>", grammar);
         AddProduction("<funcall>", "st-func ( <E-list> )", grammar);
 
         //expressions

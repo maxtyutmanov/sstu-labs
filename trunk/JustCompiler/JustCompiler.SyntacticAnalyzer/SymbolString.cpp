@@ -21,9 +21,11 @@ namespace ContextFreeGrammar {
     }
 
     int SymbolString::FindSymbol(const PSymbol symbol) const {
-        vector<PSymbol>::const_iterator it;
+        return FindSymbol(symbol, 0);
+    }
 
-        for (size_t i = 0; i < this->size(); ++i) {
+    int SymbolString::FindSymbol(const PSymbol symbol, int startIndex) const {
+        for (size_t i = startIndex; i < this->size(); ++i) {
             if (*(this->at(i)) == *symbol) {
                 return i;
             }

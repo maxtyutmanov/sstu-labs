@@ -13,38 +13,26 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Errors">
-      <UniqueIdentifier>{086370eb-5cee-465e-abf7-c7682e8d771d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SemanticError.h">
+    <ClInclude Include="CodeGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SemanticChecker.h">
+    <ClInclude Include="OpCode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SymbolTable.h">
+    <ClInclude Include="ParseTreeDirectIterator.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SemanticErrorCode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UndeclaredIdentifier.h">
-      <Filter>Header Files\Errors</Filter>
-    </ClInclude>
-    <ClInclude Include="Redefinition.h">
-      <Filter>Header Files\Errors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SemanticChecker.cpp">
+    <ClCompile Include="ParseTreeDirectIterator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SymbolTable.cpp">
+    <ClCompile Include="CodeGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

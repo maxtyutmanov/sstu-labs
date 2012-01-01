@@ -9,7 +9,7 @@ namespace SyntacticAnalyzer {
     class SyntaxError {
     public:
         SyntaxError(int lineNum, int charNum, ErrorClass::Enum errorClass);
-        ErrorClass::Enum GetErrorClass() const;
+        virtual ErrorClass::Enum GetErrorClass() const;
 
         int GetLineNum() const;
         int GetCharNum() const;

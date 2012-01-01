@@ -6,7 +6,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Tests", "JustC
 		{0894B46E-D07C-458B-BBC2-A0C928F94D1D} = {0894B46E-D07C-458B-BBC2-A0C928F94D1D}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.LexicalAnalyzerRunner", "JustCompiler.LexicalAnalyzerRunner\JustCompiler.LexicalAnalyzerRunner.vcxproj", "{2A695B84-1B0C-4710-821D-EDA2E03B7445}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Facade", "JustCompiler.LexicalAnalyzerRunner\JustCompiler.LexicalAnalyzerRunner.vcxproj", "{2A695B84-1B0C-4710-821D-EDA2E03B7445}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.Grammar", "JustCompiler.Grammar\JustCompiler.Grammar.vcxproj", "{91DD9BB7-C44F-4773-BF5C-04DA33A5270E}"
 EndProject
@@ -19,6 +19,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.ParserGrammar", "JustCompiler.ParserGrammar\JustCompiler.ParserGrammar.vcxproj", "{674852E1-2A0F-45A9-A796-C394D1A8AB9B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.SemanticAnalyzer", "JustCompiler.SemanticAnalyzer\JustCompiler.SemanticAnalyzer.vcxproj", "{B50F46D9-050D-45A8-AD9D-63CC3A886471}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JustCompiler.CodeGeneration", "JustCompiler.CodeGeneration\JustCompiler.CodeGeneration.vcxproj", "{B7D0E951-9298-4321-89B3-E92F287C23A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		{B50F46D9-050D-45A8-AD9D-63CC3A886471}.Debug|Win32.Build.0 = Debug|Win32
 		{B50F46D9-050D-45A8-AD9D-63CC3A886471}.Release|Win32.ActiveCfg = Release|Win32
 		{B50F46D9-050D-45A8-AD9D-63CC3A886471}.Release|Win32.Build.0 = Release|Win32
+		{B7D0E951-9298-4321-89B3-E92F287C23A0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B7D0E951-9298-4321-89B3-E92F287C23A0}.Debug|Win32.Build.0 = Debug|Win32
+		{B7D0E951-9298-4321-89B3-E92F287C23A0}.Release|Win32.ActiveCfg = Release|Win32
+		{B7D0E951-9298-4321-89B3-E92F287C23A0}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

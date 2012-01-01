@@ -39,10 +39,13 @@ namespace SyntacticAnalyzer {
         void SetToken(JustCompiler::LexicalAnalyzer::PToken token) {
             this->token = token;
         }
+
+        std::vector<PParseTreeNode> GetChildren(bool (*pred)(const PParseTreeNode), bool fullyRecursive);
     private:
+        void GetChildrenHelper(bool (*pred)(const PParseTreeNode), std::vector<PParseTreeNode>& result);
+
         JustCompiler::SyntacticAnalyzer::ContextFreeGrammar::PSymbol symbol;
         boost::shared_ptr<JustCompiler::LexicalAnalyzer::Token> token;
-
         ChildrenCollection children;
     };
 }

@@ -14,10 +14,10 @@ namespace SemanticAnalyzer {
     class SymbolTable {
     public:
         void AddEntry(LexicalAnalyzer::Tokens::PIdentifier id);
-        bool HasEntry(const std::string& name) const;
-        LexicalAnalyzer::Tokens::PIdentifier GetEntry(const std::string& name) const;
+        bool HasEntry(const std::wstring& name) const;
+        LexicalAnalyzer::Tokens::PIdentifier GetEntry(const std::wstring& name) const;
     private:
-        std::map<std::string, LexicalAnalyzer::Tokens::PIdentifier> tableInternal;
+        std::map<std::wstring, LexicalAnalyzer::Tokens::PIdentifier> tableInternal;
     };
 
 }
