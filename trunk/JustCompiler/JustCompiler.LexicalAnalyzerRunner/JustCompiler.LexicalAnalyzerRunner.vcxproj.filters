@@ -49,4 +49,9 @@
     <None Include="input.txt" />
     <None Include="output.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainForm1.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

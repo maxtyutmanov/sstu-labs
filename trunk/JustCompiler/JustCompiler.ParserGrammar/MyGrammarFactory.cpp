@@ -42,16 +42,16 @@ namespace ParserGrammar {
         AddProduction("<stmt>", "<for>", grammar);
         AddProduction("<stmt>", "<if-then-else>", grammar);
         AddProduction("<assign>", "id : = <E>", grammar);
-        AddProduction("<read>", "read ( <id-list> )", grammar);
-        AddProduction("<write>", "write ( <E-list> )", grammar);
+        AddProduction("<read>", "read ( id )", grammar);
+        AddProduction("<write>", "write ( <param-list> )", grammar);
         AddProduction("<for>", "for <index-exp> do <body>", grammar);
-        AddProduction("<index-exp>", "id : = <E> to <E>", grammar);
+        AddProduction("<index-exp>", "<assign> to <E>", grammar);
         AddProduction("<body>", "<stmt>", grammar);
         AddProduction("<body>", "begin <stmt-list> end", grammar);
         AddProduction("<if-then-else>", "if <bool-E> then <body> <else>", grammar);
         AddProduction("<else>", "empty", grammar);
         AddProduction("<else>", "else <body>", grammar);
-        AddProduction("<funcall>", "st-func ( <E-list> )", grammar);
+        AddProduction("<funcall>", "st-func ( <param-list> )", grammar);
 
         //expressions
         AddProduction("<E>", "<T> <E1>", grammar);
@@ -67,9 +67,10 @@ namespace ParserGrammar {
         AddProduction("<F>", "int-const", grammar);
         AddProduction("<F>", "real-const", grammar);
         AddProduction("<F>", "<funcall>", grammar);
-        AddProduction("<E-list>", "<E> <E-list'>", grammar);
-        AddProduction("<E-list'>", ", <E> <E-list'>", grammar);
-        AddProduction("<E-list'>", "empty", grammar);
+        AddProduction("<param-list>", "<param> <param-list'>", grammar);
+        AddProduction("<param-list'>", ", <param> <param-list'>", grammar);
+        AddProduction("<param-list'>", "empty", grammar);
+        AddProduction("<param>", "<E>", grammar);
 
         //boolean expressions
         AddProduction("<bool-E>", "<E> <bool-E'>", grammar);
@@ -82,7 +83,7 @@ namespace ParserGrammar {
         return grammar;
     }
 
-    void MyGrammarFactory::AddProduction(const string& left, const string& right, Grammar& grammar) {
+    Production& MyGrammarFactory::AddProduction(const string& left, const string& right, Grammar& grammar) {
         vector<string> rightNames;
         istringstream iss(right);
 
@@ -100,7 +101,7 @@ namespace ParserGrammar {
             rightSymbols.push_back(sym);
         }
 
-        grammar.AddProduction(Production(leftNonTerm, rightSymbols));
+        return grammar.AddProduction(Production(leftNonTerm, rightSymbols));
     }
 
     PSymbol MyGrammarFactory::GetSymbol(const string& name, const Grammar& grammar) {
@@ -142,8 +143,9 @@ namespace ParserGrammar {
         AddNonTerminal("<bool-E>", NonTerminalTag::BooleanExpression, grammar);
         AddNonTerminal("<bool-E'>", NonTerminalTag::BooleanExpressionStroke, grammar);
         AddNonTerminal("<funcall>", NonTerminalTag::FunctionCall, grammar);
-        AddNonTerminal("<E-list>", NonTerminalTag::ExpressionList, grammar);
-        AddNonTerminal("<E-list'>", NonTerminalTag::ExpressionListStroke, grammar);
+        AddNonTerminal("<param-list>", NonTerminalTag::ParamList, grammar);
+        AddNonTerminal("<param-list'>", NonTerminalTag::ParamListStroke, grammar);
+        AddNonTerminal("<param>", NonTerminalTag::Param, grammar);
     }
 
     void MyGrammarFactory::CreateTerminals(Grammar& grammar) {

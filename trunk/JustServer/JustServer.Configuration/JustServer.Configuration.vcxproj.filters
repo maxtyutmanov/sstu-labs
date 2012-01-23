@@ -36,6 +36,9 @@
     <ClInclude Include="WebApplicationSection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ConfigFileNotFoundException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppConfigurationManager.cpp">

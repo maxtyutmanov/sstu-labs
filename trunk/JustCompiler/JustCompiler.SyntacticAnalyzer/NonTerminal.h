@@ -23,8 +23,6 @@ namespace ContextFreeGrammar {
 
         virtual int Compare(const Symbol& right) const;
     private:
-        
-
         int tag;
     };
 

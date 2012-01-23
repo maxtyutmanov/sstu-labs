@@ -8,8 +8,8 @@ namespace CodeGeneration {
 
     struct TraverseStepType {
         enum Enum {
-            Bubbling,
-            Tunneling
+            BottomUp,
+            TopDown
         };
     };
 

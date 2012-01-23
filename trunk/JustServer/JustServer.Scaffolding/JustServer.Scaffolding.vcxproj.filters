@@ -38,4 +38,9 @@
       <Filter>Misc</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Xsd Include="serverConfig.xsd">
+      <Filter>Misc</Filter>
+    </Xsd>
+  </ItemGroup>
 </Project>

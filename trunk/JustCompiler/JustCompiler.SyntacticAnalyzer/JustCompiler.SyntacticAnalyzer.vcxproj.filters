@@ -43,6 +43,9 @@
     <Filter Include="Source Files\FirstAndFollow">
       <UniqueIdentifier>{eafdb66e-47a0-4fdf-8c10-edecf655a1e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\AttributeGrammar">
+      <UniqueIdentifier>{8030145c-f2e8-4ee0-ab53-0c9d9fc3cbe2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -122,6 +125,12 @@
     </ClInclude>
     <ClInclude Include="FirstNFollowFactory.h">
       <Filter>Header Files\FirstAndFollow</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolAttribute.h">
+      <Filter>Header Files\AttributeGrammar</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeSearchPredicates.h">
+      <Filter>Header Files\ParseTree</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

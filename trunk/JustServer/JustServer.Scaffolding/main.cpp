@@ -13,6 +13,7 @@
 #include <Locator.h>
 #include <ServerConfigurationManager.h>
 #include <WebApplicationSection.h>
+#include <ConfigFileNotFoundException.h>
 
 using namespace std;
 using namespace JustServer::Net;
@@ -27,24 +28,35 @@ using JustServer::Configuration::WebApplicationSection;
 boost::shared_ptr<NetworkService> RunWebApplication(const WebApplicationSection& appConfigSection);
 
 int main(int argc, char** argv) {
-    ServerConfigurationManager serverConfigManager(L"serverConfig.xml");
-    vector<WebApplicationSection> webAppSections = serverConfigManager.GetApplicationsSections();
+    try {
+        ServerConfigurationManager serverConfigManager(L"serverConfig.xml");
+        vector<WebApplicationSection> webAppSections = serverConfigManager.GetApplicationsSections();
 
-    vector<boost::shared_ptr<NetworkService>> runningNetworkServices;
-    runningNetworkServices.reserve(webAppSections.size());
-    vector<WebApplicationSection>::const_iterator wasIt;
+        vector<boost::shared_ptr<NetworkService>> runningNetworkServices;
+        runningNetworkServices.reserve(webAppSections.size());
+        vector<WebApplicationSection>::const_iterator wasIt;
 
-    for (wasIt = webAppSections.begin(); wasIt != webAppSections.end(); ++wasIt) {
-        boost::shared_ptr<NetworkService> ns = RunWebApplication(*wasIt);
-        runningNetworkServices.push_back(ns);
-    }
+        for (wasIt = webAppSections.begin(); wasIt != webAppSections.end(); ++wasIt) {
+            boost::shared_ptr<NetworkService> ns = RunWebApplication(*wasIt);
+            runningNetworkServices.push_back(ns);
+        }
 
-    cin.get();
+        cout << "HTTP server is up and running..." << endl;
+
+        cin.get();
+
+        cout << "Shutting the server down..." << endl;
     
-    vector<boost::shared_ptr<NetworkService>>::iterator nsIt;
+        vector<boost::shared_ptr<NetworkService>>::iterator nsIt;
 
-    for (nsIt = runningNetworkServices.begin(); nsIt != runningNetworkServices.end(); ++nsIt) {
-        (*nsIt)->Stop();
+        for (nsIt = runningNetworkServices.begin(); nsIt != runningNetworkServices.end(); ++nsIt) {
+            (*nsIt)->Stop();
+        }
+    }
+    catch (const ConfigFileNotFoundException& ex) {
+        cout << ex.what() << endl;
+        cin.get();
+        return -1;
     }
 
     return 0;

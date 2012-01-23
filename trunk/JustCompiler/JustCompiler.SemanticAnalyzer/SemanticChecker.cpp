@@ -3,6 +3,7 @@
 #include <TokenTag.h>
 #include "Redefinition.h"
 #include "UndeclaredIdentifier.h"
+#include <NodeSearchPredicates.h>
 
 using namespace std;
 using namespace JustCompiler::SyntacticAnalyzer;
@@ -25,12 +26,12 @@ namespace SemanticAnalyzer {
     }
 
     PSymbolTable SemanticChecker::CreateSymbolTable(const ParseTree parseTree, SemanticCheckerOutput& output) {
-        vector<PParseTreeNode> decs = parseTree.GetRoot()->GetChildren(&SemanticChecker::IsDeclaration, true);
+        vector<PParseTreeNode> decs = parseTree.GetRoot()->GetChildren(NonTerminalTagPredicate(NonTerminalTag::Dec), true);
 
         PSymbolTable symTable(new SymbolTable());
 
         for (size_t i = 0; i < decs.size(); ++i) {
-            vector<PParseTreeNode> ids = decs[i]->GetChildren(&SemanticChecker::IsIdentifier, true);
+            vector<PParseTreeNode> ids = decs[i]->GetChildren(TerminalTagPredicate(TokenTag::Identifier), true);
 
             for (size_t j = 0; j < ids.size(); ++j) {
                 PToken token = ids[j]->GetToken();
@@ -51,11 +52,11 @@ namespace SemanticAnalyzer {
     }
 
     void SemanticChecker::FindUndeclaredIdentifiers(const ParseTree parseTree, SemanticCheckerOutput& output) {
-        vector<PParseTreeNode> mainStmtListVector = parseTree.GetRoot()->GetChildren(&SemanticChecker::IsStmtList, false);
+        vector<PParseTreeNode> mainStmtListVector = parseTree.GetRoot()->GetChildren(NonTerminalTagPredicate(NonTerminalTag::StmtList), false);
         assert(mainStmtListVector.size() == 1);
         PParseTreeNode programStmtList = mainStmtListVector[0];
 
-        vector<PParseTreeNode> identifiers = programStmtList->GetChildren(&SemanticChecker::IsIdentifier, true);
+        vector<PParseTreeNode> identifiers = programStmtList->GetChildren(TerminalTagPredicate(TokenTag::Identifier), true);
 
         for (size_t i = 0; i < identifiers.size(); ++i) {
             PToken token = identifiers[i]->GetToken();
@@ -69,7 +70,7 @@ namespace SemanticAnalyzer {
         }
     }
 
-    bool SemanticChecker::IsDeclaration(const PParseTreeNode node) {
+    /*bool SemanticChecker::IsDeclaration(const PParseTreeNode node) {
         if (node->GetSymbol()->GetType() == SymbolType::NonTerminal) {
             PNonTerminal dec = boost::dynamic_pointer_cast<NonTerminal, Symbol>(node->GetSymbol());
             assert(dec.get() != NULL);
@@ -103,6 +104,6 @@ namespace SemanticAnalyzer {
         else {
             return false;
         }
-    }
+    }*/
 }
 }

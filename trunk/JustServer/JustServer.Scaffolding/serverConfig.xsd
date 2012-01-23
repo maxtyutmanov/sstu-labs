@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="serverConfig"
+    targetNamespace="http://tempuri.org/serverConfig.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/serverConfig.xsd"
+    xmlns:mstns="http://tempuri.org/serverConfig.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:complexType name="webApplication">
+    <xs:attribute name="physicalPath" type="xs:string"></xs:attribute>
+    <xs:attribute name="port" type="xs:nonNegativeInteger"></xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="webServer">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="webApplication" type="mstns:webApplication" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="configuration">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="1">
+        <xs:element name="webServer" type="mstns:webServer"></xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
