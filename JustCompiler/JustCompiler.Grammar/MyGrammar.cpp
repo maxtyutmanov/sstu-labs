@@ -33,6 +33,21 @@ namespace LexicalAnalyzer {
         kwMapping->AddPair(L"then", TokenTag::Then);
         kwMapping->AddPair(L"else", TokenTag::Else);
 
+        //kwMapping->AddPair(L"ÏĞÎÃĞÀÌÌÀ", TokenTag::Program);
+        //kwMapping->AddPair(L"ÎÁÚßÂËÅÍÈß", TokenTag::Var);
+        //kwMapping->AddPair(L"ÖÈÊË", TokenTag::For);
+        //kwMapping->AddPair(L"ÍÀ×ÀËÎ", TokenTag::Begin);
+        //kwMapping->AddPair(L"ÊÎÍÅÖ", TokenTag::End);
+        //kwMapping->AddPair(L"ÖÅËÎÅ", TokenTag::Type_Int);
+        //kwMapping->AddPair(L"ÂÅÙÅÑÒÂÅÍÍÎÅ", TokenTag::Type_Real);
+        //kwMapping->AddPair(L"ÂÂÎÄ", TokenTag::Read);
+        //kwMapping->AddPair(L"ÂÛÂÎÄ", TokenTag::Write);
+        //kwMapping->AddPair(L"ÂÛÏÎËÍßÒÜ", TokenTag::Do);
+        //kwMapping->AddPair(L"ÄÎ", TokenTag::To);
+        //kwMapping->AddPair(L"ÅÑËÈ", TokenTag::If);
+        //kwMapping->AddPair(L"ÒÎÃÄÀ", TokenTag::Then);
+        //kwMapping->AddPair(L"ÈÍÀ×Å", TokenTag::Else);
+
         return kwMapping;
     }
 

@@ -16,7 +16,7 @@ namespace ParserGrammar {
         static void CreateNonTerminals(JustCompiler::SyntacticAnalyzer::ContextFreeGrammar::Grammar& grammar);
         static void CreateTerminals(JustCompiler::SyntacticAnalyzer::ContextFreeGrammar::Grammar& grammar);
 
-        static void AddProduction(
+        static JustCompiler::SyntacticAnalyzer::ContextFreeGrammar::Production& AddProduction(
             const std::string& left, 
             const std::string& right, 
             JustCompiler::SyntacticAnalyzer::ContextFreeGrammar::Grammar& grammar);

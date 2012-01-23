@@ -26,9 +26,9 @@ namespace SemanticAnalyzer {
             const SyntacticAnalyzer::ParseTree parseTree,
             SemanticCheckerOutput& output);
 
-        static bool IsDeclaration(const SyntacticAnalyzer::PParseTreeNode node);
+        /*static bool IsDeclaration(const SyntacticAnalyzer::PParseTreeNode node);
         static bool IsIdentifier(const SyntacticAnalyzer::PParseTreeNode node);
-        static bool IsStmtList(const SyntacticAnalyzer::PParseTreeNode node);
+        static bool IsStmtList(const SyntacticAnalyzer::PParseTreeNode node);*/
     };
 
 }

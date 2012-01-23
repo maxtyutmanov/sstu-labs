@@ -5,12 +5,21 @@ namespace CodeGeneration {
 
     struct OpCode {
         enum Enum {
-            Add,
-            Mul,
-            Div,
-            Sub,
+            ADD,
+            MUL,
+            DIV,
+            SUB,
             ASSIGN,
-            JMP
+            JMP,
+            LABEL,
+            PARAM,
+            READ,
+            WRITE,
+            CALL,
+            BGE,
+            BLE,
+            BNE,
+            BGT
         };
     };
 

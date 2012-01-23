@@ -19,8 +19,10 @@ namespace ContextFreeGrammar {
         terminals.push_back(terminal);
     }
 
-    void Grammar::AddProduction(const Production& production) {
+    Production& Grammar::AddProduction(const Production& production) {
         productions.push_back(production);
+
+        return productions.back();
     }
 
     void Grammar::SetStartSymbol(PNonTerminal startSymbol) {

@@ -18,7 +18,7 @@ namespace ContextFreeGrammar {
 
         void AddNonTerminal(const std::string& name, PNonTerminal nonTerminal);
         void AddTerminal(const std::string& name, PTerminal terminal);
-        void AddProduction(const Production& production);
+        Production& AddProduction(const Production& production);
         void SetStartSymbol(PNonTerminal startSymbol);
 
         const std::vector<Production>& Productions() const;

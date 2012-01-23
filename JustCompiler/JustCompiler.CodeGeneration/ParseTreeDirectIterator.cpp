@@ -17,7 +17,7 @@ namespace CodeGeneration {
     void ParseTreeDirectIterator::IterateHelper(const JustCompiler::SyntacticAnalyzer::PParseTreeNode node, std::vector<TraverseStepInfo>& result) {
         TraverseStepInfo tun;
         tun.node = node;
-        tun.stepType = TraverseStepType::Tunneling;
+        tun.stepType = TraverseStepType::TopDown;
         result.push_back(tun);
 
         for (size_t i = 0; i < node->Children().size(); ++i) {
@@ -26,7 +26,7 @@ namespace CodeGeneration {
 
         TraverseStepInfo bubl;
         bubl.node = node;
-        bubl.stepType = TraverseStepType::Bubbling;
+        bubl.stepType = TraverseStepType::BottomUp;
         result.push_back(bubl);
     }
 }

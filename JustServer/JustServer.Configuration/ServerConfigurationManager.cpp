@@ -2,6 +2,7 @@
 #include "InvalidConfigurationException.h"
 #include <fstream>
 #include <EncodingUtility.h>
+#include "ConfigFileNotFoundException.h"
 
 using namespace std;
 using JustServer::Utility::EncodingUtility;
@@ -22,6 +23,9 @@ namespace Configuration {
 
             //TODO: error handling
             config.Parse(fileData.c_str());
+        }
+        else {
+            throw ConfigFileNotFoundException("serverConfig.xml wasn't found in the current directory");
         }
     }
 

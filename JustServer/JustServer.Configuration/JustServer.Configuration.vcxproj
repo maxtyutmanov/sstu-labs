@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppConfigurationManager.h" />
+    <ClInclude Include="ConfigFileNotFoundException.h" />
     <ClInclude Include="IAppConfigurationManager.h" />
     <ClInclude Include="InvalidConfigurationException.h" />
     <ClInclude Include="SecuredArea.h" />

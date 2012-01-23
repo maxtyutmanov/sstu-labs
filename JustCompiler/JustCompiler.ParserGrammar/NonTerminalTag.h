@@ -31,8 +31,9 @@ namespace ParserGrammar {
             Factor,
             BooleanExpression,
             BooleanExpressionStroke,
-            ExpressionList,
-            ExpressionListStroke,
+            ParamList,
+            ParamListStroke,
+            Param,
             Goto,
             FunctionCall
         };

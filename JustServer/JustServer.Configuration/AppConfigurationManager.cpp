@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "InvalidConfigurationException.h"
+#include "ConfigFileNotFoundException.h"
 #include <EncodingUtility.h>
 
 using namespace std;
@@ -25,6 +26,9 @@ namespace Configuration {
 
             //TODO: error handling
             config.Parse(fileData.c_str());
+        }
+        else {
+            throw ConfigFileNotFoundException("appConfig.xml wasn't found in the specified physical directory of the web application");
         }
     }
 

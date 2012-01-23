@@ -45,7 +45,6 @@ namespace SyntacticAnalyzer {
                         return output;
                     }
                     else {
-                        //TODO: seems to be a workaround
                         currentNode->SetToken(inputToken);
 
                         parserStack.pop();
@@ -83,7 +82,6 @@ namespace SyntacticAnalyzer {
                 PNonTerminal topAsNonTerm = boost::dynamic_pointer_cast<NonTerminal, Symbol>(top);
                 NonTerminal* ptr = topAsNonTerm.get();
                 
-                
                 assert(topAsNonTerm.get() != NULL);
 
                 ParserTableEntry controlTableEntry = parserTable.GetEntry(topAsNonTerm->GetTag(), inputToken->GetTag());
@@ -91,6 +89,9 @@ namespace SyntacticAnalyzer {
                 if (!controlTableEntry.IsError()) {
                     const Production* production = controlTableEntry.GetProduction();
                     assert(production != NULL);
+
+                    //remembering the production that produced children of the current node in parse tree
+                    currentNode->SetProduction(production);
 
                     //replace current non terminal on the top of the stack with the right part of selected production
                     parserStack.pop();
@@ -100,13 +101,14 @@ namespace SyntacticAnalyzer {
 
                     SymbolString::const_iterator rightIt;
                     for (rightIt = prodRight.cbegin(); rightIt != prodRight.cend(); ++rightIt) {
-                        PParseTreeNode childNode(new ParseTreeNode(*rightIt));
+                        PParseTreeNode childNode(new ParseTreeNode(currentNode, *rightIt));
 
                         //build parse tree
                         currentNode->AddChildNode(childNode);
                         childTreeNodes.push_back(childNode);
                     }
 
+                    //adding children to the stack (in reverse order)
                     for (int i = childTreeNodes.size() - 1; i >= 0; --i) {
                         //don't add empty symbol to the stack!
                         if (childTreeNodes[i]->GetSymbol()->GetType() == SymbolType::Terminal) {
@@ -123,7 +125,7 @@ namespace SyntacticAnalyzer {
                     }
                 }
                 else {
-                    //there's no entry in the parser table for such configuration
+                    //there's no entry in the parser table for this case
 
                     if (inputToken->GetTag() == SpecialTokenTag::Eof) {
                         output->errors.push_back(boost::shared_ptr<SyntaxError>(new SyntaxError(
