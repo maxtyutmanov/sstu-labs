@@ -59,7 +59,7 @@ namespace Imaging {
         bmpInfoH.biCompression = BI_RGB;
         bmpInfoH.biXPelsPerMeter = 0x0ec4;
         bmpInfoH.biYPelsPerMeter = 0x0ec4;
-#pragma warning //the following code works only for 24 bit image
+#pragma warning //the following code works only for 24 bit image. Wait... the WHOLE THING works only for 24 bit image!!!
         bmpInfoH.biClrUsed = 0;
         bmpInfoH.biClrImportant = 0;
         bmpInfoH.biSizeImage = 0;
