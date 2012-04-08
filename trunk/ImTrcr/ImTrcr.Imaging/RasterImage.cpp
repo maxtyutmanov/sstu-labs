@@ -1,4 +1,4 @@
-#include "Bitmap.h"
+#include "RasterImage.h"
 #include "PointOutOfBitmapException.h"
 
 using namespace std;
@@ -6,33 +6,33 @@ using namespace std;
 namespace ImTrcr {
 namespace Imaging {
 
-    RGBTriple Bitmap::GetPixel(image_size_t x, image_size_t y) const {
+    ArgbQuad RasterImage::GetColor(image_size_t x, image_size_t y) const {
         CheckCoordinates(x, y);
 
         return pixelArray[y * width + x];
     }
 
-    void Bitmap::SetPixel(image_size_t x, image_size_t y, RGBTriple argb) {
+    void RasterImage::SetColor(image_size_t x, image_size_t y, ArgbQuad argb) {
         CheckCoordinates(x, y);
 
         pixelArray[y * width + x] = argb;
     }
 
-    image_size_t Bitmap::GetWidth() const {
+    image_size_t RasterImage::GetWidth() const {
         return width;
     }
 
-    image_size_t Bitmap::GetHeight() const {
+    image_size_t RasterImage::GetHeight() const {
         return height;
     }
 
-    Bitmap::~Bitmap() {
+    RasterImage::~RasterImage() {
         if (pixelArray != NULL) {
             delete[] pixelArray;
         }
     }
 
-    Bitmap::Bitmap(image_size_t width, image_size_t height, RGBTriple* pixelArray) {
+    RasterImage::RasterImage(image_size_t width, image_size_t height, ArgbQuad* pixelArray) {
         if (NULL == pixelArray) {
             throw logic_error("Pixel array of bitmap cannot be NULL");
         }
@@ -52,7 +52,7 @@ namespace Imaging {
         this->pixelArray = pixelArray;
     }
 
-    void Bitmap::CheckCoordinates(image_size_t x, image_size_t y) const {
+    void RasterImage::CheckCoordinates(image_size_t x, image_size_t y) const {
         if (x < 0 || x >= width ||
             y < 0 || y >= height) {
 

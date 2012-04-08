@@ -78,6 +78,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bmp_tests.cpp" />
+    <ClCompile Include="WinBmpColorTableTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImTrcr.Imaging\ImTrcr.Imaging.vcxproj">
@@ -86,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="тест.bmp" />
+    <None Include="тест8bit.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

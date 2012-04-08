@@ -13,21 +13,20 @@ namespace ImTrcr {
 namespace Imaging {
 
     WinBMP::WinBMP(image_size_t width, image_size_t height, unsigned short colorDepth) 
-        : Bitmap(width, height, WinBMP::CreateDefaultPixelArray(width, height)) {
-        assert(colorDepth == 24);
-        this->colorDepth = colorDepth;
+        : RasterImage(width, height, WinBMP::CreateDefaultPixelArray(width, height)) {
+
+        SetColorDepth(colorDepth);
     }
 
-    WinBMP::WinBMP(image_size_t width, image_size_t height, RGBTriple* pixelArray, unsigned short colorDepth) 
-        : Bitmap(width, height, pixelArray) {
+    WinBMP::WinBMP(image_size_t width, image_size_t height, ArgbQuad* pixelArray, unsigned short colorDepth) 
+        : RasterImage(width, height, pixelArray) {
 
-        assert(colorDepth == 24);
-        this->colorDepth = colorDepth;
+        SetColorDepth(colorDepth);
     }
 
-    RGBTriple* WinBMP::CreateDefaultPixelArray(image_size_t width, image_size_t height) {
+    ArgbQuad* WinBMP::CreateDefaultPixelArray(image_size_t width, image_size_t height) {
         if (width > 0 && height > 0) {
-            return new RGBTriple[width * height];
+            return new ArgbQuad[width * height];
         }
         else {
             return NULL;
@@ -72,20 +71,20 @@ namespace Imaging {
     }
 
     WinBMP WinBMP::Clone() const {
-        RGBTriple* clonePxArray = new RGBTriple[this->GetWidth() * this->GetHeight()];
-        memcpy(clonePxArray, this->pixelArray, this->GetWidth() * this->GetHeight() * sizeof(RGBTriple));
+        ArgbQuad* clonePxArray = new ArgbQuad[this->GetWidth() * this->GetHeight()];
+        memcpy(clonePxArray, this->pixelArray, this->GetWidth() * this->GetHeight() * sizeof(ArgbQuad));
 
         return WinBMP(this->GetWidth(), this->GetHeight(), clonePxArray, this->GetColorDepth());
     }
 
     WinBMP WinBMP::FromFile(const wstring& path) {
-        ifstream input(path, ios::in|ios::binary);
-
         //check if file exists
         boost::filesystem3::path boostPath(path);
         if (!boost::filesystem3::exists(boostPath)) {
             throw FileNotFoundException(path);
         }
+
+        ifstream input(path, ios::in|ios::binary);
 
         return WinBMP::FromStream(input);
     }
@@ -133,26 +132,26 @@ namespace Imaging {
 
         //convert image data to RGB triples
 
-        RGBTriple* pxArray = WinBMP::ConvertBmpDataToRGBBuffer(imageData, bmpInfoH.biWidth, bmpInfoH.biHeight, bmpInfoH.biBitCount / 8);
+        ArgbQuad* pxArray = WinBMP::ConvertBmpDataToRGBBuffer(imageData, bmpInfoH.biWidth, bmpInfoH.biHeight, bmpInfoH.biBitCount / 8);
 
         delete[] imageData;
 
         return WinBMP(bmpInfoH.biWidth, bmpInfoH.biHeight, pxArray, bmpInfoH.biBitCount);
     }
 
-    RGBTriple* WinBMP::ConvertBmpDataToRGBBuffer(unsigned char* data, image_size_t width, image_size_t height, unsigned short bytesPerPixel) {
+    ArgbQuad* WinBMP::ConvertBmpDataToRGBBuffer(unsigned char* data, image_size_t width, image_size_t height, unsigned short bytesPerPixel) {
         //calculate padding bytes count
 
         image_size_t widthInBytes = width * bytesPerPixel;
         image_size_t paddingBytes = widthInBytes % sizeof(DWORD);
 
-        RGBTriple* result = new RGBTriple[width * height];
+        ArgbQuad* result = new ArgbQuad[width * height];
 
         unsigned char *dataPtr = data;
 
         for (image_size_t y = height - 1; y >= 0; --y) {
             for (image_size_t x = 0; x < width; ++x) {
-                RGBTriple& px = result[y * width + x];
+                ArgbQuad& px = result[y * width + x];
 
                 px.blue = *(dataPtr++);
                 px.green = *(dataPtr++);
@@ -181,7 +180,7 @@ namespace Imaging {
         for (image_size_t y = height - 1; y >= 0; --y) {
             for (image_size_t x = 0; x < width; ++x) {
                 //TODO: can be optimized: h * width can be taken out of the nested for
-                RGBTriple px = pixelArray[y * width + x];
+                ArgbQuad px = pixelArray[y * width + x];
 
                 *(resultPtr++) = px.blue;
                 *(resultPtr++) = px.green;
