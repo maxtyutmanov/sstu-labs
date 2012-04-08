@@ -3,7 +3,7 @@
 namespace ImTrcr {
 namespace Vectorization {
 
-    class SvgImage {
+    class VectorImage {
 
     };
 

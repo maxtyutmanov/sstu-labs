@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SvgImage.h"
+#include "VectorImage.h"
 #include <Bitmap.h>
 
 namespace ImTrcr {
@@ -8,7 +8,7 @@ namespace Vectorization {
 
     class Tracer {
     public:
-        SvgImage Trace(const Imaging::Bitmap& bmp);
+        VectorImage* Trace(const Imaging::Bitmap& bmp);
     };
 
 }

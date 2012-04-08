@@ -74,15 +74,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ArgbQuad.h" />
     <ClInclude Include="WinBMP.h" />
-    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="RasterImage.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="FileNotFoundException.h" />
     <ClInclude Include="InvalidBmpStreamException.h" />
     <ClInclude Include="PointOutOfBitmapException.h" />
+    <ClInclude Include="WinBmpColorTable.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="RasterImage.cpp" />
     <ClCompile Include="WinBMP.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
