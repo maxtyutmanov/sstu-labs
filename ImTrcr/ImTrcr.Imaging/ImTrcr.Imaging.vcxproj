@@ -82,6 +82,7 @@
     <ClInclude Include="InvalidBmpStreamException.h" />
     <ClInclude Include="PointOutOfBitmapException.h" />
     <ClInclude Include="WinBmpColorTable.h" />
+    <ClInclude Include="WinBmpStructs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RasterImage.cpp" />
