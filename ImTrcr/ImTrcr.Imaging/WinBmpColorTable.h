@@ -8,18 +8,17 @@
 namespace ImTrcr {
 namespace Imaging {
 
-    //represents a pallette used by windows BMP file
+    //Represents a transformer from raw bitmap data to colors
     class WinBmpColorTable {
     public:
-        ArgbQuad GetColor(unsigned char* dataPtr);
+        //transforms raw bitmap data to color info
+        ArgbQuad GetColor(byte* dataPtr) const;
 
-        static WinBmpColorTable* FromStream(unsigned short bitsPerPixel, unsigned short numberOfColors, std::istream& input);
+        static WinBmpColorTable* FromStream(byte bitsPerPixel, unsigned long numberOfColors, std::istream& input);
     private:
-        WinBmpColorTable(unsigned short bitsPerPixel, const std::vector<ArgbQuad>& colorTable);
-
-        std::vector<ArgbQuad> colorTable;
-        unsigned short bitsPerPixel;
-
+        WinBmpColorTable(byte bitsPerPixel, const std::vector<ArgbQuad>& colorTable);
+        std::vector<ArgbQuad> table;
+        byte bitsPerPixel;
         bool indexed;
     };
 
