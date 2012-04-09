@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClCompile Include="RasterImage.cpp" />
     <ClCompile Include="WinBMP.cpp" />
+    <ClCompile Include="WinBmpColorTable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
