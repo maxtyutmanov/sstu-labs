@@ -1,6 +1,5 @@
 #include "WinBmpColorTable.h"
 #include "InvalidBmpStreamException.h"
-#include <Windows.h>
 
 using namespace std;
 
@@ -40,9 +39,9 @@ namespace Imaging {
                 throw InvalidBmpStreamException("Cannot read color table from the given stream. input.good() == false");
             }
 
-            byte* colorTableBuffer = new byte[sizeof(RGBQUAD) * numberOfColors];
+            byte* colorTableBuffer = new byte[sizeof(ArgbQuad) * numberOfColors];
 
-            input.read((char *)colorTableBuffer, sizeof(RGBQUAD) * numberOfColors);
+            input.read((char *)colorTableBuffer, sizeof(ArgbQuad) * numberOfColors);
 
             if (!input.good()) {
                 delete[] colorTableBuffer;
@@ -60,7 +59,7 @@ namespace Imaging {
                 colorTable[i].red = *(bufferPtr + 2);
                 colorTable[i].alpha = *(bufferPtr + 3);
 
-                bufferPtr += sizeof(RGBQUAD);
+                bufferPtr += sizeof(ArgbQuad);
             }
 
             delete[] colorTableBuffer;
