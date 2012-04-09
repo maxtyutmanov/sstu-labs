@@ -1,7 +1,6 @@
 #pragma once
 
 #include "WinBMP.h"
-#include <Windows.h>
 #include <fstream>
 #include "FileNotFoundException.h"
 #include "InvalidBmpStreamException.h"

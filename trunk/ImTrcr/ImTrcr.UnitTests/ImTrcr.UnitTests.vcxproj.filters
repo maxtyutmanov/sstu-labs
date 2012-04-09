@@ -18,15 +18,12 @@
     <ClCompile Include="bmp_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WinBmpColorTableTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="тест.bmp">
+    <None Include="тест8bit.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="тест8bit.bmp">
+    <None Include="тест24bit.bmp">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
