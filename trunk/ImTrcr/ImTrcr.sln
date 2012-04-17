@@ -9,6 +9,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImTrcr.IntegrationTests", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImTrcr.Vectorization", "ImTrcr.Vectorization\ImTrcr.Vectorization.vcxproj", "{1A4BFD89-A741-4668-B8CF-43867EE4D297}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "Third party\tinyxml\tinyxml_lib.vcxproj", "{C406DAEC-0886-4771-8DEA-9D7329B46CC1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImTrcr.TracingFacade", "TracingFacade\TracingFacade.vcxproj", "{7C81FE0C-FDA1-4357-83C6-A0015F931138}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third party", "Third party", "{4D5B5534-7A33-4D6C-918B-15B2197A1C5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9AF1A3A3-5743-46F6-B038-BD2FDDDE7742}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,8 +39,20 @@ Global
 		{1A4BFD89-A741-4668-B8CF-43867EE4D297}.Debug|Win32.Build.0 = Debug|Win32
 		{1A4BFD89-A741-4668-B8CF-43867EE4D297}.Release|Win32.ActiveCfg = Release|Win32
 		{1A4BFD89-A741-4668-B8CF-43867EE4D297}.Release|Win32.Build.0 = Release|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.Build.0 = Debug|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.ActiveCfg = Release|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.Build.0 = Release|Win32
+		{7C81FE0C-FDA1-4357-83C6-A0015F931138}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7C81FE0C-FDA1-4357-83C6-A0015F931138}.Debug|Win32.Build.0 = Debug|Win32
+		{7C81FE0C-FDA1-4357-83C6-A0015F931138}.Release|Win32.ActiveCfg = Release|Win32
+		{7C81FE0C-FDA1-4357-83C6-A0015F931138}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1} = {4D5B5534-7A33-4D6C-918B-15B2197A1C5D}
+		{B334E2AA-A583-45BF-B802-BFEC1163AB67} = {9AF1A3A3-5743-46F6-B038-BD2FDDDE7742}
 	EndGlobalSection
 EndGlobal

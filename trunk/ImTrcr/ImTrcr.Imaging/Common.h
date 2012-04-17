@@ -3,8 +3,6 @@
 #define IN
 #define OUT
 
-#include <assert.h>
-
 namespace ImTrcr {
 namespace Imaging {
 

@@ -75,6 +75,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ArgbQuad.h" />
+    <ClInclude Include="Path.h" />
+    <ClInclude Include="Point2F.h" />
+    <ClInclude Include="Primitive.h" />
+    <ClInclude Include="VectorImage.h" />
     <ClInclude Include="WinBMP.h" />
     <ClInclude Include="RasterImage.h" />
     <ClInclude Include="Common.h" />
