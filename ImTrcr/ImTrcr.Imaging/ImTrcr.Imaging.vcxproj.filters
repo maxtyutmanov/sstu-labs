@@ -16,6 +16,18 @@
     <Filter Include="Header Files\Exceptions">
       <UniqueIdentifier>{be463e62-34ba-498b-81ac-d59f5db69092}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Raster">
+      <UniqueIdentifier>{0b3480d7-aee1-445a-b45a-9077a8e66615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Raster">
+      <UniqueIdentifier>{9e3c625a-4ec5-478a-885e-a2a01cf00d30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Vector">
+      <UniqueIdentifier>{df6de4c5-1fc1-43dc-a78c-3280723b8745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Vector\Primitives">
+      <UniqueIdentifier>{0de066a3-5131-48df-a0d4-4539606976c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PointOutOfBitmapException.h">
@@ -30,31 +42,43 @@
     <ClInclude Include="InvalidBmpStreamException.h">
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
-    <ClInclude Include="WinBMP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WinBmpColorTable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RasterImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ArgbQuad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RasterImage.h">
+      <Filter>Header Files\Raster</Filter>
+    </ClInclude>
+    <ClInclude Include="WinBMP.h">
+      <Filter>Header Files\Raster</Filter>
+    </ClInclude>
+    <ClInclude Include="WinBmpColorTable.h">
+      <Filter>Header Files\Raster</Filter>
+    </ClInclude>
     <ClInclude Include="WinBmpStructs.h">
+      <Filter>Header Files\Raster</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorImage.h">
+      <Filter>Header Files\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitive.h">
+      <Filter>Header Files\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Header Files\Vector\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WinBMP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RasterImage.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Raster</Filter>
     </ClCompile>
     <ClCompile Include="WinBmpColorTable.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Raster</Filter>
+    </ClCompile>
+    <ClCompile Include="WinBMP.cpp">
+      <Filter>Source Files\Raster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
