@@ -1,10 +1,10 @@
 #pragma once
 
-#include <VectorImage.h>
+#include "VectorImage.h"
 #include <tinyxml.h>
 
 namespace ImTrcr {
-namespace Vectorization {
+namespace Imaging {
 
     class ISvgSerializer {
     public:

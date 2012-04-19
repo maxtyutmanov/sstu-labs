@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(BoostDir);$(SolutionDir)\ImTrcr.Imaging;$(SolutionDir)\Third party\tinyxml</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(BoostDir);$(SolutionDir)\ImTrcr.Imaging;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(BoostLibDir)</LibraryPath>
@@ -81,15 +81,10 @@
     <ProjectReference Include="..\ImTrcr.Imaging\ImTrcr.Imaging.vcxproj">
       <Project>{42cbf9a3-b77c-462e-820b-bb0679b88ed4}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Third party\tinyxml\tinyxml_lib.vcxproj">
-      <Project>{c406daec-0886-4771-8dea-9d7329b46cc1}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ISvgSerializer.h" />
     <ClInclude Include="ITracer.h" />
     <ClInclude Include="PotraceTracer.h" />
-    <ClInclude Include="SvgSerializer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

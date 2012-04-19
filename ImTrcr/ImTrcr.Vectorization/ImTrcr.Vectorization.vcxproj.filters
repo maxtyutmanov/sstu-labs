@@ -24,11 +24,5 @@
     <ClInclude Include="ITracer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SvgSerializer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ISvgSerializer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
