@@ -40,7 +40,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(BoostDir);</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(BoostDir);$(SolutionDir)\Third party\tinyxml;</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(BoostLibDir)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -75,9 +75,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ArgbQuad.h" />
+    <ClInclude Include="ISvgSerializer.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Point2F.h" />
     <ClInclude Include="Primitive.h" />
+    <ClInclude Include="SvgSerializer.h" />
     <ClInclude Include="VectorImage.h" />
     <ClInclude Include="WinBMP.h" />
     <ClInclude Include="RasterImage.h" />
@@ -92,6 +94,11 @@
     <ClCompile Include="RasterImage.cpp" />
     <ClCompile Include="WinBMP.cpp" />
     <ClCompile Include="WinBmpColorTable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Third party\tinyxml\tinyxml_lib.vcxproj">
+      <Project>{c406daec-0886-4771-8dea-9d7329b46cc1}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

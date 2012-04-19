@@ -69,6 +69,12 @@
     <ClInclude Include="Point2F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ISvgSerializer.h">
+      <Filter>Header Files\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="SvgSerializer.h">
+      <Filter>Header Files\Vector</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RasterImage.cpp">

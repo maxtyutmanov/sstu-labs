@@ -3,7 +3,7 @@
 #include "ISvgSerializer.h"
 
 namespace ImTrcr {
-namespace Vectorization {
+namespace Imaging {
 
     class SvgSerializer : public ISvgSerializer {
     public:

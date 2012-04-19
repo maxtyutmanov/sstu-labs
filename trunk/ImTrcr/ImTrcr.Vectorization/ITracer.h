@@ -10,6 +10,7 @@ namespace Vectorization {
     class ITracer {
     public:
         virtual Imaging::VectorImage* Trace(const Imaging::RasterImage& rasterImage) = 0;
+        virtual ~ITracer() {}
     };
 
 }

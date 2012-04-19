@@ -9,20 +9,22 @@
 using namespace std;
 using namespace ImTrcr;
 
-void CleanUp(Vectorization::ITracer* pTracer, Imaging::VectorImage* pVectorImage);
+void CleanUp(Vectorization::ITracer* pTracer, Imaging::VectorImage* pVectorImage, Imaging::ISvgSerializer* pSvgSerializer, TiXmlDocument* pSerializedSvgXml);
 
-int ConvertToSvg(unsigned char* sourceImageBytes, unsigned long bytesCount, unsigned char* svgXml) {
+int ConvertToSvg(unsigned char* sourceImageBytes, unsigned long sourceSize, unsigned char* svgXml, unsigned long* serializedSize) {
 
     Vectorization::ITracer* pTracer = NULL;
     Imaging::VectorImage* pVectorImage = NULL;
+    Imaging::ISvgSerializer* pSvgSerializer = NULL;
+    TiXmlDocument* pSerializedSvgXml = NULL;
 
     try {
         //prepare input stream
 
         string sourceBuffer;
-        sourceBuffer.resize(bytesCount);
+        sourceBuffer.resize(sourceSize);
 
-        for (unsigned long i = 0; i < bytesCount; ++i) {
+        for (unsigned long i = 0; i < sourceSize; ++i) {
             sourceBuffer[i] = sourceImageBytes[i];
         }
 
@@ -36,6 +38,13 @@ int ConvertToSvg(unsigned char* sourceImageBytes, unsigned long bytesCount, unsi
         pVectorImage = pTracer->Trace(bmp);
 
         //serialize vector image to SVG XML document
+        pSvgSerializer = new Imaging::SvgSerializer();
+        pSerializedSvgXml = pSvgSerializer->Serialize(*pVectorImage);
+
+        TiXmlPrinter xmlPrinter;
+        pSerializedSvgXml->Accept(&xmlPrinter);
+        *serializedSize = xmlPrinter.Size();
+        svgXml = (unsigned char *)xmlPrinter.CStr();
     }
     catch (const runtime_error& ex) {
         CleanUp(pTracer, pVectorImage);
